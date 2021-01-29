@@ -8,6 +8,7 @@ public class World : MonoBehaviour
     public static World Instance { get; private set; }
 
     Tilemap tilemap;
+    Dictionary<Vector3Int, Actor> actors = new Dictionary<Vector3Int, Actor>();
 
     private void Awake()
     {
@@ -23,28 +24,33 @@ public class World : MonoBehaviour
     {
         return tilemap.GetCellCenterWorld(gridPos);
     }
-
-    public TileObject GetTile(Vector3Int gridPos)
-    {
-        var instantiatedGO = tilemap.GetInstantiatedObject(gridPos);
-        if (instantiatedGO == null)
-        {
-            Debug.LogError("Tile without GameObject!");
-            return null; 
-        }
-
-        var tileObject = instantiatedGO.GetComponent<TileObject>();
-        if (tileObject == null)
-            Debug.LogError("Instantiated tile without TileObject component!");
-
-        return tileObject;
-    }
-
+  
     public bool IsSolid(Vector3Int gridPos)
     {
         var tile = tilemap.GetTile(gridPos) as WorldTile;
         if (tile == null)
             return true;
         return tile.Solid;
+    }
+
+    public void MoveActorTo(Actor actor, Vector3Int gridPos)
+    {
+        if(actors.ContainsKey(gridPos))
+        {
+            Debug.LogError(gridPos + " is already occupied! Failed to move actor " + actor.name);
+            return;
+        }
+        // remove actor from old position
+        if(actors.ContainsKey(actor.GridPos))
+        {
+            actors.Remove(actor.GridPos);
+        }
+        actors[gridPos] = actor;
+    }
+
+    public Actor GetActor(Vector3Int gridPos)
+    {
+        actors.TryGetValue(gridPos, out Actor a);
+        return a;
     }
 }
