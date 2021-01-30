@@ -11,10 +11,16 @@ public class NPC : Actor
         TurnManager.Instance.EnqueueActor(this);
     }
 
+    private void Update()
+    {
+        if (hpText != null)
+            hpText.text = $"HP: {CurHealth}/{MaxHealth}";
+    }
+
     public override void TakeTurn()
     {
         MyTurn = true;
         Debug.Log("NPC TakeTurn(): " + Name);
-        World.Instance.SetTimeout(.5f, () => MyTurn = false);
+        World.Instance.SetTimeout(.1f, () => MyTurn = false);
     }
 }

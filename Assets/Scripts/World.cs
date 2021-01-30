@@ -54,6 +54,11 @@ public class World : MonoBehaviour
         }
     }
 
+    public void RemoveActor(Actor actor)
+    {
+        actors.Remove(actor.GridPos);
+    }
+
     public Actor GetActor(Vector3Int gridPos)
     {
         actors.TryGetValue(gridPos, out Actor a);

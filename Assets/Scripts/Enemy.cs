@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class Enemy : Actor
 {
+    [Header("Enemy Properties")]
     [SerializeField]
-    Text hpText = null;
+    int sightRange;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,12 @@ public class Enemy : Actor
     // Update is called once per frame
     void Update()
     {
-        if(hpText != null)
+        if (CurHealth <= 0)
+        {            
+            Destroy(gameObject);
+        }
+
+        if (hpText != null)
             hpText.text = $"HP: {CurHealth}/{MaxHealth}";
     }
 
@@ -26,6 +32,28 @@ public class Enemy : Actor
     {
         MyTurn = true;
         Debug.Log("Enemy TakeTurn(): " + Name);
-        World.Instance.SetTimeout(.5f, () => MyTurn = false);
+
+        var nextStep = NextStepTowards(actor => actor == Player.Instance, sightRange);
+
+        var world = World.Instance;
+
+        if(nextStep != GridPos)
+        {
+            if(world.GetActor(nextStep) == Player.Instance)
+            {
+                Player.Instance.CurHealth -= AttackDamage;
+            }
+            else
+            {
+                World.Instance.MoveActorTo(this, nextStep);
+                GridPos = nextStep;
+
+                // TODO: anmiation
+                transform.position = World.Instance.GridToWorldPos(nextStep);
+            }           
+        }
+        
+       
+        World.Instance.SetTimeout(.1f, () => MyTurn = false);
     }
 }

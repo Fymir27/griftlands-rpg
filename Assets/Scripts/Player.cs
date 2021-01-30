@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Actor
 {
@@ -28,6 +29,12 @@ public class Player : Actor
     // Update is called once per frame
     void Update()
     {
+        if (CurHealth <= 0)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        if (hpText != null)
+            hpText.text = $"HP: {CurHealth}/{MaxHealth}";
+
         if (!MyTurn)
             return;
 
@@ -56,6 +63,11 @@ public class Player : Actor
             {
                 lastStep = Vector3Int.down;
                 MoveTo(GridPos + lastStep);
+            } 
+            else if(Input.GetButtonDown("Jump"))
+            {
+                // Wait a turn
+                MoveTo(GridPos);
             }
         }
 
@@ -99,7 +111,7 @@ public class Player : Actor
                 return;
 
             case Enemy enemy:                
-                enemy.CurHealth--;
+                enemy.CurHealth -= AttackDamage;
                 break;
 
             case null:

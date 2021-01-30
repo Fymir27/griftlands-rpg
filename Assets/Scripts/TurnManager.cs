@@ -95,6 +95,10 @@ public class TurnManager : MonoBehaviour
                 enemies.Remove(enemy);
                 break;
 
+            case Player player:
+                // This should only happen when the game closes/scene unloads
+                break;
+
             default:
                 Debug.LogError("Trying to remove invalid actor type: " + typeof(Actor));
                 break;
