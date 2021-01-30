@@ -15,6 +15,9 @@ public class Textbox : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        var bg = GetComponent<Image>();
+        if (bg)
+            bg.enabled = true;
         gameObject.SetActive(false);
     }
 
