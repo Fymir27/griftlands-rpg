@@ -3,19 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Directions
-{
-    North,
-    East,
-    South,
-    West
-}
-
 public class Player : Actor
 {
     [Header("Player Properties")]
     public bool Moving;
     public bool IsTalking;
+
+    /** to know what's in front */
+    Vector3Int lastStep;
 
     // Start is called before the first frame update
     void Start()
@@ -34,25 +29,35 @@ public class Player : Actor
             
             if (hor > 0)
             {
-                MoveTo(GridPos + Vector3Int.right);
+                lastStep = Vector3Int.right;
+                MoveTo(GridPos + lastStep);
             }
             else if(hor < 0)
             {
-                MoveTo(GridPos + Vector3Int.left);
+                lastStep = Vector3Int.left;
+                MoveTo(GridPos + lastStep);
             }
             else if(ver > 0)
             {
-                MoveTo(GridPos + Vector3Int.up);
+                lastStep = Vector3Int.up;
+                MoveTo(GridPos + lastStep);
             }
             else if(ver < 0)
             {
-                MoveTo(GridPos + Vector3Int.down);
+                lastStep = Vector3Int.down;
+                MoveTo(GridPos + lastStep);
             }
         }
 
         // Advance dialogue and check if done
         if(IsTalking && Input.GetButtonDown("Jump") && Textbox.Instance.AdvanceDialogue())
         {
+            IsTalking = false;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Textbox.Instance.AbortDialogue();
             IsTalking = false;
         }
     }

@@ -46,6 +46,12 @@ public class World : MonoBehaviour
             actors.Remove(actor.GridPos);
         }
         actors[gridPos] = actor;
+
+        var spriteRenderer = actor.gameObject.GetComponent<SpriteRenderer>();
+        if(spriteRenderer != null)
+        {
+            spriteRenderer.sortingOrder = 100 - gridPos.y;
+        }
     }
 
     public Actor GetActor(Vector3Int gridPos)

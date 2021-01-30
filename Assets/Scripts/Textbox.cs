@@ -8,9 +8,9 @@ public class Textbox : MonoBehaviour
     public static Textbox Instance;
 
     [SerializeField]
-    Text characterName;
+    Text characterName = null;
     [SerializeField]
-    Text dialogue;
+    Text dialogue = null;
 
     private void Awake()
     {
@@ -32,5 +32,10 @@ public class Textbox : MonoBehaviour
     {        
         gameObject.SetActive(false);
         return true;
+    }
+
+    public void AbortDialogue()
+    {
+        gameObject.SetActive(false);
     }
 }
