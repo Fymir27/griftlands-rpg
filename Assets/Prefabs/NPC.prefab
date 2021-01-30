@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: da69019154178584ea39a0f4cd23545a, type: 3}
   m_Color: {r: 0, g: 1, b: 0.04902649, a: 1}
   m_FlipX: 0
@@ -95,5 +95,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: NPC
+  GridPos: {x: 0, y: 0, z: 0}
   CurHealth: 0
   MaxHealth: 0

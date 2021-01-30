@@ -12,6 +12,7 @@ public class Enemy : Actor
     void Start()
     {
         InitActor();
+        TurnManager.Instance.EnqueueActor(this);
     }
 
     // Update is called once per frame
@@ -19,5 +20,12 @@ public class Enemy : Actor
     {
         if(hpText != null)
             hpText.text = $"HP: {CurHealth}/{MaxHealth}";
+    }
+
+    public override void TakeTurn()
+    {
+        MyTurn = true;
+        Debug.Log("Enemy TakeTurn(): " + Name);
+        World.Instance.SetTimeout(.5f, () => MyTurn = false);
     }
 }

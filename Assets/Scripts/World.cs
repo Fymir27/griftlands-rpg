@@ -59,4 +59,14 @@ public class World : MonoBehaviour
         actors.TryGetValue(gridPos, out Actor a);
         return a;
     }
+
+    IEnumerator DelayedAction(float seconds, System.Action callback)
+    {
+        yield return new WaitForSeconds(seconds);
+        callback();
+    }
+    public void SetTimeout(float seconds, System.Action callback)
+    {
+        StartCoroutine(DelayedAction(seconds, callback));
+    }
 }

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Actor : MonoBehaviour
+public abstract class Actor : MonoBehaviour
 {
     [Header("Actor Properties")]
+    public bool MyTurn;
     public string Name;
     public Vector3Int GridPos;
     public int CurHealth;
-    public int MaxHealth;
+    public int MaxHealth;    
 
     /**
      * This function should always be called before anyhting 
@@ -25,4 +26,10 @@ public class Actor : MonoBehaviour
 
         CurHealth = MaxHealth;
     }
+
+    /** 
+     * implementations of this should set "MyTurn" to true while
+     * taking their turn and set it back to false once done
+     */    
+    public abstract void TakeTurn();
 }

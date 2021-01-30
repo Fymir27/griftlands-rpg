@@ -8,5 +8,13 @@ public class NPC : Actor
     void Start()
     {
         InitActor();
-    }   
+        TurnManager.Instance.EnqueueActor(this);
+    }
+
+    public override void TakeTurn()
+    {
+        MyTurn = true;
+        Debug.Log("NPC TakeTurn(): " + Name);
+        World.Instance.SetTimeout(.5f, () => MyTurn = false);
+    }
 }

@@ -9,8 +9,15 @@ public class Player : Actor
     public bool Moving;
     public bool IsTalking;
 
+    public static Player Instance;
+
     /** to know what's in front */
     Vector3Int lastStep;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +28,9 @@ public class Player : Actor
     // Update is called once per frame
     void Update()
     {
+        if (!MyTurn)
+            return;
+
         if (!Moving && !IsTalking)
         {
             var hor = Input.GetAxisRaw("Horizontal");
@@ -53,20 +63,21 @@ public class Player : Actor
         if(IsTalking && Input.GetButtonDown("Jump") && Textbox.Instance.AdvanceDialogue())
         {
             IsTalking = false;
+            Moving = false;
         }
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Textbox.Instance.AbortDialogue();
             IsTalking = false;
+            Moving = false;
         }
     }
 
-    IEnumerator SetTimeout(float seconds, Action callback)
+    public override void TakeTurn()
     {
-        yield return new WaitForSeconds(seconds);
-        callback();
-    }
+        MyTurn = true;
+    }  
 
     void MoveTo(Vector3Int gridPos)
     {
@@ -81,10 +92,11 @@ public class Player : Actor
 
         switch (World.Instance.GetActor(gridPos))
         {
-            case NPC npc:
+            case NPC npc:                
                 IsTalking = true;
-                Textbox.Instance.Display(npc, "This is placeholder dialogue!");                
-                break;
+                Textbox.Instance.Display(npc, "This is placeholder dialogue!");
+                // Talking does not end the turn!
+                return;
 
             case Enemy enemy:                
                 enemy.CurHealth--;
@@ -100,6 +112,10 @@ public class Player : Actor
                 break;
         }
 
-        StartCoroutine(SetTimeout(.2f, () => Moving = false));
+        World.Instance.SetTimeout(.2f, () =>
+        {
+            Moving = false;
+            MyTurn = false;
+        });
     }
 }
