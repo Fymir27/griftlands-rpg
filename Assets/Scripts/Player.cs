@@ -198,8 +198,24 @@ public class Player : Actor
 
         // probably a wall
         // TODO: breakable walls?
-        if (World.Instance.IsSolid(gridPos)) 
-            return;
+        if (World.Instance.IsSolid(gridPos))
+        {
+            if(CurCharacter != PlayerCharacter.Smith)
+                return;
+
+            if(World.Instance.IsBreakable(gridPos))
+            {
+                Moving = true;
+                World.Instance.BreakTile(gridPos);
+                World.Instance.SetTimeout(.2f, () =>
+                {
+                    Moving = false;
+                    MyTurn = false;
+                });
+                return;
+            }
+        }
+            
 
         Moving = true;
 

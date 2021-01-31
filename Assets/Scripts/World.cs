@@ -5,11 +5,13 @@ using UnityEngine.Tilemaps;
 
 public class World : MonoBehaviour
 {
+    [SerializeField]
+    WorldTile floorTile;
     public static World Instance { get; private set; }
 
     Tilemap tilemap;
     Dictionary<Vector3Int, Actor> actors = new Dictionary<Vector3Int, Actor>();
-
+    
     private void Awake()
     {
         Instance = this;
@@ -31,6 +33,30 @@ public class World : MonoBehaviour
         if (tile == null)
             return true;
         return tile.Solid;
+    }
+
+    public bool IsBreakable(Vector3Int gridPos)
+    {
+        var tile = tilemap.GetTile(gridPos) as WorldTile;
+        if (tile == null)
+            return true;
+        return tile.Breakable;
+    }
+
+    public void BreakTile(Vector3Int gridPos)
+    {
+        var tile = tilemap.GetTile(gridPos) as WorldTile;
+        if (tile == null)
+        {
+            Debug.LogError("Trying to break nonexistent tile! " + gridPos);
+            return;
+        }
+        if(!tile.Breakable)
+        {
+            Debug.LogError("Trying to break non breakable tile! " + gridPos);
+            return;
+        }
+        tilemap.SetTile(gridPos, floorTile);
     }
 
     public void MoveActorTo(Actor actor, Vector3Int gridPos)
