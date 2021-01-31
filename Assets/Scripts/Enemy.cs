@@ -7,7 +7,7 @@ public class Enemy : Actor
 {
     [Header("Enemy Properties")]
     [SerializeField]
-    int sightRange;
+    int sightRange = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,9 @@ public class Enemy : Actor
 
         if (hpText != null)
             hpText.text = $"HP: {CurHealth}/{MaxHealth}";
+
+        if (characterNameText != null)
+            characterNameText.text = Name;
     }
 
     public override void TakeTurn()

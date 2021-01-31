@@ -15,6 +15,9 @@ public class NPC : Actor
     {
         if (hpText != null)
             hpText.text = $"HP: {CurHealth}/{MaxHealth}";
+
+        if (characterNameText != null)
+            characterNameText.text = Name;
     }
 
     public override void TakeTurn()
