@@ -16,8 +16,8 @@ public class Player : Actor
     [Header("Player Properties")]
     public bool Moving;
     public bool IsTalking;
-    public PlayerCharacter CurCharacter;
-    public PlayerCharacter CharacterUnlockState;
+    public PlayerCharacter CurCharacter = PlayerCharacter.Sal;
+    public PlayerCharacter CharacterUnlockState = PlayerCharacter.Sal;
 
     public static Player Instance;
 
@@ -67,8 +67,6 @@ public class Player : Actor
     private void Awake()
     {
         Instance = this;
-        CurCharacter = PlayerCharacter.Sal;
-        CharacterUnlockState = PlayerCharacter.Sal;
     }
 
     // Start is called before the first frame update
@@ -200,8 +198,24 @@ public class Player : Actor
                 // Talking does not end the turn!
                 return;
 
-            case Enemy enemy:                
-                enemy.CurHealth -= AttackDamage;
+            case Enemy enemy:
+                var enemiesHit = new List<Enemy>();
+                if (CurCharacter == PlayerCharacter.Smith)
+                {
+                    foreach (var relPosition in swingPatternSmith[lastStep])
+                    {
+                        var possibleEnemy = World.Instance.GetActor(GridPos + relPosition) as Enemy;
+                        if(possibleEnemy != null)
+                            enemiesHit.Add(possibleEnemy);                        
+                    }
+                }
+                else
+                {
+                    enemiesHit.Add(enemy);
+                }
+
+                // apply damage
+                enemiesHit.ForEach(e => e.CurHealth -= AttackDamage);
                 break;
 
             case null:
