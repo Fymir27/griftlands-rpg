@@ -103,7 +103,9 @@ MonoBehaviour:
   AttackDamage: 2
   hpText: {fileID: 6675095316248194800}
   characterNameText: {fileID: 3538635196445145701}
-  sightRange: 3
+  aggroRange: 3
+  trackRange: 6
+  aggroed: 0
 --- !u!1001 &2208239209237454646
 PrefabInstance:
   m_ObjectHideFlags: 0

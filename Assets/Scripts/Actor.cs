@@ -50,10 +50,12 @@ public abstract class Actor : MonoBehaviour
             { GridPos, GridPos }
         };
 
+        /*
         var distances = new Dictionary<Vector3Int, int>()
         {
             { GridPos, 0 }
         };
+        */
 
         var queue = new Queue<Vector3Int>();
         queue.Enqueue(GridPos);
@@ -70,10 +72,10 @@ public abstract class Actor : MonoBehaviour
                     continue;
 
                 prev[neighbourPos] = curPos;
-                distances[neighbourPos] = distances[curPos] + 1;                
+                //distances[neighbourPos] = distances[curPos] + 1;                
 
                 var neighbouringActor = World.Instance.GetActor(neighbourPos);
-                if (neighbouringActor == null && distances[curPos] < range)
+                if (neighbouringActor == null && (neighbourPos - GridPos).magnitude <= range)
                 {
                     queue.Enqueue(neighbourPos);
                 }

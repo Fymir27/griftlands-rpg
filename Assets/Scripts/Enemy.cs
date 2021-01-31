@@ -7,7 +7,11 @@ public class Enemy : Actor
 {
     [Header("Enemy Properties")]
     [SerializeField]
-    int sightRange = 0;
+    int aggroRange = 0;
+    [SerializeField]
+    int trackRange = 0;
+    [SerializeField]
+    bool aggroed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +40,13 @@ public class Enemy : Actor
         MyTurn = true;
         Debug.Log("Enemy TakeTurn(): " + Name);
 
-        var nextStep = NextStepTowards(actor => actor == Player.Instance, sightRange);
+        var nextStep = NextStepTowards(actor => actor == Player.Instance, aggroed ? trackRange : aggroRange);
 
         var world = World.Instance;
 
         if(nextStep != GridPos)
         {
+            aggroed = true;
             if(world.GetActor(nextStep) == Player.Instance)
             {
                 Player.Instance.CurHealth -= AttackDamage;
@@ -54,6 +59,10 @@ public class Enemy : Actor
                 // TODO: anmiation
                 transform.position = World.Instance.GridToWorldPos(nextStep);
             }           
+        }
+        else
+        {
+            aggroed = false;
         }
         
        

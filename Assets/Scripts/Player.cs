@@ -19,6 +19,9 @@ public class Player : Actor
     public PlayerCharacter CurCharacter = PlayerCharacter.Sal;
     public PlayerCharacter CharacterUnlockState = PlayerCharacter.Sal;
 
+    [SerializeField]
+    Sprite[] characterSprites;
+
     public static Player Instance;
 
     /** to know what's in front */
@@ -64,6 +67,8 @@ public class Player : Actor
         }
     };
 
+    SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         Instance = this;
@@ -73,6 +78,7 @@ public class Player : Actor
     void Start()
     {
         InitActor();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -86,6 +92,13 @@ public class Player : Actor
 
         if (characterNameText != null)
             characterNameText.text = CurCharacter.ToString();
+
+        //TODO: full on animation set switching instead of just sprites
+        int characterSpriteIndex = (int)CurCharacter - 1; // 0 indexed
+        if(characterSpriteIndex >= 0 && characterSpriteIndex < characterSprites.Length)
+        {
+            spriteRenderer.sprite = characterSprites[characterSpriteIndex];
+        }
 
         if (MyTurn)
             HandlePlayerInput();        

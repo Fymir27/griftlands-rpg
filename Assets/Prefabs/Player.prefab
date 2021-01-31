@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: da69019154178584ea39a0f4cd23545a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ff9b71622b4594b4787e0c14bdb35a23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,6 +107,10 @@ MonoBehaviour:
   IsTalking: 0
   CurCharacter: 0
   CharacterUnlockState: 0
+  characterSprites:
+  - {fileID: 21300000, guid: ff9b71622b4594b4787e0c14bdb35a23, type: 3}
+  - {fileID: 21300000, guid: da69019154178584ea39a0f4cd23545a, type: 3}
+  - {fileID: 21300000, guid: da69019154178584ea39a0f4cd23545a, type: 3}
 --- !u!1001 &5812402863301890709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,12 +186,12 @@ PrefabInstance:
     - target: {fileID: 9204224970974112770, guid: d537b0a2c05ab4844a2f704ecc8163ee,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.008
+      value: 0.0079956055
       objectReference: {fileID: 0}
     - target: {fileID: 9204224970974112770, guid: d537b0a2c05ab4844a2f704ecc8163ee,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.73
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9204224970974112770, guid: d537b0a2c05ab4844a2f704ecc8163ee,
         type: 3}
