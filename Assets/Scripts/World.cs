@@ -100,4 +100,59 @@ public class World : MonoBehaviour
     {
         StartCoroutine(DelayedAction(seconds, callback));
     }
+
+    public List<Vector3Int> LineOfSight(Vector3Int from, Vector3Int to, int range = int.MaxValue, bool stopAtSolid = true)
+    {
+        Vector3Int delta = to - from;
+        int distX = Mathf.Abs(delta.x);
+        int distY = Mathf.Abs(delta.y);
+        int signX = delta.x < 0 ? -1 : 1;
+        int signY = delta.y < 0 ? -1 : 1;
+
+        Vector3Int parallelStep;
+        Vector3Int diagonalStep = new Vector3Int(signX, signY, 0);
+        int deltaFast;
+        int deltaSlow;
+
+        if(distX > distY)
+        {
+            parallelStep = new Vector3Int(signX, 0, 0);            
+            deltaFast = distX;
+            deltaSlow = distY;
+        }
+        else
+        {
+            parallelStep = new Vector3Int(0, signY, 0);
+            deltaFast = distY;
+            deltaSlow = distX;
+        }
+
+        var curPos = from;
+        var result = new List<Vector3Int>() { from };
+        int error = deltaFast / 2;
+
+        for (int coordFast = 0; coordFast < deltaFast; coordFast++)
+        {
+            error -= deltaSlow;
+            if(error < 0)
+            {
+                error += deltaFast;
+                curPos += diagonalStep;
+            }
+            else
+            {
+                curPos += parallelStep;
+            }
+
+            if (stopAtSolid && IsSolid(curPos))
+                break;
+
+            if ((curPos - from).magnitude > range)
+                break;
+
+            result.Add(curPos);
+        }
+
+        return result;
+    }
 }

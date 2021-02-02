@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,8 +15,11 @@ public enum PlayerCharacter
 public class Player : Actor
 {
     [Header("Player Properties")]
-    public bool Moving;
-    public bool IsTalking;
+    public bool Moving; // read: in action
+    public bool Talking;
+    public bool Aiming;
+    [Range(1, 10)]
+    public int ShootingRange;
     public PlayerCharacter CurCharacter = PlayerCharacter.Sal;
     public PlayerCharacter CharacterUnlockState = PlayerCharacter.Sal;
 
@@ -106,20 +110,20 @@ public class Player : Actor
 
     void HandlePlayerInput()
     {
-        if(IsTalking)
+        if(Talking)
         {
             #region Dialogue Controls
             // Advance dialogue AND check if done
             if (Input.GetButtonDown("Jump") && Textbox.Instance.AdvanceDialogue())
             {
-                IsTalking = false;
+                Talking = false;
                 Moving = false;
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Textbox.Instance.AbortDialogue();
-                IsTalking = false;
+                Talking = false;
                 Moving = false;
             }
             #endregion
@@ -147,7 +151,40 @@ public class Player : Actor
                 {
                     // TODO: switch animation?
                     CurCharacter = (PlayerCharacter)characterIDSelected;
+                    Aiming = false;
                 }
+            }
+            #endregion
+
+            #region Aiming & Shooting
+            if (CurCharacter == PlayerCharacter.Rook && Input.GetKeyDown(KeyCode.F))
+            {
+                Aiming = !Aiming;
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                Moving = true;
+                var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                var lineOfSight = World.Instance.LineOfSight(GridPos, World.Instance.WorldToGridPos(mouseWorldPos), ShootingRange);
+                Enemy target = null;
+                foreach(var pos in lineOfSight)
+                {
+                    target = World.Instance.GetActor(pos) as Enemy;
+                    if (target != null)
+                        break;
+                }
+
+                if(target != null)
+                {
+                    target.CurHealth -= AttackDamage;
+                }
+
+                World.Instance.SetTimeout(.2f, () =>
+                {
+                    Moving = false;
+                    MyTurn = false;
+                });
+                return;
             }
             #endregion
 
@@ -222,7 +259,7 @@ public class Player : Actor
         switch (World.Instance.GetActor(gridPos))
         {
             case NPC npc:                
-                IsTalking = true;
+                Talking = true;
                 Textbox.Instance.Display(npc, "This is placeholder dialogue!");
                 // Talking does not end the turn!
                 return;
@@ -243,6 +280,8 @@ public class Player : Actor
                     enemiesHit.Add(enemy);
                 }
 
+                // TODO: can Rook melee attack as well?
+
                 // apply damage
                 enemiesHit.ForEach(e => e.CurHealth -= AttackDamage);
                 break;
@@ -262,5 +301,24 @@ public class Player : Actor
             Moving = false;
             MyTurn = false;
         });
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!Aiming)
+            return;
+
+        var world = World.Instance;
+        if (World.Instance == null)
+            return;
+        var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = 0;
+        var lineOfSight = world.LineOfSight(GridPos, world.WorldToGridPos(mouseWorldPos), ShootingRange);
+        foreach(var pos in lineOfSight)
+        {
+            Gizmos.DrawSphere(world.GridToWorldPos(pos), .1f);
+        }
+        var from = world.GridToWorldPos(GridPos);
+        Gizmos.DrawLine(from, from + (mouseWorldPos - from).normalized * (ShootingRange - .3f));
     }
 }

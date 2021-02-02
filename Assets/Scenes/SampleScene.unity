@@ -9367,5 +9367,10 @@ PrefabInstance:
       propertyPath: CharacterUnlockState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7085567814149042674, guid: 926aac1368367384ea9ff0caef41fa4c,
+        type: 3}
+      propertyPath: ShootingRange
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 926aac1368367384ea9ff0caef41fa4c, type: 3}
