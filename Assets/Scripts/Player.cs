@@ -25,6 +25,7 @@ public class Player : Actor
 
     [SerializeField]
     Sprite[] characterSprites;
+    Guns guns;
 
     public static Player Instance;
 
@@ -83,6 +84,7 @@ public class Player : Actor
     {
         InitActor();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        guns = GetComponentInChildren<Guns>();
     }
 
     // Update is called once per frame
@@ -161,10 +163,11 @@ public class Player : Actor
             {
                 Aiming = !Aiming;
             }
-            if (Input.GetMouseButtonDown(0))
+
+            if (Input.GetMouseButtonDown(0) && Aiming)
             {
                 Moving = true;
-                var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);                
                 var lineOfSight = World.Instance.LineOfSight(GridPos, World.Instance.WorldToGridPos(mouseWorldPos), ShootingRange);
                 Enemy target = null;
                 foreach(var pos in lineOfSight)
@@ -176,15 +179,19 @@ public class Player : Actor
 
                 if(target != null)
                 {
-                    target.CurHealth -= AttackDamage;
-                }
+                    if (guns != null)
+                        guns.Shoot(mouseWorldPos, .2f);
 
-                World.Instance.SetTimeout(.2f, () =>
-                {
-                    Moving = false;
-                    MyTurn = false;
-                });
-                return;
+                    target.CurHealth -= AttackDamage;
+
+                    World.Instance.SetTimeout(.2f, () =>
+                    {
+                        Moving = false;
+                        MyTurn = false;
+                    });
+
+                    return;
+                }
             }
             #endregion
 

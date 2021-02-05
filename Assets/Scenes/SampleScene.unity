@@ -9372,5 +9372,10 @@ PrefabInstance:
       propertyPath: ShootingRange
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8458972548675805199, guid: 926aac1368367384ea9ff0caef41fa4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 926aac1368367384ea9ff0caef41fa4c, type: 3}
