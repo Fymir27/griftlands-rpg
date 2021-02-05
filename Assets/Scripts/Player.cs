@@ -165,8 +165,7 @@ public class Player : Actor
             }
 
             if (Input.GetMouseButtonDown(0) && Aiming)
-            {
-                Moving = true;
+            {                
                 var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);                
                 var lineOfSight = World.Instance.LineOfSight(GridPos, World.Instance.WorldToGridPos(mouseWorldPos), ShootingRange);
                 Enemy target = null;
@@ -179,6 +178,7 @@ public class Player : Actor
 
                 if(target != null)
                 {
+                    Moving = true;
                     if (guns != null)
                         guns.Shoot(mouseWorldPos, .2f);
 
