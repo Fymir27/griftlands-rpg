@@ -23,7 +23,15 @@ public class Textbox : MonoBehaviour
 
     public void Display(Actor actor, string dialogueContent)
     {
+        // TODO: big portrait?
         characterName.text = actor.Name;
+        dialogue.text = dialogueContent;
+        gameObject.SetActive(true);
+    }
+
+    public void Display(WorldObject thing, string dialogueContent)
+    {
+        characterName.text = thing.Name;
         dialogue.text = dialogueContent;
         gameObject.SetActive(true);
     }

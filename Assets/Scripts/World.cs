@@ -11,6 +11,7 @@ public class World : MonoBehaviour
 
     Tilemap tilemap;
     Dictionary<Vector3Int, Actor> actors = new Dictionary<Vector3Int, Actor>();
+    Dictionary<Vector3Int, WorldObject> objects = new Dictionary<Vector3Int, WorldObject>();
     
     private void Awake()
     {
@@ -59,11 +60,27 @@ public class World : MonoBehaviour
         tilemap.SetTile(gridPos, floorTile);
     }
 
+    public void SetObject(WorldObject thing, Vector3Int gridPos)
+    {
+        if (objects.ContainsKey(gridPos))
+        {
+            Debug.LogError(gridPos + " is already occupied! Failed to set object " + thing.Name);
+            return;
+        }
+        objects[gridPos] = thing;
+    }
+
+    public WorldObject GetObject(Vector3Int gridPos)
+    {
+        objects.TryGetValue(gridPos, out WorldObject thing);
+        return thing;
+    }
+
     public void MoveActorTo(Actor actor, Vector3Int gridPos)
     {
         if(actors.ContainsKey(gridPos))
         {
-            Debug.LogError(gridPos + " is already occupied! Failed to move actor " + actor.name);
+            Debug.LogError(gridPos + " is already occupied! Failed to move actor " + actor.Name);
             return;
         }
         // remove actor from old position

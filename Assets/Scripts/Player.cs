@@ -263,13 +263,38 @@ public class Player : Actor
 
         Moving = true;
 
-        switch (World.Instance.GetActor(gridPos))
+        var otherActor = World.Instance.GetActor(gridPos);
+        var worldObject = World.Instance.GetObject(gridPos);
+
+        if (TryInteracting(otherActor))
+            return; // no turn spent?
+
+        if (TryInteracting(worldObject) && worldObject.Solid)
+            return; // no turn spent?
+
+        // Tile seems to be empty so lets move there!                
+        World.Instance.MoveActorTo(this, gridPos);
+        GridPos = gridPos;
+
+        // TODO: anmiation
+        transform.position = World.Instance.GridToWorldPos(gridPos);
+
+        World.Instance.SetTimeout(.2f, () =>
         {
-            case NPC npc:                
+            Moving = false;
+            MyTurn = false;
+        });
+    }
+
+    private bool TryInteracting(Actor actor)
+    {
+        switch (actor)
+        {
+            case NPC npc:
                 Talking = true;
-                Textbox.Instance.Display(npc, "This is placeholder dialogue!");
+                npc.Interact();
                 // Talking does not end the turn!
-                return;
+                return true;
 
             case Enemy enemy:
                 var enemiesHit = new List<Enemy>();
@@ -278,8 +303,8 @@ public class Player : Actor
                     foreach (var relPosition in swingPatternSmith[lastStep])
                     {
                         var possibleEnemy = World.Instance.GetActor(GridPos + relPosition) as Enemy;
-                        if(possibleEnemy != null)
-                            enemiesHit.Add(possibleEnemy);                        
+                        if (possibleEnemy != null)
+                            enemiesHit.Add(possibleEnemy);
                     }
                 }
                 else
@@ -291,23 +316,26 @@ public class Player : Actor
 
                 // apply damage
                 enemiesHit.ForEach(e => e.CurHealth -= AttackDamage);
-                break;
+                return true;
 
-            case null:
-                // Tile seems to be empty so lets move there!                
-                World.Instance.MoveActorTo(this, gridPos);
-                GridPos = gridPos;
+            case null:                
+                return false;
 
-                // TODO: anmiation
-                transform.position = World.Instance.GridToWorldPos(gridPos);
-                break;
+            default:
+                Debug.LogWarning("Unknown actor type: " + actor.GetType());
+                return false;
         }
+    }
 
-        World.Instance.SetTimeout(.2f, () =>
-        {
-            Moving = false;
-            MyTurn = false;
-        });
+    private bool TryInteracting(WorldObject thing)
+    {
+        if (thing == null)
+            return false;
+
+        Talking = true;
+        thing.Interact();
+        // Talking does not end the turn!
+        return true;
     }
 
     private void OnDrawGizmos()

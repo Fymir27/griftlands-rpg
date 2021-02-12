@@ -26,4 +26,10 @@ public class NPC : Actor
         Debug.Log("NPC TakeTurn(): " + Name);
         World.Instance.SetTimeout(.1f, () => MyTurn = false);
     }
+
+    public void Interact()
+    {
+        // TODO: dialogue system
+        Textbox.Instance.Display(this, "This is placeholder dialogue!");
+    }
 }
