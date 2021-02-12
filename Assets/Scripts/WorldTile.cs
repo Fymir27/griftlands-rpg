@@ -11,6 +11,7 @@ public class WorldTile : Tile
 {
     public bool Solid;
     public bool Breakable;
+    public bool Jumpable;
 
 #if UNITY_EDITOR
     // The following is a helper that adds a menu item to create a RoadTile Asset
