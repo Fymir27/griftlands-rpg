@@ -30,10 +30,11 @@ public class World : MonoBehaviour
   
     public bool IsSolid(Vector3Int gridPos)
     {
-        var tile = tilemap.GetTile(gridPos) as WorldTile;
+        var tile = tilemap.GetTile(gridPos) as WorldTile;       
         if (tile == null)
             return true;
-        return tile.Solid;
+        var thing = GetObject(gridPos);       
+        return tile.Solid || (thing != null && thing.Solid);
     }
 
     public bool IsBreakable(Vector3Int gridPos)

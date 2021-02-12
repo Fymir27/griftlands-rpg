@@ -37,7 +37,7 @@ public class TurnManager : MonoBehaviour
             case Phase.PlayerTurn:
                 if (!Player.Instance.MyTurn)
                 {
-                    Debug.Log("NPC Turn");
+                    //Debug.Log("NPC Turn");
                     foreach (var npc in npcs)
                         npc.TakeTurn();
                     curPhase = Phase.NPCTurn;
@@ -47,7 +47,7 @@ public class TurnManager : MonoBehaviour
             case Phase.NPCTurn:
                 if (npcs.All(npc => !npc.MyTurn))
                 {
-                    Debug.Log("Enemy Turn");
+                    //Debug.Log("Enemy Turn");
                     foreach (var enemy in enemies)
                         enemy.TakeTurn();
                     curPhase = Phase.EnemyTurn;
@@ -57,7 +57,7 @@ public class TurnManager : MonoBehaviour
             case Phase.EnemyTurn:
                 if (enemies.All(enemies => !enemies.MyTurn))
                 {
-                    Debug.Log("Player Turn");
+                    //Debug.Log("Player Turn");
                     Player.Instance.TakeTurn();
                     curPhase = Phase.PlayerTurn;                    
                 }

@@ -38,7 +38,7 @@ public class Enemy : Actor
     public override void TakeTurn()
     {
         MyTurn = true;
-        Debug.Log("Enemy TakeTurn(): " + Name);
+        //Debug.Log("Enemy TakeTurn(): " + Name);
 
         var nextStep = NextStepTowards(actor => actor == Player.Instance, aggroed ? trackRange : aggroRange);
 

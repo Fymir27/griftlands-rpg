@@ -23,7 +23,7 @@ public class NPC : Actor
     public override void TakeTurn()
     {
         MyTurn = true;
-        Debug.Log("NPC TakeTurn(): " + Name);
+        //Debug.Log("NPC TakeTurn(): " + Name);
         World.Instance.SetTimeout(.1f, () => MyTurn = false);
     }
 

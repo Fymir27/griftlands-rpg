@@ -223,8 +223,7 @@ public class Player : Actor
             }
             else if (Input.GetButtonDown("Jump"))
             {
-                // Wait a turn
-                MoveTo(GridPos);
+                EndTurn();
             }
             #endregion
         }
@@ -233,15 +232,42 @@ public class Player : Actor
     public override void TakeTurn()
     {
         MyTurn = true;
-    }  
+    } 
+
+    void EndTurn()
+    {        
+        Moving = false;
+        MyTurn = false;
+    }
 
     void MoveTo(Vector3Int gridPos)
     {
         if (Moving)
             return;
 
-        // probably a wall
-        // TODO: breakable walls?
+        var otherActor = World.Instance.GetActor(gridPos);
+
+        if (otherActor != null)
+        {
+            int turnsTaken = InteractWithActor(otherActor);
+            if (turnsTaken > 0)
+            {
+                Moving = true;                
+                World.Instance.SetTimeout(.2f, EndTurn);
+            }
+            return;
+        }
+
+        var worldObject = World.Instance.GetObject(gridPos);
+
+        if (worldObject != null)
+        {
+            InteractWithObject(worldObject);
+            if (worldObject.Solid)
+                return;            
+        }
+
+        // probably a wall       
         if (World.Instance.IsSolid(gridPos))
         {
             if(CurCharacter != PlayerCharacter.Smith)
@@ -251,50 +277,33 @@ public class Player : Actor
             {
                 Moving = true;
                 World.Instance.BreakTile(gridPos);
-                World.Instance.SetTimeout(.2f, () =>
-                {
-                    Moving = false;
-                    MyTurn = false;
-                });
+                World.Instance.SetTimeout(.2f, EndTurn);
                 return;
             }
         }
             
+        // At this point nothing is in our way :D
 
-        Moving = true;
-
-        var otherActor = World.Instance.GetActor(gridPos);
-        var worldObject = World.Instance.GetObject(gridPos);
-
-        if (TryInteracting(otherActor))
-            return; // no turn spent?
-
-        if (TryInteracting(worldObject) && worldObject.Solid)
-            return; // no turn spent?
-
-        // Tile seems to be empty so lets move there!                
+        Moving = true;                
         World.Instance.MoveActorTo(this, gridPos);
         GridPos = gridPos;
 
         // TODO: anmiation
         transform.position = World.Instance.GridToWorldPos(gridPos);
-
-        World.Instance.SetTimeout(.2f, () =>
-        {
-            Moving = false;
-            MyTurn = false;
-        });
+                                
+        World.Instance.SetTimeout(.2f, EndTurn);        
     }
 
-    private bool TryInteracting(Actor actor)
+    /// <param name="actor"></param>
+    /// <returns>number of turns taken</returns>
+    private int InteractWithActor(Actor actor)
     {
         switch (actor)
         {
             case NPC npc:
                 Talking = true;
                 npc.Interact();
-                // Talking does not end the turn!
-                return true;
+                return 0;
 
             case Enemy enemy:
                 var enemiesHit = new List<Enemy>();
@@ -316,33 +325,24 @@ public class Player : Actor
 
                 // apply damage
                 enemiesHit.ForEach(e => e.CurHealth -= AttackDamage);
-
-                World.Instance.SetTimeout(.2f, () =>
-                {
-                    Moving = false;
-                    MyTurn = false;
-                });
-
-                return true;
+                return 1;
 
             case null:                
-                return false;
+                return 0;
 
             default:
                 Debug.LogWarning("Unknown actor type: " + actor.GetType());
-                return false;
+                return 1;
         }
     }
 
-    private bool TryInteracting(WorldObject thing)
+    private void InteractWithObject(WorldObject thing)
     {
-        if (thing == null)
-            return false;
+        if (thing == null || !thing.Interactable)
+            return;
 
         Talking = true;
-        thing.Interact();
-        // Talking does not end the turn!
-        return true;
+        thing.Interact();       
     }
 
     private void OnDrawGizmos()
