@@ -76,7 +76,7 @@ public class World : MonoBehaviour
         var spriteRenderer = actor.gameObject.GetComponent<SpriteRenderer>();
         if(spriteRenderer != null)
         {
-            spriteRenderer.sortingOrder = 100 - gridPos.y;
+            spriteRenderer.sortingOrder = -gridPos.y;
         }
     }
 
@@ -101,6 +101,9 @@ public class World : MonoBehaviour
         StartCoroutine(DelayedAction(seconds, callback));
     }
 
+    /**
+     * Bresenhams line drawing algorithm from wikipedia
+     */
     public List<Vector3Int> LineOfSight(Vector3Int from, Vector3Int to, int range = int.MaxValue, bool stopAtSolid = true)
     {
         Vector3Int delta = to - from;
