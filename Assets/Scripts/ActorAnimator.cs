@@ -23,13 +23,10 @@ public enum ActorAnimationState
 
 public class ActorAnimator : MonoBehaviour
 {
-    [SerializeField, Range(1, 30)]
-    int sampleRate;
-
-    [SerializeField]
-    Sprite[] spritesheet;
-
     [Header("State Info")]
+
+    [SerializeField, Range(1, 30)]
+    int sampleRate;    
 
     [SerializeField]
     ActorAnimationState animationState;
@@ -43,30 +40,21 @@ public class ActorAnimator : MonoBehaviour
     [SerializeField]
     int frameIndex;
 
-    [Header("Spritesheet Definition")]
+    [Header("Spritesheet")]
 
     [SerializeField]
-    int offsetIdle;
-    [SerializeField]
-    int frameCountIdle;
+    Sprite[] animIdle;
 
     [SerializeField]
-    int offsetWalk;
-    [SerializeField]
-    int frameCountWalk;
+    Sprite[] animWalk;
 
     [SerializeField]
-    int offsetAttack;
-    [SerializeField]
-    int frameCountAttack;
+    Sprite[] animAttack;
 
     [SerializeField]
-    int offsetDeath;
-    [SerializeField]
-    int frameCountDeath;
+    Sprite[] animDeath;
 
     Dictionary<ActorAnimationState, Dictionary<CardinalDirection, Sprite[]>> sprites;
-    Dictionary<ActorAnimationState, int> frameCounts;
 
     SpriteRenderer spriteRenderer;
 
@@ -75,55 +63,25 @@ public class ActorAnimator : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        sprites = new Dictionary<ActorAnimationState, Dictionary<CardinalDirection, Sprite[]>>()
+        var animsUnsplit = new Dictionary<ActorAnimationState, Sprite[]>()
         {
-            { ActorAnimationState.Idle, new Dictionary<CardinalDirection, Sprite[]>() },
-            { ActorAnimationState.Walk, new Dictionary<CardinalDirection, Sprite[]>() },
-            { ActorAnimationState.Attack, new Dictionary<CardinalDirection, Sprite[]>() },
-            { ActorAnimationState.Death, new Dictionary<CardinalDirection, Sprite[]>() },
+            { ActorAnimationState.Idle, animIdle },
+            { ActorAnimationState.Walk, animWalk },
+            { ActorAnimationState.Attack, animAttack },
+            { ActorAnimationState.Death, animDeath }
         };
 
-        frameCounts = new Dictionary<ActorAnimationState, int>()
+        sprites = new Dictionary<ActorAnimationState, Dictionary<CardinalDirection, Sprite[]>>();
+        foreach (var animState in animsUnsplit.Keys)
         {
-
-            { ActorAnimationState.Idle, frameCountIdle },
-            { ActorAnimationState.Walk, frameCountWalk },
-            { ActorAnimationState.Attack, frameCountAttack },
-            { ActorAnimationState.Death, frameCountDeath }
-        };
-        
-        for (int dirIndex = 0; dirIndex < 4; dirIndex++)
-        {
-            var dir = (CardinalDirection)dirIndex;
-
-            var animIdle = new Sprite[frameCountIdle];
-            for (int frame = 0; frame < frameCountIdle; frame++)
-            {
-                animIdle[frame] = spritesheet[offsetIdle + dirIndex * frameCountIdle + frame];
+            sprites[animState] = new Dictionary<CardinalDirection, Sprite[]>();
+            for (int dirIndex = 0; dirIndex < 4; dirIndex++)
+            {               
+                var dir = (CardinalDirection)dirIndex;                
+                int frameCount = animsUnsplit[animState].Length / 4;
+                sprites[animState][dir] = animsUnsplit[animState].Skip(frameCount * dirIndex).Take(frameCount).ToArray();
             }
-            sprites[ActorAnimationState.Idle][dir] = animIdle;
-
-            var animWalk = new Sprite[frameCountWalk];
-            for (int frame = 0; frame < frameCountWalk; frame++)
-            {
-                animWalk[frame] = spritesheet[offsetWalk + dirIndex * frameCountWalk + frame];
-            }
-            sprites[ActorAnimationState.Walk][dir] = animWalk;
-
-            var animAttack = new Sprite[frameCountAttack];
-            for (int frame = 0; frame < frameCountAttack; frame++)
-            {
-                animAttack[frame] = spritesheet[offsetAttack + dirIndex * frameCountAttack + frame];
-            }
-            sprites[ActorAnimationState.Attack][dir] = animAttack;
-
-            var animDeath = new Sprite[frameCountDeath];
-            for (int frame = 0; frame < frameCountDeath; frame++)
-            {
-                animDeath[frame] = spritesheet[offsetDeath + dirIndex * frameCountDeath + frame];
-            }
-            sprites[ActorAnimationState.Death][dir] = animDeath;
-        }
+        }        
     }
 
     // Update is called once per frame
@@ -132,9 +90,9 @@ public class ActorAnimator : MonoBehaviour
         secondsUntilNextFrame -= Time.deltaTime;
         if(secondsUntilNextFrame <= 0)
         {
-            Sprite newFrame = sprites[animationState][direction][frameIndex];
-            spriteRenderer.sprite = newFrame;
-            frameIndex = (frameIndex + 1) % frameCounts[animationState];
+            var anim = sprites[animationState][direction];            
+            spriteRenderer.sprite = anim[frameIndex];
+            frameIndex = (frameIndex + 1) % anim.Length;
 
             // TODO: do we want this?
             if (frameIndex == 0)
@@ -142,7 +100,7 @@ public class ActorAnimator : MonoBehaviour
                 if (animationState == ActorAnimationState.Death)
                 {
                     // stay on last frame of death animation
-                    frameIndex = frameCounts[animationState] - 1;
+                    frameIndex = anim.Length - 1;
                 }
                 else
                 {
