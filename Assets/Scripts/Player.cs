@@ -316,6 +316,13 @@ public class Player : Actor
 
                 // apply damage
                 enemiesHit.ForEach(e => e.CurHealth -= AttackDamage);
+
+                World.Instance.SetTimeout(.2f, () =>
+                {
+                    Moving = false;
+                    MyTurn = false;
+                });
+
                 return true;
 
             case null:                
