@@ -12,12 +12,20 @@ public enum PlayerCharacter
     Smith = 3
 }
 
+public enum PlayerState
+{
+    Idle,
+    InAnimation,
+    InDialog,
+    Aiming,
+    PreparingToJump // TODO: same as aiming maybe?
+}
+
 public class Player : Actor
 {
     [Header("Player Properties")]
-    public bool Moving; // read: in action
-    public bool Talking;
-    public bool Aiming;
+    public PlayerState State = PlayerState.Idle;
+
     [Range(1, 10)]
     public int ShootingRange;
     public PlayerCharacter CurCharacter = PlayerCharacter.Sal;
@@ -30,7 +38,10 @@ public class Player : Actor
     public static Player Instance;
 
     /** to know what's in front */
-    Vector3Int lastStep;    
+    Vector3Int lastStep;
+
+    Action onTurnBegin;
+    Action onTurnEnd;
 
     /** this accurately describes Smith's swing pattern in relative positions from him (need to still be added to his current one);
      *  he's always swinging right to left (I have no idea why I made it this accurate, but it's fun!);
@@ -112,186 +123,204 @@ public class Player : Actor
 
     void HandlePlayerInput()
     {
-        if(Talking)
+        switch (State)
         {
-            #region Dialogue Controls
-            // Advance dialogue AND check if done
-            if (Input.GetButtonDown("Jump") && Textbox.Instance.AdvanceDialogue())
-            {
-                Talking = false;
-                Moving = false;
-            }
+            case PlayerState.Idle:
+                #region Character Selection Controls
+                int characterIDSelected = 0;
 
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Textbox.Instance.AbortDialogue();
-                Talking = false;
-                Moving = false;
-            }
-            #endregion
-        }
-        else if (!Moving)
-        {
-            #region Character Selection Controls
-            int characterIDSelected = 0;
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                    characterIDSelected = 1;
+                else if (Input.GetKeyDown(KeyCode.Alpha2))
+                    characterIDSelected = 2;
+                else if (Input.GetKeyDown(KeyCode.Alpha3))
+                    characterIDSelected = 3;
 
-            if (Input.GetKeyDown(KeyCode.Alpha1)) 
-                characterIDSelected = 1;
-            else if (Input.GetKeyDown(KeyCode.Alpha2)) 
-                characterIDSelected = 2;
-            else if (Input.GetKeyDown(KeyCode.Alpha3)) 
-                characterIDSelected = 3;
-
-            if(characterIDSelected > 0)
-            {
-                if(characterIDSelected > (int)CharacterUnlockState)
+                if (characterIDSelected > 0)
                 {
-                    // TODO: UI feedback
-                    Debug.LogWarning("Character not yet unlocked!");
-                }
-                else if(characterIDSelected != (int)CurCharacter)
-                {
-                    // TODO: switch animation?
-                    CurCharacter = (PlayerCharacter)characterIDSelected;
-                    Aiming = false;
-                }
-            }
-            #endregion
-
-            #region Aiming & Shooting
-            if (CurCharacter == PlayerCharacter.Rook && Input.GetKeyDown(KeyCode.F))
-            {
-                Aiming = !Aiming;
-            }
-
-            if (Input.GetMouseButtonDown(0) && Aiming)
-            {                
-                var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);                
-                var lineOfSight = World.Instance.LineOfSight(GridPos, World.Instance.WorldToGridPos(mouseWorldPos), ShootingRange);
-                Enemy target = null;
-                foreach(var pos in lineOfSight)
-                {
-                    target = World.Instance.GetActor(pos) as Enemy;
-                    if (target != null)
-                        break;
-                }
-
-                if(target != null)
-                {
-                    Moving = true;
-                    if (guns != null)
-                        guns.Shoot(mouseWorldPos, .2f);
-
-                    target.CurHealth -= AttackDamage;
-
-                    World.Instance.SetTimeout(.2f, () =>
+                    if (characterIDSelected > (int)CharacterUnlockState)
                     {
-                        Moving = false;
-                        MyTurn = false;
-                    });
-
-                    return;
+                        // TODO: UI feedback
+                        Debug.LogWarning("Character not yet unlocked!");
+                    }
+                    else if (characterIDSelected != (int)CurCharacter)
+                    {
+                        // TODO: switch animation?
+                        CurCharacter = (PlayerCharacter)characterIDSelected;
+                    }
                 }
-            }
-            #endregion
+                #endregion
 
-            #region Movement/Combat Controls
-            // TODO: mouse controls?
-            var hor = Input.GetAxisRaw("Horizontal");
-            var ver = Input.GetAxisRaw("Vertical");
+                if (CurCharacter == PlayerCharacter.Rook && Input.GetKeyDown(KeyCode.F))
+                {
+                    State = PlayerState.Aiming;
+                }
+
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Debug.Log("Jump");
+                }
+
+                #region Movement/Combat Controls
+                // TODO: mouse controls?
+                var hor = Input.GetAxisRaw("Horizontal");
+                var ver = Input.GetAxisRaw("Vertical");
 
 
-            if (hor > 0)
-            {
-                lastStep = Vector3Int.right;
-                MoveTo(GridPos + lastStep);
-            }
-            else if (hor < 0)
-            {
-                lastStep = Vector3Int.left;
-                MoveTo(GridPos + lastStep);
-            }
-            else if (ver > 0)
-            {
-                lastStep = Vector3Int.up;
-                MoveTo(GridPos + lastStep);
-            }
-            else if (ver < 0)
-            {
-                lastStep = Vector3Int.down;
-                MoveTo(GridPos + lastStep);
-            }
-            else if (Input.GetButtonDown("Jump"))
-            {
-                EndTurn();
-            }
-            #endregion
-        }
+                if (hor > 0)
+                {
+                    lastStep = Vector3Int.right;
+                    MoveTo(GridPos + lastStep);
+                }
+                else if (hor < 0)
+                {
+                    lastStep = Vector3Int.left;
+                    MoveTo(GridPos + lastStep);
+                }
+                else if (ver > 0)
+                {
+                    lastStep = Vector3Int.up;
+                    MoveTo(GridPos + lastStep);
+                }
+                else if (ver < 0)
+                {
+                    lastStep = Vector3Int.down;
+                    MoveTo(GridPos + lastStep);
+                }
+                else if (Input.GetButtonDown("Jump"))
+                {
+                    EndTurn();
+                }
+                #endregion
+
+                break;
+
+            case PlayerState.InDialog:
+                // Advance dialogue AND check if done
+                if (Input.GetButtonDown("Jump") && Textbox.Instance.AdvanceDialogue())
+                {
+                    State = PlayerState.Idle;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Textbox.Instance.AbortDialogue();
+                    EndTurn();
+                }
+                break;
+
+            case PlayerState.Aiming:
+                if (Input.GetMouseButtonDown(0))
+                {
+                    var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    var lineOfSight = World.Instance.LineOfSight(GridPos, World.Instance.WorldToGridPos(mouseWorldPos), ShootingRange);
+                    Enemy target = null;
+                    foreach (var pos in lineOfSight)
+                    {
+                        target = World.Instance.GetActor(pos) as Enemy;
+                        if (target != null)
+                            break;
+                    }
+
+                    if (target != null)
+                    {
+                        State = PlayerState.InAnimation;
+                        if (guns != null)
+                            guns.Shoot(mouseWorldPos, .2f);
+
+                        target.CurHealth -= AttackDamage;
+
+                        World.Instance.SetTimeout(.2f, EndTurn);
+                    }
+                }
+                break;
+
+            case PlayerState.InAnimation:
+                break;
+
+            case PlayerState.PreparingToJump:
+                //TODO: show jump indicator
+                break;
+        }        
     }
 
     public override void TakeTurn()
     {
+        if (onTurnBegin != null)
+        {
+            onTurnBegin();
+            onTurnBegin = null;
+        }
+
         MyTurn = true;
     } 
 
     void EndTurn()
-    {        
-        Moving = false;
+    {
+        if (onTurnEnd != null)
+        {
+            onTurnEnd();
+            onTurnEnd = null;
+        }
+
+        State = PlayerState.Idle;
         MyTurn = false;
     }
 
     void MoveTo(Vector3Int gridPos)
     {
-        if (Moving)
-            return;
+        var world = World.Instance;
 
-        var otherActor = World.Instance.GetActor(gridPos);
+        var otherActor = world.GetActor(gridPos);
 
         if (otherActor != null)
         {
             int turnsTaken = InteractWithActor(otherActor);
             if (turnsTaken > 0)
             {
-                Moving = true;                
-                World.Instance.SetTimeout(.2f, EndTurn);
+                State = PlayerState.InAnimation;          
+                world.SetTimeout(.2f, EndTurn);
             }
             return;
         }
 
-        var worldObject = World.Instance.GetObject(gridPos);
+        var worldObject = world.GetObject(gridPos);
 
         if (worldObject != null)
         {
-            InteractWithObject(worldObject);
             if (worldObject.Solid)
-                return;            
-        }
+            {               
+                InteractWithObject(worldObject);
+                return;
+            }
 
-        // probably a wall       
-        if (World.Instance.IsSolid(gridPos))
+            // delayed dialogue to allow moving first
+            onTurnBegin = () => InteractWithObject(worldObject);
+        }
+           
+        if (world.IsSolid(gridPos))
         {
             if(CurCharacter != PlayerCharacter.Smith)
                 return;
 
-            if(World.Instance.IsBreakable(gridPos))
+            if(world.IsBreakable(gridPos))
             {
-                Moving = true;
-                World.Instance.BreakTile(gridPos);
-                World.Instance.SetTimeout(.2f, EndTurn);
+                State = PlayerState.InAnimation;
+                world.BreakTile(gridPos);
+                world.SetTimeout(.2f, EndTurn);
                 return;
             }
         }
-            
-        // At this point nothing is in our way :D
-
-        Moving = true;                
-        World.Instance.MoveActorTo(this, gridPos);
+                        
+        // At this point nothing is in our way :D       
+        State = PlayerState.InAnimation;
+        world.MoveActorTo(this, gridPos);
         GridPos = gridPos;
 
         // TODO: anmiation
-        transform.position = World.Instance.GridToWorldPos(gridPos);
+        transform.position = world.GridToWorldPos(gridPos);
                                 
-        World.Instance.SetTimeout(.2f, EndTurn);        
+        world.SetTimeout(.2f, EndTurn);        
     }
 
     /// <param name="actor"></param>
@@ -301,7 +330,7 @@ public class Player : Actor
         switch (actor)
         {
             case NPC npc:
-                Talking = true;
+                State = PlayerState.InDialog;
                 npc.Interact();
                 return 0;
 
@@ -341,13 +370,13 @@ public class Player : Actor
         if (thing == null || !thing.Interactable)
             return;
 
-        Talking = true;
+        State = PlayerState.InDialog;
         thing.Interact();       
     }
 
     private void OnDrawGizmos()
     {
-        if (!Aiming)
+        if (State != PlayerState.Aiming)
             return;
 
         var world = World.Instance;

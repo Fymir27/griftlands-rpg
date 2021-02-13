@@ -36,3 +36,4 @@ MonoBehaviour:
   m_ColliderType: 1
   Solid: 0
   Breakable: 0
+  Jumpable: 0

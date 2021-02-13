@@ -45,6 +45,14 @@ public class World : MonoBehaviour
         return tile.Breakable;
     }
 
+    public bool IsJumpable(Vector3Int gridPos)
+    {
+        var tile = tilemap.GetTile(gridPos) as WorldTile;
+        if (tile == null)
+            return true;
+        return tile.Jumpable;
+    }
+
     public void BreakTile(Vector3Int gridPos)
     {
         var tile = tilemap.GetTile(gridPos) as WorldTile;
