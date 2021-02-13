@@ -34,6 +34,7 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  Solid: 0
-  Breakable: 0
+  Solid: 1
+  Breakable: 1
   Jumpable: 0
+  HpChangeStepOn: 0
