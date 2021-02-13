@@ -20,6 +20,8 @@ public abstract class Actor : MonoBehaviour
     protected Text hpText = null;
     [SerializeField]
     protected Text characterNameText = null;
+    [SerializeField]
+    protected ActorAnimator animator;
 
     /**
      * This function should always be called before anyhting 

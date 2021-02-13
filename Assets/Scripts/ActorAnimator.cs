@@ -26,7 +26,9 @@ public class ActorAnimator : MonoBehaviour
     [Header("State Info")]
 
     [SerializeField, Range(1, 30)]
-    int sampleRate;    
+    int sampleRate;
+    [SerializeField]
+    CardinalDirection[] ordering;
 
     [SerializeField]
     ActorAnimationState animationState;
@@ -75,11 +77,12 @@ public class ActorAnimator : MonoBehaviour
         foreach (var animState in animsUnsplit.Keys)
         {
             sprites[animState] = new Dictionary<CardinalDirection, Sprite[]>();
-            for (int dirIndex = 0; dirIndex < 4; dirIndex++)
-            {               
-                var dir = (CardinalDirection)dirIndex;                
+            int offset = 0;
+            foreach (var dir in ordering)
+            {                   
                 int frameCount = animsUnsplit[animState].Length / 4;
-                sprites[animState][dir] = animsUnsplit[animState].Skip(frameCount * dirIndex).Take(frameCount).ToArray();
+                sprites[animState][dir] = animsUnsplit[animState].Skip(offset).Take(frameCount).ToArray();
+                offset += frameCount;
             }
         }        
     }
@@ -117,5 +120,21 @@ public class ActorAnimator : MonoBehaviour
         animationState = animation;
         direction = dir;
         frameIndex = 0;
+        secondsUntilNextFrame = 0;
+    }
+
+    public void TriggerAnimation(ActorAnimationState animation, Vector3Int vectorDir)
+    {
+        CardinalDirection dir;
+        if (vectorDir.x > 0)
+            dir = CardinalDirection.East;
+        else if (vectorDir.x < 0)
+            dir = CardinalDirection.West;
+        else if (vectorDir.y > 0)
+            dir = CardinalDirection.North;
+        else
+            dir = CardinalDirection.South;
+
+        TriggerAnimation(animation, dir);
     }
 }

@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 395020827
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: da69019154178584ea39a0f4cd23545a, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -103,9 +103,13 @@ MonoBehaviour:
   AttackDamage: 2
   hpText: {fileID: 6675095316248194800}
   characterNameText: {fileID: 3538635196445145701}
+  animator: {fileID: 0}
   aggroRange: 3
   trackRange: 6
+  walkingSpeed: 3
   aggroed: 0
+  walking: 0
+  walkingTo: {x: 0, y: 0, z: 0}
 --- !u!1001 &2208239209237454646
 PrefabInstance:
   m_ObjectHideFlags: 0
