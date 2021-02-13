@@ -35,6 +35,9 @@ public class Player : Actor
     Sprite[] characterSprites;
     Guns guns;
 
+    [SerializeField]
+    GameObject reticle;
+
     public static Player Instance;
 
     /** to know what's in front */
@@ -81,6 +84,19 @@ public class Player : Actor
                 Vector3Int.left + Vector3Int.down,
             }
         }
+    };
+    List<Vector3Int> allowedVaultsSal = new List<Vector3Int>()
+    {
+        Vector3Int.up * 2,
+        Vector3Int.right * 2,
+        Vector3Int.down * 2,
+        Vector3Int.left * 2,
+        
+        // TODO: optional?
+        Vector3Int.up + Vector3Int.right,
+        Vector3Int.up + Vector3Int.left,
+        Vector3Int.down + Vector3Int.right,
+        Vector3Int.down + Vector3Int.left,        
     };
 
     SpriteRenderer spriteRenderer;
@@ -154,11 +170,13 @@ public class Player : Actor
                 if (CurCharacter == PlayerCharacter.Rook && Input.GetKeyDown(KeyCode.F))
                 {
                     State = PlayerState.Aiming;
+                    StartAiming(Color.red);
                 }
 
-                if (Input.GetButtonDown("Fire1"))
+                if (CurCharacter == PlayerCharacter.Sal && Input.GetKeyDown(KeyCode.LeftAlt))
                 {
-                    Debug.Log("Jump");
+                    State = PlayerState.PreparingToJump;
+                    StartAiming(Color.blue);
                 }
 
                 #region Movement/Combat Controls
@@ -224,6 +242,7 @@ public class Player : Actor
 
                     if (target != null)
                     {
+                        StopAiming();
                         State = PlayerState.InAnimation;
                         if (guns != null)
                             guns.Shoot(mouseWorldPos, .2f);
@@ -232,6 +251,11 @@ public class Player : Actor
 
                         World.Instance.SetTimeout(.2f, EndTurn);
                     }
+                } 
+                else if(Input.GetKeyDown(KeyCode.Escape))
+                {
+                    StopAiming();
+                    State = PlayerState.Idle;
                 }
                 break;
 
@@ -239,7 +263,27 @@ public class Player : Actor
                 break;
 
             case PlayerState.PreparingToJump:
-                //TODO: show jump indicator
+                if (Input.GetMouseButtonDown(0)) {
+                    var landingSpot = World.Instance.MouseGridPos();
+                    var relMovement = landingSpot - GridPos;
+                    if(relMovement.magnitude > 1)
+                    {
+                        var intermediateSpot = GridPos + relMovement / 2;
+                        if(World.Instance.IsSolid(intermediateSpot) && !World.Instance.IsJumpable(intermediateSpot))
+                        {
+                            break;
+                        }
+                    }
+                    if(allowedVaultsSal.Contains(relMovement) && !World.Instance.IsSolid(landingSpot) && World.Instance.GetActor(landingSpot) == null)
+                    {
+                        MoveTo(landingSpot);
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    StopAiming();
+                    State = PlayerState.Idle;
+                }
                 break;
         }        
     }
@@ -263,8 +307,21 @@ public class Player : Actor
             onTurnEnd = null;
         }
 
+        StopAiming(); // just in case
         State = PlayerState.Idle;
         MyTurn = false;
+    }
+
+    void StartAiming(Color color)
+    {
+        var reticleRenderer = reticle.GetComponent<SpriteRenderer>();
+        reticleRenderer.color = color;
+        reticle.SetActive(true);
+    }
+
+    void StopAiming()
+    {
+        reticle.SetActive(false);
     }
 
     void MoveTo(Vector3Int gridPos)

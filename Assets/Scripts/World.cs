@@ -28,6 +28,12 @@ public class World : MonoBehaviour
         return tilemap.GetCellCenterWorld(gridPos);
     }
   
+    public Vector3Int MouseGridPos()
+    {
+        var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        return WorldToGridPos(mouseWorldPos);
+    }
+
     public bool IsSolid(Vector3Int gridPos)
     {
         var tile = tilemap.GetTile(gridPos) as WorldTile;       
