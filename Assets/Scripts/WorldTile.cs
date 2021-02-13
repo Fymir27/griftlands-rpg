@@ -12,6 +12,7 @@ public class WorldTile : Tile
     public bool Solid;
     public bool Breakable;
     public bool Jumpable;
+    public int HpChangeStepOn;
 
 #if UNITY_EDITOR
     [MenuItem("Assets/Create/WorldTile", false, 10)]

@@ -110,6 +110,17 @@ public class World : MonoBehaviour
         {
             spriteRenderer.sortingOrder = -gridPos.y;
         }
+
+        TriggerStepOn(actor, gridPos);
+    }
+
+    public void TriggerStepOn(Actor actor, Vector3Int gridPos)
+    {
+        var tile = tilemap.GetTile(gridPos) as WorldTile;
+        if (tile != null)
+        {
+            actor.CurHealth = Mathf.Clamp(actor.CurHealth + tile.HpChangeStepOn, 0, actor.MaxHealth);
+        }
     }
 
     public void RemoveActor(Actor actor)

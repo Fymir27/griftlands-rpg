@@ -207,6 +207,7 @@ public class Player : Actor
                 }
                 else if (Input.GetButtonDown("Jump"))
                 {
+                    World.Instance.TriggerStepOn(this, GridPos);
                     EndTurn();
                 }
                 #endregion
