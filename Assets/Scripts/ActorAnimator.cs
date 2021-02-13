@@ -23,12 +23,11 @@ public enum ActorAnimationState
 
 public class ActorAnimator : MonoBehaviour
 {
-    [Header("State Info")]
+    [SerializeField]
+    ActorAnimationSet animationSet;
 
     [SerializeField, Range(1, 30)]
-    int sampleRate;
-    [SerializeField]
-    CardinalDirection[] ordering;
+    int sampleRate;    
 
     [SerializeField]
     ActorAnimationState animationState;
@@ -42,49 +41,13 @@ public class ActorAnimator : MonoBehaviour
     [SerializeField]
     int frameIndex;
 
-    [Header("Spritesheet")]
-
-    [SerializeField]
-    Sprite[] animIdle;
-
-    [SerializeField]
-    Sprite[] animWalk;
-
-    [SerializeField]
-    Sprite[] animAttack;
-
-    [SerializeField]
-    Sprite[] animDeath;
-
-    Dictionary<ActorAnimationState, Dictionary<CardinalDirection, Sprite[]>> sprites;
-
     SpriteRenderer spriteRenderer;
+  
 
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
-        var animsUnsplit = new Dictionary<ActorAnimationState, Sprite[]>()
-        {
-            { ActorAnimationState.Idle, animIdle },
-            { ActorAnimationState.Walk, animWalk },
-            { ActorAnimationState.Attack, animAttack },
-            { ActorAnimationState.Death, animDeath }
-        };
-
-        sprites = new Dictionary<ActorAnimationState, Dictionary<CardinalDirection, Sprite[]>>();
-        foreach (var animState in animsUnsplit.Keys)
-        {
-            sprites[animState] = new Dictionary<CardinalDirection, Sprite[]>();
-            int offset = 0;
-            foreach (var dir in ordering)
-            {                   
-                int frameCount = animsUnsplit[animState].Length / 4;
-                sprites[animState][dir] = animsUnsplit[animState].Skip(offset).Take(frameCount).ToArray();
-                offset += frameCount;
-            }
-        }        
+        spriteRenderer = GetComponent<SpriteRenderer>();         
     }
 
     // Update is called once per frame
@@ -93,7 +56,7 @@ public class ActorAnimator : MonoBehaviour
         secondsUntilNextFrame -= Time.deltaTime;
         if(secondsUntilNextFrame <= 0)
         {
-            var anim = sprites[animationState][direction];            
+            var anim = animationSet.Sprites[animationState][direction];            
             spriteRenderer.sprite = anim[frameIndex];
             frameIndex = (frameIndex + 1) % anim.Length;
 

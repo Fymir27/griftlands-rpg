@@ -14,11 +14,10 @@ public class WorldTile : Tile
     public bool Jumpable;
 
 #if UNITY_EDITOR
-    // The following is a helper that adds a menu item to create a RoadTile Asset
     [MenuItem("Assets/Create/WorldTile", false, 10)]
-    public static void CreateRoadTile()
+    public static void CreateWorldTile()
     {
-        string path = EditorUtility.SaveFilePanelInProject("Save World Tile", "New World Tile", "Asset", "Save World Tile", "Assets");
+        string path = EditorUtility.SaveFilePanelInProject("Save World Tile", "New World Tile", "Asset", "Save World Tile", "Assets/Tiles");
         if (path == "")
             return;
         AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<WorldTile>(), path);
