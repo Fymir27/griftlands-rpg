@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class World : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class World : MonoBehaviour
     Dictionary<Vector3Int, Actor> actors = new Dictionary<Vector3Int, Actor>();
     Dictionary<Vector3Int, WorldObject> objects = new Dictionary<Vector3Int, WorldObject>();
     Dictionary<Vector3Int, Conversation> conversations = new Dictionary<Vector3Int, Conversation>();
-    
+    Dictionary<Vector3Int, string> sceneTriggers = new Dictionary<Vector3Int, string>();
+
     private void Awake()
     {
         Instance = this;
@@ -76,6 +78,16 @@ public class World : MonoBehaviour
         tilemap.SetTile(gridPos, floorTile);
     }
 
+    public void SetSceneTrigger(string sceneName, Vector3Int gridPos)
+    {
+        if(sceneTriggers.ContainsKey(gridPos))
+        {
+            Debug.LogError("Two scene triggers on same tile! " + gridPos);
+            return;
+        }
+        sceneTriggers[gridPos] = sceneName;
+    }
+
     public void SetConversation(Conversation convo, Vector3Int gridPos)
     {
         if(conversations.ContainsKey(gridPos))
@@ -136,6 +148,11 @@ public class World : MonoBehaviour
         if (tile != null)
         {
             actor.CurHealth = Mathf.Clamp(actor.CurHealth + tile.HpChangeStepOn, 0, actor.MaxHealth);
+        }
+
+        if(actor == Player.Instance && sceneTriggers.ContainsKey(gridPos))
+        {
+            SceneManager.LoadScene(sceneTriggers[gridPos]);
         }
     }
 
