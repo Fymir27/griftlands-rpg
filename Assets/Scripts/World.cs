@@ -12,6 +12,7 @@ public class World : MonoBehaviour
     Tilemap tilemap;
     Dictionary<Vector3Int, Actor> actors = new Dictionary<Vector3Int, Actor>();
     Dictionary<Vector3Int, WorldObject> objects = new Dictionary<Vector3Int, WorldObject>();
+    Dictionary<Vector3Int, Conversation> conversations = new Dictionary<Vector3Int, Conversation>();
     
     private void Awake()
     {
@@ -73,6 +74,21 @@ public class World : MonoBehaviour
             return;
         }
         tilemap.SetTile(gridPos, floorTile);
+    }
+
+    public void SetConversation(Conversation convo, Vector3Int gridPos)
+    {
+        if(conversations.ContainsKey(gridPos))
+        {
+            Debug.LogWarning("Overwriting conversation at " + gridPos);
+        }
+        conversations[gridPos] = convo;
+    }
+
+    public Conversation GetConversation(Vector3Int gridPos)
+    {
+        conversations.TryGetValue(gridPos, out Conversation conversation);
+        return conversation;
     }
 
     public void SetObject(WorldObject thing, Vector3Int gridPos)

@@ -46,9 +46,6 @@ public class Player : Actor
     /** to know what's in front */
     Vector3Int lastStep;
 
-    Action onTurnBegin;
-    Action onTurnEnd;
-
     /** this accurately describes Smith's swing pattern in relative positions from him (need to still be added to his current one);
      *  he's always swinging right to left (I have no idea why I made it this accurate, but it's fun!);
      *  usage: var hitFields = swingPatternSmith[swingDirection];
@@ -295,23 +292,25 @@ public class Player : Actor
 
     public override void TakeTurn()
     {
-        if (onTurnBegin != null)
-        {
-            onTurnBegin();
-            onTurnBegin = null;
-        }
-
         MyTurn = true;
+
+        var thing = World.Instance.GetObject(GridPos);
+        if (thing != null)
+            InteractWithObject(thing);
+
+        var convo = World.Instance.GetConversation(GridPos);
+        if (convo != null)
+        {
+            Textbox.Instance.StartConversation(convo);
+            State = PlayerState.InDialog;
+            
+            // only play convo ONCE
+            World.Instance.SetConversation(null, GridPos);
+        }
     } 
 
     void EndTurn()
     {
-        if (onTurnEnd != null)
-        {
-            onTurnEnd();
-            onTurnEnd = null;
-        }
-
         StopAiming(); // just in case
         State = PlayerState.Idle;
         MyTurn = false;
@@ -355,9 +354,7 @@ public class Player : Actor
                 InteractWithObject(worldObject);
                 return;
             }
-
-            // delayed dialogue to allow moving first
-            onTurnBegin = () => InteractWithObject(worldObject);
+            // otherwise interaction happens at the start of next turn
         }
            
         if (world.IsSolid(gridPos))
@@ -369,9 +366,9 @@ public class Player : Actor
             {
                 State = PlayerState.InAnimation;
                 world.BreakTile(gridPos);
-                world.SetTimeout(.2f, EndTurn);
-                return;
+                world.SetTimeout(.2f, EndTurn);               
             }
+            return;
         }
                         
         // At this point nothing is in our way :D       

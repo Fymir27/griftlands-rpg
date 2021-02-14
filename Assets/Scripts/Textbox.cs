@@ -11,6 +11,10 @@ public class Textbox : MonoBehaviour
     Text characterName = null;
     [SerializeField]
     Text dialogue = null;
+    [SerializeField]
+    Conversation curConversation;
+    [SerializeField]
+    int conversationIndex;
 
     private void Awake()
     {
@@ -36,11 +40,31 @@ public class Textbox : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public void StartConversation(Conversation convo)
+    {
+        curConversation = convo;
+        conversationIndex = -1;
+        AdvanceDialogue();
+    }
+
     /**
      * returns true when dialogue has ended
      */
     public bool AdvanceDialogue()
-    {        
+    {   
+        if(curConversation != null)
+        {
+            if(++conversationIndex < curConversation.ConversationWithNames.Count)
+            {
+                gameObject.SetActive(true);
+                var line = curConversation.ConversationWithNames[conversationIndex];
+                characterName.text = line.Item1;
+                dialogue.text = line.Item2;
+                return false;
+            }
+        }
+
+        curConversation = null;
         gameObject.SetActive(false);
         return true;
     }
