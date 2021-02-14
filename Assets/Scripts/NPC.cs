@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class NPC : Actor
 {
+    [SerializeField]
+    Conversation convoJustSal;
+    [SerializeField]
+    Conversation convoWithRook;
+    [SerializeField]
+    Conversation convoWithSmith;
+
+    [SerializeField]
+    string[] randomQuips;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +39,33 @@ public class NPC : Actor
 
     public void Interact()
     {
-        // TODO: dialogue system
-        Textbox.Instance.Display(this, "This is placeholder dialogue!");
+        Conversation convo = null;
+
+        switch (Player.Instance.CharacterUnlockState)
+        {
+            case PlayerCharacter.Sal:
+                convo = convoJustSal;
+                break;
+            case PlayerCharacter.Rook:
+                convo = convoWithRook;
+                break;
+            case PlayerCharacter.Smith:
+                convo = convoWithSmith;
+                break;
+        }
+
+        if(convo == null)
+        {
+            if (randomQuips == null || randomQuips.Length == 0)
+                return;
+
+            // pick random quip to disp
+            int quipIndex = Random.Range(0, randomQuips.Length);
+            Textbox.Instance.Display(this, randomQuips[quipIndex]);
+        }
+        else
+        {
+            Textbox.Instance.StartConversation(convo);
+        }
     }
 }

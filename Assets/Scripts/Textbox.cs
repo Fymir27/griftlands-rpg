@@ -71,6 +71,7 @@ public class Textbox : MonoBehaviour
 
     public void AbortDialogue()
     {
+        curConversation = null;
         gameObject.SetActive(false);
     }
 }

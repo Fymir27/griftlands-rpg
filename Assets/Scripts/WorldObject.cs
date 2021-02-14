@@ -37,7 +37,7 @@ public class WorldObject : MonoBehaviour
             return;
         }
 
-        int randomIndex = Random.Range(0, dialogue.Length - 1);
+        int randomIndex = Random.Range(0, dialogue.Length);
         Textbox.Instance.Display(this, dialogue[randomIndex]);
     }
 }
