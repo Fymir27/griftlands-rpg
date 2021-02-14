@@ -43,11 +43,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 89b0fa18a3dadbf4da3cfed1267ebf0f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1de44545446f2c849927a049c98c93da, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -238,4 +238,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundAudio: {fileID: 800525582999227868}
+  backgroundLoop: {fileID: 8300000, guid: c1f3f83dfc3bfde4f98fa3e1fc888a27, type: 3}
   sfxAudio: {fileID: 800525582999227870}
