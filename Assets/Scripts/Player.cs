@@ -33,6 +33,9 @@ public class Player : Actor
 
     [SerializeField]
     Sprite[] characterSprites;
+    [SerializeField]
+    AudioClip[] tagInVoicelines;
+
     Guns guns;
 
     [SerializeField]
@@ -163,6 +166,7 @@ public class Player : Actor
                     {
                         // TODO: switch animation?
                         CurCharacter = (PlayerCharacter)characterIDSelected;
+                        AudioController.Instance.PlayClip(tagInVoicelines[characterIDSelected - 1]); // 0-indexed
                     }
                 }
                 #endregion

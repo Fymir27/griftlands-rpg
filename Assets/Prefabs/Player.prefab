@@ -146,7 +146,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -477454093
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Positions: []
   m_Parameters:
@@ -275,7 +275,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 395020827
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4e0ea20ea4411b340a5788943c8d3398, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -308,9 +308,8 @@ MonoBehaviour:
   AttackDamage: 3
   hpText: {fileID: 1346087647302017875}
   characterNameText: {fileID: 9157843006964643782}
-  Moving: 0
-  Talking: 0
-  Aiming: 0
+  animator: {fileID: 0}
+  State: 0
   ShootingRange: 4
   CurCharacter: 1
   CharacterUnlockState: 1
@@ -318,6 +317,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ff9b71622b4594b4787e0c14bdb35a23, type: 3}
   - {fileID: 21300000, guid: 4e0ea20ea4411b340a5788943c8d3398, type: 3}
   - {fileID: 21300000, guid: 3c50fd2b78c041f4485174578d190574, type: 3}
+  tagInVoicelines:
+  - {fileID: 8300000, guid: 284945ed52fceb04b9ad2a8190d4def5, type: 3}
+  - {fileID: 8300000, guid: 0ffbc735409002440a8282aafb52f0a0, type: 3}
+  - {fileID: 8300000, guid: f7cdc26a835ac5643ba8e4abe8841421, type: 3}
+  reticle: {fileID: 0}
 --- !u!1 &7955461338616032893
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +390,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -477454093
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Positions: []
   m_Parameters:
