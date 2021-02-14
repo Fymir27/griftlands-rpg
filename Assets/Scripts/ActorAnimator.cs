@@ -22,9 +22,8 @@ public enum ActorAnimationState
 }
 
 public class ActorAnimator : MonoBehaviour
-{
-    [SerializeField]
-    ActorAnimationSet animationSet;
+{    
+    public ActorAnimationSet AnimationSet;
 
     [SerializeField, Range(1, 30)]
     int sampleRate;    
@@ -55,8 +54,9 @@ public class ActorAnimator : MonoBehaviour
     {
         secondsUntilNextFrame -= Time.deltaTime;
         if(secondsUntilNextFrame <= 0)
-        {
-            var anim = animationSet.Sprites[animationState][direction];            
+       {
+            var anim = AnimationSet.Sprites[animationState][direction];            
+
             spriteRenderer.sprite = anim[frameIndex];
             frameIndex = (frameIndex + 1) % anim.Length;
 

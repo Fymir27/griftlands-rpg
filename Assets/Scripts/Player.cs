@@ -15,7 +15,9 @@ public enum PlayerCharacter
 public enum PlayerState
 {
     Idle,
-    InAnimation,
+    Walking,
+    Vaulting,
+    Attacking,
     InDialog,
     Aiming,
     PreparingToJump // TODO: same as aiming maybe?
@@ -28,11 +30,18 @@ public class Player : Actor
 
     [Range(1, 10)]
     public int ShootingRange;
+    [Range(3, 5)]
+    public float walkingSpeed;
+    [Range(5, 20)]
+    public float vaultingSpeed;
+
+    public Vector3 walkingTo;
+
     public PlayerCharacter CurCharacter = PlayerCharacter.Sal;
     public PlayerCharacter CharacterUnlockState = PlayerCharacter.Sal;
 
     [SerializeField]
-    Sprite[] characterSprites;
+    ActorAnimationSet[] animations;
     [SerializeField]
     AudioClip[] tagInVoicelines;
 
@@ -55,33 +64,41 @@ public class Player : Actor
         {
             Vector3Int.up, new Vector3Int[]
             {
+                Vector3Int.right,
                 Vector3Int.up + Vector3Int.right,
                 Vector3Int.up,
                 Vector3Int.up + Vector3Int.left,
+                Vector3Int.left,
             }
         },
         {
             Vector3Int.right, new Vector3Int[]
             {
+                Vector3Int.down,
                 Vector3Int.right + Vector3Int.down,
                 Vector3Int.right,
                 Vector3Int.right + Vector3Int.up,
+                Vector3Int.up,
             }
         },
         {
             Vector3Int.down, new Vector3Int[]
             {
+                Vector3Int.left,
                 Vector3Int.down + Vector3Int.left,
                 Vector3Int.down,
                 Vector3Int.down + Vector3Int.right,
+                Vector3Int.right,
             }
         },
         {
             Vector3Int.left, new Vector3Int[]
             {
+                Vector3Int.up,
                 Vector3Int.left + Vector3Int.up,
                 Vector3Int.left,
                 Vector3Int.left + Vector3Int.down,
+                Vector3Int.down
             }
         }
     };
@@ -128,13 +145,15 @@ public class Player : Actor
 
         //TODO: full on animation set switching instead of just sprites
         int characterSpriteIndex = (int)CurCharacter - 1; // 0 indexed
-        if(characterSpriteIndex >= 0 && characterSpriteIndex < characterSprites.Length)
+        if(characterSpriteIndex >= 0 && characterSpriteIndex < animations.Length)
         {
-            spriteRenderer.sprite = characterSprites[characterSpriteIndex];
+            animator.AnimationSet = animations[characterSpriteIndex];
         }
 
         if (MyTurn)
-            HandlePlayerInput();        
+        {
+            HandlePlayerInput();
+        }
     }
 
     void HandlePlayerInput()
@@ -245,7 +264,7 @@ public class Player : Actor
                     if (target != null)
                     {
                         StopAiming();
-                        State = PlayerState.InAnimation;
+                        State = PlayerState.Idle;
                         if (guns != null)
                             guns.Shoot(mouseWorldPos, .2f);
 
@@ -261,7 +280,18 @@ public class Player : Actor
                 }
                 break;
 
-            case PlayerState.InAnimation:
+            case PlayerState.Walking:
+            case PlayerState.Vaulting:
+                float speed = State == PlayerState.Walking ? walkingSpeed : vaultingSpeed;
+                if (speed > 0)
+                    transform.position = Vector3.MoveTowards(transform.position, walkingTo, speed * Time.deltaTime);
+                else
+                    transform.position = walkingTo;
+
+                if (transform.position == walkingTo)
+                {
+                    EndTurn();
+                }
                 break;
 
             case PlayerState.PreparingToJump:
@@ -278,7 +308,8 @@ public class Player : Actor
                     }
                     if(allowedVaultsSal.Contains(relMovement) && !World.Instance.IsSolid(landingSpot) && World.Instance.GetActor(landingSpot) == null)
                     {
-                        MoveTo(landingSpot);
+                        // TODO: vault animation
+                        VaultTo(landingSpot);
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Escape))
@@ -328,6 +359,19 @@ public class Player : Actor
         reticle.SetActive(false);
     }
 
+    /// <summary>
+    /// Does no checks, so check first if vault is possible
+    /// </summary>
+    /// <param name="gridPos"></param>
+    void VaultTo(Vector3Int gridPos)
+    {
+        var world = World.Instance;
+        State = PlayerState.Vaulting;
+        world.MoveActorTo(this, gridPos);
+        walkingTo = world.GridToWorldPos(gridPos);
+        animator.TriggerAnimation(ActorAnimationState.Walk, gridPos - GridPos);
+        GridPos = gridPos;
+    }
     void MoveTo(Vector3Int gridPos)
     {
         var world = World.Instance;
@@ -339,7 +383,8 @@ public class Player : Actor
             int turnsTaken = InteractWithActor(otherActor);
             if (turnsTaken > 0)
             {
-                State = PlayerState.InAnimation;          
+                State = PlayerState.Attacking;
+                animator.TriggerAnimation(ActorAnimationState.Attack, gridPos - GridPos);
                 world.SetTimeout(.2f, EndTurn);
             }
             return;
@@ -363,8 +408,9 @@ public class Player : Actor
                 return;
 
             if(world.IsBreakable(gridPos))
-            {
-                State = PlayerState.InAnimation;
+            {                
+                State = PlayerState.Attacking;
+                animator.TriggerAnimation(ActorAnimationState.Attack, gridPos - GridPos);
                 world.BreakTile(gridPos);
                 world.SetTimeout(.2f, EndTurn);               
             }
@@ -372,14 +418,12 @@ public class Player : Actor
         }
                         
         // At this point nothing is in our way :D       
-        State = PlayerState.InAnimation;
+        State = PlayerState.Walking;
         world.MoveActorTo(this, gridPos);
-        GridPos = gridPos;
-
-        // TODO: anmiation
-        transform.position = world.GridToWorldPos(gridPos);
-                                
-        world.SetTimeout(.2f, EndTurn);        
+        walkingTo = world.GridToWorldPos(gridPos);
+        animator.TriggerAnimation(ActorAnimationState.Walk, gridPos - GridPos);
+        GridPos = gridPos;               
+                        
     }
 
     /// <param name="actor"></param>
@@ -409,7 +453,7 @@ public class Player : Actor
                     enemiesHit.Add(enemy);
                 }
 
-                // TODO: can Rook melee attack as well?
+                // TODO: can Rook melee attack as well?                
 
                 // apply damage
                 enemiesHit.ForEach(e => e.CurHealth -= AttackDamage);

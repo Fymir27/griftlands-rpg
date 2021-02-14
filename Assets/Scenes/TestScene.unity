@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9ea4a4ba0155246bbfc11fc92e1bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSet: {fileID: 11400000, guid: 6ea659c9a039e3f45b64e95d2ff28494, type: 2}
+  AnimationSet: {fileID: 11400000, guid: 6ea659c9a039e3f45b64e95d2ff28494, type: 2}
   sampleRate: 3
   animationState: 0
   direction: 0
@@ -10218,6 +10218,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1144145957966108174, guid: 926aac1368367384ea9ff0caef41fa4c,
+        type: 3}
+      propertyPath: AnimationSet
+      value: 
+      objectReference: {fileID: 11400000, guid: 6ea659c9a039e3f45b64e95d2ff28494,
+        type: 2}
     - target: {fileID: 7085567814149042671, guid: 926aac1368367384ea9ff0caef41fa4c,
         type: 3}
       propertyPath: m_Name
