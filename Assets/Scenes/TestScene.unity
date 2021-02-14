@@ -10310,6 +10310,11 @@ PrefabInstance:
       propertyPath: reticle
       value: 
       objectReference: {fileID: 916351976}
+    - target: {fileID: 7085567814149042674, guid: 926aac1368367384ea9ff0caef41fa4c,
+        type: 3}
+      propertyPath: walkingSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8458972548675805199, guid: 926aac1368367384ea9ff0caef41fa4c,
         type: 3}
       propertyPath: m_RootOrder

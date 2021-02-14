@@ -30,7 +30,7 @@ public class Player : Actor
 
     [Range(1, 10)]
     public int ShootingRange;
-    [Range(3, 5)]
+    [Range(1, 5)]
     public float walkingSpeed;
     [Range(5, 20)]
     public float vaultingSpeed;

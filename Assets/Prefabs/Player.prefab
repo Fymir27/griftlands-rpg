@@ -312,7 +312,7 @@ MonoBehaviour:
   animator: {fileID: 1144145957966108174}
   State: 0
   ShootingRange: 4
-  walkingSpeed: 3
+  walkingSpeed: 2.5
   vaultingSpeed: 10
   walkingTo: {x: 0, y: 0, z: 0}
   CurCharacter: 1
