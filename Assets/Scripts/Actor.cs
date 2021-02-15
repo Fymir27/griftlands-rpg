@@ -103,6 +103,12 @@ public abstract class Actor : MonoBehaviour
         return nextStep;
     }
 
+    public virtual void Die()
+    {
+        animator.TriggerAnimation(ActorAnimationState.Death);
+        animator.OnAnimationComplete += () => Destroy(gameObject);
+    }
+
     private void OnDestroy()
     {
         TurnManager.Instance.RemoveActor(this);

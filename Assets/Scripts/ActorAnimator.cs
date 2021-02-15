@@ -41,7 +41,8 @@ public class ActorAnimator : MonoBehaviour
     int frameIndex;
 
     SpriteRenderer spriteRenderer;
-  
+
+    public Action OnAnimationComplete = null;
 
     // Start is called before the first frame update
     void Start()
@@ -55,14 +56,17 @@ public class ActorAnimator : MonoBehaviour
         secondsUntilNextFrame -= Time.deltaTime;
         if(secondsUntilNextFrame <= 0)
        {
-            var anim = AnimationSet.Sprites[animationState][direction];            
-
-            spriteRenderer.sprite = anim[frameIndex];
-            frameIndex = (frameIndex + 1) % anim.Length;
+            var anim = AnimationSet.Sprites[animationState][direction];
 
             // TODO: do we want this?
-            if (frameIndex == 0)
+            if (frameIndex >= anim.Length)
             {
+                if (OnAnimationComplete != null)
+                {
+                    OnAnimationComplete();
+                    OnAnimationComplete = null;
+                }
+
                 if (animationState == ActorAnimationState.Death)
                 {
                     // stay on last frame of death animation
@@ -71,17 +75,38 @@ public class ActorAnimator : MonoBehaviour
                 else
                 {
                     animationState = ActorAnimationState.Idle;
+                    frameIndex = 0;
                 }
             }
-
+           
+            spriteRenderer.sprite = anim[frameIndex++];
             secondsUntilNextFrame = 1f / sampleRate;
         }
     }
 
     public void TriggerAnimation(ActorAnimationState animation, CardinalDirection dir)
     {
+        if(!AnimationSet.Sprites.ContainsKey(animation) || !AnimationSet.Sprites[animation].ContainsKey(dir))
+        {
+            Debug.LogError("No sprites found for animation: " + animation);
+            return;
+        }    
         animationState = animation;
         direction = dir;
+        frameIndex = 0;
+        secondsUntilNextFrame = 0;
+    }
+
+    public void TriggerAnimation(ActorAnimationState animation)
+    {
+        var defaultDir = AnimationSet.GetInitialDirection();
+        if (!AnimationSet.Sprites.ContainsKey(animation) || !AnimationSet.Sprites[animation].ContainsKey(defaultDir))
+        {
+            Debug.LogError("No sprites found for animation: " + animation);
+            return;
+        }
+        animationState = animation;
+        direction = defaultDir;
         frameIndex = 0;
         secondsUntilNextFrame = 0;
     }

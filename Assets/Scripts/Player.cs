@@ -20,7 +20,8 @@ public enum PlayerState
     Attacking,
     InDialog,
     Aiming,
-    PreparingToJump // TODO: same as aiming maybe?
+    PreparingToJump, // TODO: same as aiming maybe?
+    Dying
 }
 
 public class Player : Actor
@@ -141,8 +142,15 @@ public class Player : Actor
     // Update is called once per frame
     void Update()
     {
+        if (State == PlayerState.Dying)
+            return;
+
         if (CurHealth <= 0)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        {
+            State = PlayerState.Dying;
+            Die();
+            return;
+        }
 
         if (hpText != null)
             hpText.text = $"HP: {CurHealth}/{MaxHealth}";
@@ -499,6 +507,17 @@ public class Player : Actor
 
         State = PlayerState.InDialog;
         thing.Interact();       
+    }
+
+    private void OnDestroy()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public override void Die()
+    {
+        animator.TriggerAnimation(ActorAnimationState.Death);
+        animator.OnAnimationComplete += () => World.Instance.SetTimeout(1f, () => SceneManager.LoadScene(SceneManager.GetActiveScene().name));
     }
 
     private void OnDrawGizmos()

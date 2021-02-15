@@ -33,7 +33,7 @@ public class ActorAnimationSet : ScriptableObject
             { ActorAnimationState.Idle, animIdle },
             { ActorAnimationState.Walk, animWalk },
             { ActorAnimationState.Attack, animAttack },
-            { ActorAnimationState.Death, animDeath }
+            { ActorAnimationState.Death, animDeath },
         };
 
         Sprites = new Dictionary<ActorAnimationState, Dictionary<CardinalDirection, Sprite[]>>();
@@ -47,11 +47,26 @@ public class ActorAnimationSet : ScriptableObject
 
             foreach (var dir in ordering)
             {
+                if(animState == ActorAnimationState.Death)
+                {
+                    Sprites[animState][dir] = animsUnsplit[animState];
+                    continue;
+                }
+
                 int frameCount = animsUnsplit[animState].Length / 4;
                 Sprites[animState][dir] = animsUnsplit[animState].Skip(offset).Take(frameCount).ToArray();
                 offset += frameCount;
             }
         }
+    }
+
+    public CardinalDirection GetInitialDirection()
+    {
+        if(ordering != null && ordering.Length > 0)
+        {
+            return ordering[0];
+        }
+        return CardinalDirection.South;
     }
 
 #if UNITY_EDITOR
