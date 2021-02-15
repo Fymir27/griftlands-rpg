@@ -97,4 +97,15 @@ public class Enemy : Actor
             MyTurn = false;
         }
     }
+
+    public void ApplyDamage(int amount)
+    {
+        aggroed = true;
+        CurHealth = Mathf.Clamp(CurHealth - amount, 0, MaxHealth);
+    }
+
+    public void ApplyHealing(int amount)
+    {
+        CurHealth = Mathf.Clamp(CurHealth + amount, 0, MaxHealth);
+    }
 }

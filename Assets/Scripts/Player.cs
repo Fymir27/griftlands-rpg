@@ -268,7 +268,7 @@ public class Player : Actor
                         if (guns != null)
                             guns.Shoot(mouseWorldPos, .2f);
 
-                        target.CurHealth -= AttackDamage;
+                        target.ApplyDamage(AttackDamage);
 
                         World.Instance.SetTimeout(.2f, EndTurn);
                     }
@@ -456,7 +456,7 @@ public class Player : Actor
                 // TODO: can Rook melee attack as well?                
 
                 // apply damage
-                enemiesHit.ForEach(e => e.CurHealth -= AttackDamage);
+                enemiesHit.ForEach(e => e.ApplyDamage(AttackDamage));
                 return 1;
 
             case null:                
