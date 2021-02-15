@@ -41,6 +41,10 @@ public class ActorAnimationSet : ScriptableObject
         {
             Sprites[animState] = new Dictionary<CardinalDirection, Sprite[]>();
             int offset = 0;
+
+            if (ordering == null)
+                return;
+
             foreach (var dir in ordering)
             {
                 int frameCount = animsUnsplit[animState].Length / 4;

@@ -50,6 +50,13 @@ public class Player : Actor
     [SerializeField]
     GameObject reticle;
 
+    [SerializeField]
+    GameObject smithExplosionPrefab;
+    [SerializeField]
+    SpriteRenderer salVaultIndicator;
+    [SerializeField]
+    SpriteRenderer rookRangeIndicator;
+
     public static Player Instance;
 
     /** to know what's in front */
@@ -183,20 +190,26 @@ public class Player : Actor
                         // TODO: switch animation?
                         CurCharacter = (PlayerCharacter)characterIDSelected;
                         AudioController.Instance.PlayClip(tagInVoicelines[characterIDSelected - 1]); // 0-indexed
+                        rookRangeIndicator.enabled = false;
+                        salVaultIndicator.enabled = false;
+                        State = PlayerState.Idle;
+                        return;
                     }
                 }
                 #endregion
 
                 if (CurCharacter == PlayerCharacter.Rook && Input.GetKeyDown(KeyCode.F))
                 {
+                    rookRangeIndicator.enabled = true;
                     State = PlayerState.Aiming;
-                    StartAiming(Color.red);
+                    EnableReticle(Color.red);
                 }
 
                 if (CurCharacter == PlayerCharacter.Sal && Input.GetKeyDown(KeyCode.LeftAlt))
                 {
+                    salVaultIndicator.enabled = true;
                     State = PlayerState.PreparingToJump;
-                    StartAiming(Color.blue);
+                    EnableReticle(Color.blue);
                 }
 
                 #region Movement/Combat Controls
@@ -263,7 +276,8 @@ public class Player : Actor
 
                     if (target != null)
                     {
-                        StopAiming();
+                        rookRangeIndicator.enabled = false;                        
+                        DisableReticle();
                         State = PlayerState.Idle;
                         if (guns != null)
                             guns.Shoot(mouseWorldPos, .2f);
@@ -275,7 +289,8 @@ public class Player : Actor
                 } 
                 else if(Input.GetKeyDown(KeyCode.Escape))
                 {
-                    StopAiming();
+                    rookRangeIndicator.enabled = false;
+                    DisableReticle();
                     State = PlayerState.Idle;
                 }
                 break;
@@ -309,12 +324,14 @@ public class Player : Actor
                     if(allowedVaultsSal.Contains(relMovement) && !World.Instance.IsSolid(landingSpot) && World.Instance.GetActor(landingSpot) == null)
                     {
                         // TODO: vault animation
+                        salVaultIndicator.enabled = false;
                         VaultTo(landingSpot);
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    StopAiming();
+                    DisableReticle();
+                    salVaultIndicator.enabled = false;
                     State = PlayerState.Idle;
                 }
                 break;
@@ -342,19 +359,19 @@ public class Player : Actor
 
     void EndTurn()
     {
-        StopAiming(); // just in case
+        DisableReticle(); // just in case
         State = PlayerState.Idle;
         MyTurn = false;
     }
 
-    void StartAiming(Color color)
+    void EnableReticle(Color color)
     {
         var reticleRenderer = reticle.GetComponent<SpriteRenderer>();
         reticleRenderer.color = color;
         reticle.SetActive(true);
     }
 
-    void StopAiming()
+    void DisableReticle()
     {
         reticle.SetActive(false);
     }
@@ -411,6 +428,10 @@ public class Player : Actor
             {                
                 State = PlayerState.Attacking;
                 animator.TriggerAnimation(ActorAnimationState.Attack, gridPos - GridPos);
+
+                // Explosion effects (should destroy themselves)
+                Instantiate(smithExplosionPrefab, World.Instance.GridToWorldPos(gridPos), Quaternion.identity, transform);
+
                 world.BreakTile(gridPos);
                 world.SetTimeout(.2f, EndTurn);               
             }
@@ -443,6 +464,9 @@ public class Player : Actor
                 {
                     foreach (var relPosition in swingPatternSmith[lastStep])
                     {
+                        // Explosion effects (should destroy themselves)
+                        Instantiate(smithExplosionPrefab, World.Instance.GridToWorldPos(GridPos + relPosition), Quaternion.identity, transform);
+
                         var possibleEnemy = World.Instance.GetActor(GridPos + relPosition) as Enemy;
                         if (possibleEnemy != null)
                             enemiesHit.Add(possibleEnemy);
