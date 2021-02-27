@@ -152,7 +152,17 @@ public class World : MonoBehaviour
 
         if(actor == Player.Instance && sceneTriggers.ContainsKey(gridPos))
         {
-            SceneManager.LoadScene(sceneTriggers[gridPos]);
+            var overlay = OverlayImage.Instance;
+            if(overlay)
+            {
+                overlay.SetColor(Color.black);
+                overlay.FadeIn(1f);
+                SetTimeout(1f, () => SceneManager.LoadScene(sceneTriggers[gridPos]));
+            }
+            else
+            {
+                SceneManager.LoadScene(sceneTriggers[gridPos]);
+            }            
         }
     }
 
