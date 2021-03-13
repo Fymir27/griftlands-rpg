@@ -21028,7 +21028,7 @@ PrefabInstance:
     - target: {fileID: 4623102862890369717, guid: 926aac1368367384ea9ff0caef41fa4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7085567814149042671, guid: 926aac1368367384ea9ff0caef41fa4c,
         type: 3}
@@ -21096,30 +21096,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7085567814149042674, guid: 926aac1368367384ea9ff0caef41fa4c,
+    - target: {fileID: 7213619328242200292, guid: 926aac1368367384ea9ff0caef41fa4c,
         type: 3}
-      propertyPath: CurCharacter
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7085567814149042674, guid: 926aac1368367384ea9ff0caef41fa4c,
-        type: 3}
-      propertyPath: CharacterUnlockState
+      propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7085567814149042674, guid: 926aac1368367384ea9ff0caef41fa4c,
-        type: 3}
-      propertyPath: ShootingRange
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7085567814149042674, guid: 926aac1368367384ea9ff0caef41fa4c,
-        type: 3}
-      propertyPath: reticle
-      value: 
-      objectReference: {fileID: 916351976}
-    - target: {fileID: 7085567814149042674, guid: 926aac1368367384ea9ff0caef41fa4c,
-        type: 3}
-      propertyPath: walkingSpeed
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8288804682715702375, guid: 926aac1368367384ea9ff0caef41fa4c,
         type: 3}
