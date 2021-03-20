@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public abstract class Actor : MonoBehaviour
 {
     [Header("Actor Properties")]
+    public bool SnapToGrid = true;
     public bool MyTurn;
     public string Name;
     public Vector3Int GridPos;
@@ -31,8 +32,9 @@ public abstract class Actor : MonoBehaviour
     {
         var world = World.Instance;
         GridPos = world.WorldToGridPos(transform.position);
-        // snap to grid
-        transform.position = world.GridToWorldPos(GridPos);
+
+        if(SnapToGrid) 
+            transform.position = world.GridToWorldPos(GridPos);
 
         world.MoveActorTo(this, GridPos);
 
