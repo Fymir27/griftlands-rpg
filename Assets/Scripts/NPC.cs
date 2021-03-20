@@ -14,6 +14,13 @@ public class NPC : Actor
     [SerializeField]
     string[] randomQuips;
 
+    [SerializeField]
+    bool disappearAfterConversation;
+    [SerializeField]
+    bool unlocksCharacter;
+    [SerializeField]
+    PlayerCharacter unlockedCharacter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +72,14 @@ public class NPC : Actor
         }
         else
         {
+            if (disappearAfterConversation)
+            {
+                Textbox.Instance.ConversationEndedEvent += () => Destroy(gameObject);
+            }
+            if(unlocksCharacter)
+            {
+                Textbox.Instance.ConversationEndedEvent += () => Player.Instance.UnlockCharacter(unlockedCharacter); 
+            }
             Textbox.Instance.StartConversation(convo);
         }
     }

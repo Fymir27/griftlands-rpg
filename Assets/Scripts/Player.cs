@@ -514,6 +514,18 @@ public class Player : Actor
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void UnlockCharacter(PlayerCharacter character)
+    {
+        if((int)CharacterUnlockState < (int)character)
+        {
+            CharacterUnlockState = character;
+        } 
+        else
+        {
+            Debug.LogError("Unlock character called with already unlocked character!");
+        }
+    }
+
     public override void Die()
     {
         animator.TriggerAnimation(ActorAnimationState.Death);

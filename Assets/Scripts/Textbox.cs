@@ -7,6 +7,9 @@ public class Textbox : MonoBehaviour
 {
     public static Textbox Instance;
 
+    public delegate void ConversationEndedCallback();
+    public event ConversationEndedCallback ConversationEndedEvent;
+
     [SerializeField]
     Text characterName = null;
     [SerializeField]
@@ -66,6 +69,8 @@ public class Textbox : MonoBehaviour
 
         curConversation = null;
         gameObject.SetActive(false);
+        ConversationEndedEvent?.Invoke();
+        ConversationEndedEvent = null;
         return true;
     }
 
