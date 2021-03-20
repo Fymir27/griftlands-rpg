@@ -560,6 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d7c81e67427b24bbef8b5742742a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SnapToGrid: 1
   MyTurn: 0
   Name: 
   GridPos: {x: 0, y: 0, z: 0}
@@ -573,6 +574,8 @@ MonoBehaviour:
   ShootingRange: 4
   walkingSpeed: 2.5
   vaultingSpeed: 10
+  vaultCooldown: 2
+  curVaultCooldown: 0
   walkingTo: {x: 0, y: 0, z: 0}
   CurCharacter: 1
   CharacterUnlockState: 1

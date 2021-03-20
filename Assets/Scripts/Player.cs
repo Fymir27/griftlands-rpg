@@ -35,6 +35,10 @@ public class Player : Actor
     public float walkingSpeed;
     [Range(5, 20)]
     public float vaultingSpeed;
+    [Range(1, 5)]
+    public int vaultCooldown;
+    [SerializeField]
+    int curVaultCooldown;
 
     public Vector3 walkingTo;
 
@@ -122,7 +126,7 @@ public class Player : Actor
         Vector3Int.up + Vector3Int.left,
         Vector3Int.down + Vector3Int.right,
         Vector3Int.down + Vector3Int.left,        
-    };
+    };  
 
     SpriteRenderer spriteRenderer;
 
@@ -137,6 +141,7 @@ public class Player : Actor
         InitActor();
         spriteRenderer = GetComponent<SpriteRenderer>();
         guns = GetComponentInChildren<Guns>();
+        curVaultCooldown = vaultCooldown;
     }
 
     // Update is called once per frame
@@ -213,7 +218,7 @@ public class Player : Actor
                     EnableReticle(Color.red);
                 }
 
-                if (CurCharacter == PlayerCharacter.Sal && Input.GetKeyDown(KeyCode.LeftAlt))
+                if (curVaultCooldown == 0 && CurCharacter == PlayerCharacter.Sal && Input.GetKeyDown(KeyCode.LeftAlt))
                 {
                     salVaultIndicator.enabled = true;
                     State = PlayerState.PreparingToJump;
@@ -350,6 +355,8 @@ public class Player : Actor
     {
         MyTurn = true;
 
+        curVaultCooldown = Mathf.Max(0, curVaultCooldown - 1);
+
         var thing = World.Instance.GetObject(GridPos);
         if (thing != null)
             InteractWithObject(thing);
@@ -390,6 +397,7 @@ public class Player : Actor
     /// <param name="gridPos"></param>
     void VaultTo(Vector3Int gridPos)
     {
+        curVaultCooldown = vaultCooldown;
         var world = World.Instance;
         State = PlayerState.Vaulting;
         world.MoveActorTo(this, gridPos);
