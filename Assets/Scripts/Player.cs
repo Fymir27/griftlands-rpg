@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum PlayerCharacter
 {
@@ -61,6 +62,8 @@ public class Player : Actor
     SpriteRenderer salVaultIndicator;
     [SerializeField]
     SpriteRenderer rookRangeIndicator;
+    [SerializeField]
+    GameObject ammoBar;
 
     public static Player Instance;
 
@@ -129,6 +132,7 @@ public class Player : Actor
     };  
 
     SpriteRenderer spriteRenderer;
+    Image ammoBarImage;
 
     private void Awake()
     {
@@ -141,6 +145,7 @@ public class Player : Actor
         InitActor();
         spriteRenderer = GetComponent<SpriteRenderer>();
         guns = GetComponentInChildren<Guns>();
+        ammoBarImage = ammoBar.GetComponent<Image>();
         curVaultCooldown = vaultCooldown;
     }
 
@@ -219,7 +224,8 @@ public class Player : Actor
 
                 if (CurCharacter == PlayerCharacter.Rook && Input.GetKeyDown(KeyCode.F))
                 {
-                    rookRangeIndicator.enabled = true;
+                    ammoBar.SetActive(true);
+                    //rookRangeIndicator.enabled = true;
                     State = PlayerState.Aiming;
                     EnableReticle(Color.red);
                 }
@@ -281,10 +287,22 @@ public class Player : Actor
                 break;
 
             case PlayerState.Aiming:
-                if (Input.GetMouseButtonDown(0))
+                var mouseWorldPos = World.Instance.MouseGridPos();
+                var aimedGridPos = World.Instance.WorldToGridPos(mouseWorldPos);
+                var lineOfSight = World.Instance.LineOfSight(GridPos, aimedGridPos, ShootingRange, true, false);
+                int ammoLeft = Mathf.Max(0, ShootingRange + 1 - lineOfSight.Count);
+                ammoBarImage.fillAmount = (1f / ShootingRange) * ammoLeft;
+                if(aimedGridPos != lineOfSight.Last())
                 {
-                    var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    var lineOfSight = World.Instance.LineOfSight(GridPos, World.Instance.WorldToGridPos(mouseWorldPos), ShootingRange);
+                    ammoBarImage.fillAmount = 0f;
+                    EnableReticle(Color.red);
+                    break;
+                } 
+                
+                EnableReticle(Color.cyan);
+                
+                if (Input.GetMouseButtonDown(0))
+                {                                       
                     Enemy target = null;
                     foreach (var pos in lineOfSight)
                     {
@@ -394,6 +412,7 @@ public class Player : Actor
 
     void DisableReticle()
     {
+        ammoBar.SetActive(false);
         reticle.SetActive(false);
     }
 
@@ -556,8 +575,8 @@ public class Player : Actor
             return;
         var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0;
-        var lineOfSight = world.LineOfSight(GridPos, world.WorldToGridPos(mouseWorldPos), ShootingRange);
-        foreach(var pos in lineOfSight)
+        var lineOfSight = world.LineOfSight(GridPos, world.WorldToGridPos(mouseWorldPos), ShootingRange, true, false);        
+        foreach (var pos in lineOfSight)
         {
             Gizmos.DrawSphere(world.GridToWorldPos(pos), .1f);
         }
