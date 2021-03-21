@@ -226,15 +226,13 @@ public class Player : Actor
                 {
                     ammoBar.SetActive(true);
                     //rookRangeIndicator.enabled = true;
-                    State = PlayerState.Aiming;
-                    EnableReticle(Color.red);
+                    State = PlayerState.Aiming;                    
                 }
 
                 if (curVaultCooldown == 0 && CurCharacter == PlayerCharacter.Sal && Input.GetKeyDown(KeyCode.LeftAlt))
                 {
                     salVaultIndicator.enabled = true;
-                    State = PlayerState.PreparingToJump;
-                    EnableReticle(Color.blue);
+                    State = PlayerState.PreparingToJump;                   
                 }
 
                 #region Movement/Combat Controls
@@ -347,9 +345,18 @@ public class Player : Actor
                 break;
 
             case PlayerState.PreparingToJump:
-                if (Input.GetMouseButtonDown(0)) {
-                    var landingSpot = World.Instance.MouseGridPos();
-                    var relMovement = landingSpot - GridPos;
+                var landingSpot = World.Instance.MouseGridPos();
+                var relMovement = landingSpot - GridPos;
+                if(!allowedVaultsSal.Contains(relMovement))
+                {
+                    EnableReticle(Color.red);
+                    break;
+                } 
+                else
+                {
+                    EnableReticle(Color.blue);
+                }
+                if (Input.GetMouseButtonDown(0)) {                    
                     if(relMovement.magnitude > 1)
                     {
                         var intermediateSpot = GridPos + relMovement / 2;
@@ -358,7 +365,7 @@ public class Player : Actor
                             break;
                         }
                     }
-                    if(allowedVaultsSal.Contains(relMovement) && !World.Instance.IsSolid(landingSpot) && World.Instance.GetActor(landingSpot) == null)
+                    if(!World.Instance.IsSolid(landingSpot) && World.Instance.GetActor(landingSpot) == null)
                     {
                         // TODO: vault animation
                         salVaultIndicator.enabled = false;
