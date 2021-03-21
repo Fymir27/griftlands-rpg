@@ -28,6 +28,16 @@ public class Credits : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        // make sure alpha is 1 (can be turned down for debug visibilty)
+        var image = GetComponent<Image>();
+        if(image != null)
+        {
+            var color = image.color;
+            color.a = 1f;
+            image.color = color;
+        }
+
         gameObject.SetActive(false);
 
         if (creditFile == null)
