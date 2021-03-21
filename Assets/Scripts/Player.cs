@@ -178,6 +178,12 @@ public class Player : Actor
 
     void HandlePlayerInput()
     {
+        if(Input.GetKeyDown(KeyCode.F8))
+        {
+            Credits.Instance.Toggle();
+            return;
+        }
+
         switch (State)
         {
             case PlayerState.Idle:
