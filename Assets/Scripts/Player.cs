@@ -445,6 +445,7 @@ public class Player : Actor
 
         if (otherActor != null)
         {
+            animator.TriggerAnimation(ActorAnimationState.Idle, gridPos - GridPos);
             int turnsTaken = InteractWithActor(otherActor);
             if (turnsTaken > 0)
             {
@@ -459,6 +460,7 @@ public class Player : Actor
 
         if (worldObject != null)
         {
+            animator.TriggerAnimation(ActorAnimationState.Idle, gridPos - GridPos);
             if (worldObject.Solid)
             {               
                 InteractWithObject(worldObject);
