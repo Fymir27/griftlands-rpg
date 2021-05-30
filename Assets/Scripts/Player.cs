@@ -229,10 +229,17 @@ public class Player : Actor
                     State = PlayerState.Aiming;                    
                 }
 
-                if (curVaultCooldown == 0 && CurCharacter == PlayerCharacter.Sal && Input.GetKeyDown(KeyCode.LeftAlt))
+                if (CurCharacter == PlayerCharacter.Sal && Input.GetKeyDown(KeyCode.LeftAlt))
                 {
-                    salVaultIndicator.enabled = true;
-                    State = PlayerState.PreparingToJump;                   
+                    if (curVaultCooldown == 0)
+                    {
+                        salVaultIndicator.enabled = true;
+                        State = PlayerState.PreparingToJump;
+                    }
+                    else
+                    {
+                        WarningBar.Instance.Display($"Ready {curVaultCooldown} turns", Color.blue, .5f);
+                    }                        
                 }
 
                 #region Movement/Combat Controls
@@ -345,38 +352,44 @@ public class Player : Actor
                 break;
 
             case PlayerState.PreparingToJump:
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    DisableReticle();
+                    salVaultIndicator.enabled = false;
+                    State = PlayerState.Idle;
+                    break;
+                }
+
                 var landingSpot = World.Instance.MouseGridPos();
                 var relMovement = landingSpot - GridPos;
                 if(!allowedVaultsSal.Contains(relMovement))
                 {
                     EnableReticle(Color.red);
                     break;
-                } 
-                else
-                {
-                    EnableReticle(Color.blue);
                 }
-                if (Input.GetMouseButtonDown(0)) {                    
-                    if(relMovement.magnitude > 1)
+
+                if (relMovement.magnitude > 1)
+                {
+                    var intermediateSpot = GridPos + relMovement / 2;
+                    if (World.Instance.IsSolid(intermediateSpot) && !World.Instance.IsJumpable(intermediateSpot))
                     {
-                        var intermediateSpot = GridPos + relMovement / 2;
-                        if(World.Instance.IsSolid(intermediateSpot) && !World.Instance.IsJumpable(intermediateSpot))
-                        {
-                            break;
-                        }
-                    }
-                    if(!World.Instance.IsSolid(landingSpot) && World.Instance.GetActor(landingSpot) == null)
-                    {
-                        // TODO: vault animation
-                        salVaultIndicator.enabled = false;
-                        VaultTo(landingSpot);
+                        EnableReticle(Color.red);
+                        break;
                     }
                 }
-                else if (Input.GetKeyDown(KeyCode.Escape))
+                if (World.Instance.IsSolid(landingSpot) || World.Instance.GetActor(landingSpot) != null)
                 {
-                    DisableReticle();
+                    EnableReticle(Color.red);
+                    break;
+                }
+
+                EnableReticle(Color.blue);
+                
+                if (Input.GetMouseButtonDown(0)) {
+                    // TODO: vault animation
                     salVaultIndicator.enabled = false;
-                    State = PlayerState.Idle;
+                    VaultTo(landingSpot);                    
                 }
                 break;
         }        
