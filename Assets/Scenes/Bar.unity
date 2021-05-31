@@ -243,7 +243,8 @@ PrefabInstance:
         type: 3}
       propertyPath: convoJustSal
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 625e22af4824d1b48a611bcc236658ac,
+        type: 2}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: convoWithRook
