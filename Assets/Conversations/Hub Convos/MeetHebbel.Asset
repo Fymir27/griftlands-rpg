@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
+  m_Name: MeetHebbel
+  m_EditorClassIdentifier: 
+  conversation:
+  - Sal:Barkeep! Have you seen-
+  - Hebbel:A guy with a mustache and a kra'deshi about yea high?
+  - Sal:...How did you-
+  - "Hebbel:There was some commotion happening outside earlier. Those two grifters,
+    they got into trouble with the Spark Barons and The Rise\u2026"
+  - Hebbel:You know them?
+  - Sal:They're my friends, yes! Where were they taken?
+  - :The barkeep pulls a worn paper map from under the bar, makes some broad strokes
+    on it with a pen, then hands the paper to you.
+  - Hebbel:I only saw where they got taken. You're on your own for the rest.
+  - Sal:Wait, you're gonna help me? Just like that?
+  - Hebbel:It's a small world, grifter. I happen to know your two friends, and that
+    if anything were to happen to them I'd have Hesh and high water coming down on
+    me.
+  - Hebbel:I have a business to run, and I'm not about to lose it.
+  - :You don't know what to make of this development, but the small wave of relief
+    that hits you washes away any passing thoughts.
+  - "Sal:Thank you, Mister\u2026?"
+  - Hebbel:Call me Hebbel. Come back here if you need anything.

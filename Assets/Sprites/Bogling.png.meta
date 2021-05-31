@@ -1,7 +1,127 @@
 fileFormatVersion: 2
 guid: df2b2577105f161458769e32784c913e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8189374915101420294
+    second: Bogling_0
+  - first:
+      213: -1728767515335957519
+    second: Bogling_1
+  - first:
+      213: -1315173705575683187
+    second: Bogling_2
+  - first:
+      213: -6634105589936509894
+    second: Bogling_3
+  - first:
+      213: 1955538329923978007
+    second: Bogling_4
+  - first:
+      213: -5773979149115113457
+    second: Bogling_5
+  - first:
+      213: -7612474288608807086
+    second: Bogling_6
+  - first:
+      213: -6517016544969771269
+    second: Bogling_7
+  - first:
+      213: -2307257291002205831
+    second: Bogling_8
+  - first:
+      213: 5586331128549024444
+    second: Bogling_9
+  - first:
+      213: 5363411648325207949
+    second: Bogling_10
+  - first:
+      213: 3566485079920877936
+    second: Bogling_11
+  - first:
+      213: -7578947586105180912
+    second: Bogling_12
+  - first:
+      213: 7021195872214953109
+    second: Bogling_13
+  - first:
+      213: 5245243968198511541
+    second: Bogling_14
+  - first:
+      213: 8380285342790003628
+    second: Bogling_15
+  - first:
+      213: 8772400746247219233
+    second: Bogling_16
+  - first:
+      213: 5824786339239006996
+    second: Bogling_17
+  - first:
+      213: 5790249744079545566
+    second: Bogling_18
+  - first:
+      213: 3894159407299266692
+    second: Bogling_19
+  - first:
+      213: -664625295535388446
+    second: Bogling_0
+  - first:
+      213: 7339469266285577973
+    second: Bogling_1
+  - first:
+      213: 900295118681382446
+    second: Bogling_2
+  - first:
+      213: 5554710085743692120
+    second: Bogling_3
+  - first:
+      213: -7937043002170562983
+    second: Bogling_4
+  - first:
+      213: -4348159346857976313
+    second: Bogling_5
+  - first:
+      213: -4750174365725102318
+    second: Bogling_6
+  - first:
+      213: 2116453263744276935
+    second: Bogling_7
+  - first:
+      213: -6632670816132595317
+    second: Bogling_8
+  - first:
+      213: 1779045524267431196
+    second: Bogling_9
+  - first:
+      213: -4512017649637543446
+    second: Bogling_10
+  - first:
+      213: -7658515818076353317
+    second: Bogling_11
+  - first:
+      213: 477169845383868534
+    second: Bogling_12
+  - first:
+      213: -5644856618440239836
+    second: Bogling_13
+  - first:
+      213: 3029155235871280797
+    second: Bogling_14
+  - first:
+      213: -1536131042260122542
+    second: Bogling_15
+  - first:
+      213: 6634817666413707675
+    second: Bogling_16
+  - first:
+      213: -742667423306212534
+    second: Bogling_17
+  - first:
+      213: -6342839826255010665
+    second: Bogling_18
+  - first:
+      213: 8012603879020838739
+    second: Bogling_19
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -85,7 +205,427 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Bogling_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e8cfd6a0d6c6c6f0800000000000000
+      internalID: -664625295535388446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f649d859680bd560800000000000000
+      internalID: 7339469266285577973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2e9506f3ad7e7c00800000000000000
+      internalID: 900295118681382446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8594803946b461d40800000000000000
+      internalID: 5554710085743692120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 956af981175f9d190800000000000000
+      internalID: -7937043002170562983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70e5cbf8c1c38a3c0800000000000000
+      internalID: -4348159346857976313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21fe9c5f49df31eb0800000000000000
+      internalID: -4750174365725102318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c99139a7072f5d10800000000000000
+      internalID: 2116453263744276935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b81015cb80504f3a0800000000000000
+      internalID: -6632670816132595317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1575318a7070b810800000000000000
+      internalID: 1779045524267431196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_10
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae1bf057ad71261c0800000000000000
+      internalID: -4512017649637543446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_11
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdc49d4a07c77b590800000000000000
+      internalID: -7658515818076353317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67032ab327f3f9600800000000000000
+      internalID: 477169845383868534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4255bd130d079a1b0800000000000000
+      internalID: -5644856618440239836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e4f9b43a8b90a20800000000000000
+      internalID: 3029155235871280797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_15
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25482a1b4f09eaae0800000000000000
+      internalID: -1536131042260122542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b91431cc38b931c50800000000000000
+      internalID: 6634817666413707675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b149fc9e381b5f0800000000000000
+      internalID: -742667423306212534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_18
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 794aed8a8c4b9f7a0800000000000000
+      internalID: -6342839826255010665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bogling_19
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35f34fe76cc723f60800000000000000
+      internalID: 8012603879020838739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
