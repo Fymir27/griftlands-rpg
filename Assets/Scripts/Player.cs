@@ -27,6 +27,8 @@ public enum PlayerState
 
 public class Player : Actor
 {
+    public static Player Instance;
+
     [Header("Player Properties")]
     public PlayerState State = PlayerState.Idle;
 
@@ -43,6 +45,8 @@ public class Player : Actor
 
     public Vector3 walkingTo;
 
+    public const string PlayerPrefCharacterUnlockState = "characterUnlockState";
+    public const string PlayerPrefCurrentScene = "currentScene";
     public PlayerCharacter CurCharacter = PlayerCharacter.Sal;
     public PlayerCharacter CharacterUnlockState = PlayerCharacter.Sal;
 
@@ -63,9 +67,7 @@ public class Player : Actor
     [SerializeField]
     SpriteRenderer rookRangeIndicator;
     [SerializeField]
-    GameObject ammoBar;
-
-    public static Player Instance;
+    GameObject ammoBar;    
 
     /** to know what's in front */
     Vector3Int lastStep;
@@ -132,7 +134,7 @@ public class Player : Actor
     };  
 
     SpriteRenderer spriteRenderer;
-    Image ammoBarImage;
+    Image ammoBarImage;    
 
     private void Awake()
     {
@@ -147,11 +149,19 @@ public class Player : Actor
         guns = GetComponentInChildren<Guns>();
         ammoBarImage = ammoBar.GetComponent<Image>();
         curVaultCooldown = vaultCooldown;
+
+        PlayerPrefs.SetString(PlayerPrefCurrentScene, SceneManager.GetActiveScene().name);
+
+        if (PlayerPrefs.HasKey(PlayerPrefCharacterUnlockState))
+        {
+            int characterIndex = PlayerPrefs.GetInt(PlayerPrefCharacterUnlockState);
+            CharacterUnlockState = (PlayerCharacter)characterIndex;
+        }
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         if (State == PlayerState.Dying)
             return;
 
@@ -574,6 +584,7 @@ public class Player : Actor
         if((int)CharacterUnlockState < (int)character)
         {
             CharacterUnlockState = character;
+            PlayerPrefs.SetInt(PlayerPrefCharacterUnlockState, (int)character);
         } 
         else
         {

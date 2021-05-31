@@ -96,5 +96,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sampleRate: 4
   sprites:
-  - {fileID: 6207672835636541682, guid: def1fa5af485e48499f3beaa858deb55, type: 3}
-  - {fileID: -5902590955884477415, guid: def1fa5af485e48499f3beaa858deb55, type: 3}
+  - {fileID: 21300000, guid: c089848cf5c919d459aefaf546961aa7, type: 3}
