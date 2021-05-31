@@ -654,8 +654,8 @@ MonoBehaviour:
   CurCharacter: 1
   CharacterUnlockState: 1
   animations:
-  - {fileID: 11400000, guid: 6ea659c9a039e3f45b64e95d2ff28494, type: 2}
-  - {fileID: 11400000, guid: 6ea659c9a039e3f45b64e95d2ff28494, type: 2}
+  - {fileID: 11400000, guid: 421c374c698a6f148afa4379f44d75f3, type: 2}
+  - {fileID: 11400000, guid: 8464ee060a752064e9b27dfd62bfbcb9, type: 2}
   - {fileID: 11400000, guid: dc0a18b495f2a8f4993b7877302fcdb8, type: 2}
   tagInVoicelines:
   - {fileID: 8300000, guid: 284945ed52fceb04b9ad2a8190d4def5, type: 3}

@@ -9979,7 +9979,7 @@ PrefabInstance:
         type: 3}
       propertyPath: AnimationSet
       value: 
-      objectReference: {fileID: 11400000, guid: 6ea659c9a039e3f45b64e95d2ff28494,
+      objectReference: {fileID: 11400000, guid: 421c374c698a6f148afa4379f44d75f3,
         type: 2}
     - target: {fileID: 4623102862890369717, guid: 926aac1368367384ea9ff0caef41fa4c,
         type: 3}

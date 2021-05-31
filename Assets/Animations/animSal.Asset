@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc305250b4379b9419c6fa84a818f923, type: 3}
+  m_Name: animSal
+  m_EditorClassIdentifier: 
+  ordering: 02000000010000000300000000000000
+  animIdle:
+  - {fileID: 7081009006785142241, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: 8606755411971531283, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: 7081009006785142241, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: 8606755411971531283, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: 7081009006785142241, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: 8606755411971531283, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: 7081009006785142241, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: 8606755411971531283, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  animWalk:
+  - {fileID: -1571386104903855534, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: -4297947226015824382, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: -161025060727659662, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: -7433742188843645509, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: -3309682675613135153, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: 8767289375454934074, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: -1142365566881055690, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: -115190521848434208, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  animAttack:
+  - {fileID: -4599843067874009792, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: 695422059089951362, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: -8290956168498115877, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: -7519152020776320338, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: 2050823116043526309, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: 4711833410085424869, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: -8381599382749901369, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: 2188121172706428707, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  animDeath:
+  - {fileID: 2374437496384135345, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}
+  - {fileID: 364601117052896060, guid: eb62f7e1971da8a46b71ce8f6b5798b1, type: 3}

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc305250b4379b9419c6fa84a818f923, type: 3}
+  m_Name: animRook
+  m_EditorClassIdentifier: 
+  ordering: 02000000010000000300000000000000
+  animIdle:
+  - {fileID: 21300000, guid: 4e0ea20ea4411b340a5788943c8d3398, type: 3}
+  - {fileID: 21300000, guid: 4e0ea20ea4411b340a5788943c8d3398, type: 3}
+  - {fileID: 21300000, guid: 4e0ea20ea4411b340a5788943c8d3398, type: 3}
+  - {fileID: 21300000, guid: 4e0ea20ea4411b340a5788943c8d3398, type: 3}
+  animWalk:
+  - {fileID: 21300000, guid: 4e0ea20ea4411b340a5788943c8d3398, type: 3}
+  - {fileID: 21300000, guid: 4e0ea20ea4411b340a5788943c8d3398, type: 3}
+  - {fileID: 21300000, guid: 4e0ea20ea4411b340a5788943c8d3398, type: 3}
+  - {fileID: 21300000, guid: 4e0ea20ea4411b340a5788943c8d3398, type: 3}
+  animAttack:
+  - {fileID: -1131985158477182807, guid: 742ecba629573da4884eb481ae2f0a19, type: 3}
+  - {fileID: -1131985158477182807, guid: 742ecba629573da4884eb481ae2f0a19, type: 3}
+  - {fileID: -1131985158477182807, guid: 742ecba629573da4884eb481ae2f0a19, type: 3}
+  - {fileID: -1131985158477182807, guid: 742ecba629573da4884eb481ae2f0a19, type: 3}
+  animDeath:
+  - {fileID: 5376139173471351179, guid: 742ecba629573da4884eb481ae2f0a19, type: 3}
+  - {fileID: 4979719457027049545, guid: 742ecba629573da4884eb481ae2f0a19, type: 3}
