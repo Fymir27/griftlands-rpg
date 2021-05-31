@@ -91,6 +91,13 @@ public class ActorAnimator : MonoBehaviour
             Debug.LogError("No sprites found for animation: " + animation);
             return;
         }    
+
+        if(AnimationSet.Sprites[animation][dir].Length == 0)
+        {
+            Debug.LogWarning("No sprites found for animation: " + animation);
+            return;
+        }
+
         animationState = animation;
         direction = dir;
         frameIndex = 0;
@@ -100,15 +107,7 @@ public class ActorAnimator : MonoBehaviour
     public void TriggerAnimation(ActorAnimationState animation)
     {
         var defaultDir = AnimationSet.GetInitialDirection();
-        if (!AnimationSet.Sprites.ContainsKey(animation) || !AnimationSet.Sprites[animation].ContainsKey(defaultDir))
-        {
-            Debug.LogError("No sprites found for animation: " + animation);
-            return;
-        }
-        animationState = animation;
-        direction = defaultDir;
-        frameIndex = 0;
-        secondsUntilNextFrame = 0;
+        TriggerAnimation(animation, defaultDir);
     }
 
     public void TriggerAnimation(ActorAnimationState animation, Vector3Int vectorDir)
