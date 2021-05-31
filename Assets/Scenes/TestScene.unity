@@ -9844,11 +9844,16 @@ PrefabInstance:
         type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 85361771}
+      objectReference: {fileID: 43087448}
     - target: {fileID: 4491377251900992248, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
         type: 3}
       propertyPath: Name
       value: Bogling
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992248, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: walkingSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4491377251900992249, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
         type: 3}
@@ -9884,7 +9889,7 @@ PrefabInstance:
     - target: {fileID: 4491377251900992250, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.4
+      value: -6.54
       objectReference: {fileID: 0}
     - target: {fileID: 4491377251900992250, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
         type: 3}

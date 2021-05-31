@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9492cac9ac591c441b81a753a1a0be29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SnapToGrid: 1
   MyTurn: 0
   Name: Enemy
   GridPos: {x: 0, y: 0, z: 0}
@@ -106,7 +107,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   aggroRange: 3
   trackRange: 6
-  walkingSpeed: 3
+  walkingSpeed: 4
   aggroed: 0
   walking: 0
   walkingTo: {x: 0, y: 0, z: 0}
