@@ -594,6 +594,7 @@ public class Player : Actor
 
     public override void Die()
     {
+        WarningBar.Instance.Display($"GAME OVER", Color.red, 1f);
         animator.TriggerAnimation(ActorAnimationState.Death);
         animator.OnAnimationComplete += () => World.Instance.SetTimeout(1f, () => SceneManager.LoadScene(SceneManager.GetActiveScene().name));
     }
