@@ -67,7 +67,10 @@ public class Player : Actor
     [SerializeField]
     SpriteRenderer rookRangeIndicator;
     [SerializeField]
-    GameObject ammoBar;    
+    GameObject ammoBar;
+
+    [SerializeField]
+    Slides introSlides;
 
     /** to know what's in front */
     Vector3Int lastStep;
@@ -156,6 +159,19 @@ public class Player : Actor
         {
             int characterIndex = PlayerPrefs.GetInt(PlayerPrefCharacterUnlockState);
             CharacterUnlockState = (PlayerCharacter)characterIndex;
+        }
+        else
+        {
+            if (introSlides != null)
+            {
+                State = PlayerState.Dying;
+                introSlides.OnSlideshowEnd += () => State = PlayerState.Idle;
+                introSlides.BeginSlideshow();
+            }
+            else
+            {                
+                Debug.LogError("Player is missing reference to intro slides!");
+            }
         }
     }
 
