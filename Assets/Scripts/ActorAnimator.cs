@@ -77,8 +77,9 @@ public class ActorAnimator : MonoBehaviour
                     animationState = ActorAnimationState.Idle;
                     frameIndex = 0;
                 }
+                anim = AnimationSet.Sprites[animationState][direction];
             }
-           
+            
             spriteRenderer.sprite = anim[frameIndex++];
             secondsUntilNextFrame = 1f / sampleRate;
         }
