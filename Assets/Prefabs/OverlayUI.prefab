@@ -729,7 +729,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4976276176161262208}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -884,7 +884,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5932527494977318252}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -929,11 +929,10 @@ MonoBehaviour:
   - "It takes a while for you to wake up - you took a pretty nasty blow to the head,
     but you don\u2019t let it stop you."
   - "You\u2019ve been through much worse."
+  transitionDuration: 1
   continueImage: {fileID: 2291180844803698722}
   contentUIText: {fileID: 3950573328597363993}
   backgroundImage: {fileID: 7222961141750693340}
-  transitionDuration: 1
-  currentImage: 0
 --- !u!1 &7454260118000669065
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +985,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7454260118000669065}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

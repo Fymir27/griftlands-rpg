@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1375244165af374b86fd25719b14108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstScene: Garbage
+  firstScene: PathToHub
   loadButton: {fileID: 9054007786143792586}
   volumeSlider: {fileID: 9054007784763422084}
 --- !u!1 &9054007785259349123

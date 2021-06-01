@@ -16,8 +16,9 @@ public class Slides : MonoBehaviour
     [SerializeField]
     Text contentUIText;
     [SerializeField]
-    Image backgroundImage;    
+    Image backgroundImage;
 
+    bool slideshowStarted = false;
     int contentIndex = 0;   
     float targetAlphaText = 0f;
     float fadeDurationText = 0f;
@@ -27,6 +28,11 @@ public class Slides : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!slideshowStarted)
+        { 
+            return; 
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             NextSlide();
@@ -48,7 +54,9 @@ public class Slides : MonoBehaviour
         {
             Debug.LogError("No images for slideshow!");
             return;
-        }       
+        }
+
+        slideshowStarted = true;
         
         backgroundImage.enabled = true;
         contentUIText.enabled = true;
