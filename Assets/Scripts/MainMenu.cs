@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour, IPointerEnterHandler
 {
     public const string PlayerPrefVolume = "volume";
     public const string PlayerPrefCharacterUnlockState = "characterUnlockState";
@@ -16,12 +17,14 @@ public class MainMenu : MonoBehaviour
     Button loadButton;
     [SerializeField]
     Slider volumeSlider;
+    [SerializeField]
+    MenuCursor cursor;
 
     private void Start()
     {
         if (PlayerPrefs.HasKey(PlayerPrefVolume))
         {
-            volumeSlider.value = PlayerPrefs.GetFloat(PlayerPrefVolume); //.Invoke(PlayerPrefs.GetFloat(PlayerPrefVolume));
+            volumeSlider.value = PlayerPrefs.GetFloat(PlayerPrefVolume);
         }
         if (!PlayerPrefs.HasKey(PlayerPrefCurrentScene))
         {
@@ -94,4 +97,12 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetFloat(PlayerPrefVolume, sliderValue);
         AudioListener.volume = sliderValue;
     }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (cursor != null)
+        {
+            EventSystem.current.SetSelectedGameObject(eventData.hovered[0]);            
+        }
+    }   
 }
