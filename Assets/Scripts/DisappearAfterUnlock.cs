@@ -9,9 +9,9 @@ public class DisappearAfterUnlock : MonoBehaviour
 
     private void Start()
     {        
-        if (PlayerPrefs.HasKey(Player.PlayerPrefCharacterUnlockState))
+        if (PlayerPrefs.HasKey(MainMenu.PlayerPrefCharacterUnlockState))
         {
-            if (PlayerPrefs.GetInt(Player.PlayerPrefCharacterUnlockState) >= (int)unlocksAfter)
+            if (PlayerPrefs.GetInt(MainMenu.PlayerPrefCharacterUnlockState) >= (int)unlocksAfter)
             {
                 Destroy(gameObject);
             }

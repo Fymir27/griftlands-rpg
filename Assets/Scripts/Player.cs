@@ -45,8 +45,6 @@ public class Player : Actor
 
     public Vector3 walkingTo;
 
-    public const string PlayerPrefCharacterUnlockState = "characterUnlockState";
-    public const string PlayerPrefCurrentScene = "currentScene";
     public PlayerCharacter CurCharacter = PlayerCharacter.Sal;
     public PlayerCharacter CharacterUnlockState = PlayerCharacter.Sal;
 
@@ -153,11 +151,11 @@ public class Player : Actor
         ammoBarImage = ammoBar.GetComponent<Image>();
         curVaultCooldown = vaultCooldown;
 
-        PlayerPrefs.SetString(PlayerPrefCurrentScene, SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetString(MainMenu.PlayerPrefCurrentScene, SceneManager.GetActiveScene().name);
 
-        if (PlayerPrefs.HasKey(PlayerPrefCharacterUnlockState))
+        if (PlayerPrefs.HasKey(MainMenu.PlayerPrefCharacterUnlockState))
         {
-            int characterIndex = PlayerPrefs.GetInt(PlayerPrefCharacterUnlockState);
+            int characterIndex = PlayerPrefs.GetInt(MainMenu.PlayerPrefCharacterUnlockState);
             CharacterUnlockState = (PlayerCharacter)characterIndex;
         }
         else
@@ -600,7 +598,7 @@ public class Player : Actor
         if((int)CharacterUnlockState < (int)character)
         {
             CharacterUnlockState = character;
-            PlayerPrefs.SetInt(PlayerPrefCharacterUnlockState, (int)character);
+            PlayerPrefs.SetInt(MainMenu.PlayerPrefCharacterUnlockState, (int)character);
         } 
         else
         {
