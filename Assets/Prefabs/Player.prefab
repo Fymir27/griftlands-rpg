@@ -667,6 +667,7 @@ MonoBehaviour:
   salVaultIndicator: {fileID: 5433056693704411018}
   rookRangeIndicator: {fileID: 1935536469384129028}
   ammoBar: {fileID: 7111469792596973782}
+  introSlides: {fileID: 0}
 --- !u!114 &1144145957966108174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,7 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimationSet: {fileID: 11400000, guid: 6ea659c9a039e3f45b64e95d2ff28494, type: 2}
-  sampleRate: 3
+  sampleRate: 4
   animationState: 0
   direction: 2
   secondsUntilNextFrame: 0

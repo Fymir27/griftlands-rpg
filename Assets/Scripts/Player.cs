@@ -145,6 +145,16 @@ public class Player : Actor
     // Start is called before the first frame update
     void Start()
     {
+        string lastScene = PlayerPrefs.GetString(MainMenu.PlayerPrefCurrentScene);
+        Vector3? spawnPoint = World.Instance.GetSpawnPoint();
+        if (lastScene != "" && lastScene != SceneManager.GetActiveScene().name)
+        {
+            // move to spawnpoint if exists
+            transform.position = spawnPoint ?? transform.position;
+        }
+
+        PlayerPrefs.SetString(MainMenu.PlayerPrefCurrentScene, SceneManager.GetActiveScene().name);
+
         InitActor();
         spriteRenderer = GetComponent<SpriteRenderer>();
         guns = GetComponentInChildren<Guns>();
@@ -156,10 +166,13 @@ public class Player : Actor
         if (PlayerPrefs.HasKey(MainMenu.PlayerPrefCharacterUnlockState))
         {
             int characterIndex = PlayerPrefs.GetInt(MainMenu.PlayerPrefCharacterUnlockState);
-            CharacterUnlockState = (PlayerCharacter)characterIndex;
+            CharacterUnlockState = (PlayerCharacter)characterIndex;            
         }
         else
         {
+            // to not play intro slides again when game is loaded before unlocking any other character
+            PlayerPrefs.SetInt(MainMenu.PlayerPrefCharacterUnlockState, (int)PlayerCharacter.Sal);
+
             if (introSlides != null)
             {
                 State = PlayerState.Dying;

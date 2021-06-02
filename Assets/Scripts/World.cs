@@ -8,6 +8,10 @@ public class World : MonoBehaviour
 {
     [SerializeField]
     WorldTile floorTile;
+
+    [SerializeField]
+    Transform spawnPoint;
+
     public static World Instance { get; private set; }
 
     Tilemap tilemap;
@@ -19,9 +23,21 @@ public class World : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        tilemap = GetComponent<Tilemap>();
+        tilemap = GetComponent<Tilemap>();        
     }
     
+    public Vector3? GetSpawnPoint()
+    {        
+        try
+        {
+            return spawnPoint?.position;
+        }
+        catch(UnassignedReferenceException)
+        {
+            return null;
+        }       
+    }
+
     public Vector3Int WorldToGridPos(Vector3 worldPos)
     {
         return tilemap.WorldToCell(worldPos);
