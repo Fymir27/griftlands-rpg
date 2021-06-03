@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
-  m_Name: Rook_Tutorial_2
+  m_Name: EE_Temple_Center
   m_EditorClassIdentifier: 
   conversation:
-  - Rook:See? F and click to fire. Never fails.
-  - Sal:I think they got it, Rook.
-  - Rook:You sure? I could always remind their next of kin.
-  - "Sal:You\u2019re a monster."
+  - Rook:Smith, I...
+  - Sal:Why are we HERE, SMITH?
+  - Smith:AAAAAAAAAAAAAAAAAAAAA
