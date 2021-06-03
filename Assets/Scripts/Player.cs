@@ -338,7 +338,7 @@ public class Player : Actor
                 break;
 
             case PlayerState.Aiming:
-                var mouseWorldPos = World.Instance.MouseGridPos();
+                var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 var aimedGridPos = World.Instance.WorldToGridPos(mouseWorldPos);
                 var lineOfSight = World.Instance.LineOfSight(GridPos, aimedGridPos, ShootingRange, true, false);
                 int ammoLeft = Mathf.Max(0, ShootingRange + 1 - lineOfSight.Count);

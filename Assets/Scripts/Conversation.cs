@@ -20,17 +20,26 @@ public class Conversation : ScriptableObject
         foreach(var line in conversation)
         {
             var tokens = line.Split(':');
-            if(tokens.Length < 2)
+            if(tokens.Length == 1)
             {
-                Debug.LogWarning("Invalid dialogue line: " + line);
-                continue;
+                ConversationWithNames.Add(Tuple.Create("", line));
             }
-
-            string name = tokens[0].Trim(); ;
-            string text = String.Join(":", tokens.Skip(1)); // in case there's more than one colon
-
-            ConversationWithNames.Add(Tuple.Create(name, text));
+            else
+            {
+                string name = tokens[0].Trim(); ;
+                string text = String.Join(":", tokens.Skip(1)); // in case there's more than one colon
+                ConversationWithNames.Add(Tuple.Create(name, text));
+            }
         }        
+    }
+
+    private void OnValidate()
+    {
+        for (int i = 0; i < conversation.Length; i++)
+        {
+            // make sure line doesn't start or end with ":" as that breaks the asset file (YAML) because unity doesn't escape it
+            conversation[i] = System.Text.RegularExpressions.Regex.Replace(conversation[i], @"(^\s*:)|(:\s*$)", "");
+        }
     }
 
 #if UNITY_EDITOR
