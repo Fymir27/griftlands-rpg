@@ -110,13 +110,18 @@ public class World : MonoBehaviour
         {
             Debug.LogWarning("Overwriting conversation at " + gridPos);
         }
-        conversations[gridPos] = convo;
+        conversations[gridPos] = convo;        
     }
 
     public Conversation GetConversation(Vector3Int gridPos)
     {
         conversations.TryGetValue(gridPos, out Conversation conversation);
         return conversation;
+    }
+
+    public void RemoveConversation(Vector3Int gridPos)
+    {
+        conversations.Remove(gridPos);
     }
 
     public void SetObject(WorldObject thing, Vector3Int gridPos)

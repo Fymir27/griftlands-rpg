@@ -458,7 +458,7 @@ public class Player : Actor
             State = PlayerState.InDialog;
             
             // only play convo ONCE
-            World.Instance.SetConversation(null, GridPos);
+            World.Instance.RemoveConversation(GridPos);
         }
     } 
 

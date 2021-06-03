@@ -13,24 +13,41 @@ public class Conversation : ScriptableObject
     [SerializeField]
     string[] conversation;
 
-    public List<Tuple<string, string>> ConversationWithNames = new List<Tuple<string, string>>();
+    private List<Tuple<string, string>> conversationWithNames = new List<Tuple<string, string>>();
 
-    private void Awake()
+    // Lazy init property because Awake() and OnEnable() aren't called reliably
+    // during Play Mode in Editor
+    public List<Tuple<string, string>> ConversationWithNames { 
+        get  
+        {
+            if (conversation.Length == 0)
+            {
+                conversationWithNames.Add(Tuple.Create("", $"MISSING DIALOGUE {name}"));
+            } 
+            else
+            {
+                Init();
+            }
+            return conversationWithNames;
+        }         
+    }
+
+    private void Init()
     {
-        foreach(var line in conversation)
+        foreach (var line in conversation)
         {
             var tokens = line.Split(':');
-            if(tokens.Length == 1)
+            if (tokens.Length == 1)
             {
-                ConversationWithNames.Add(Tuple.Create("", line));
+                conversationWithNames.Add(Tuple.Create("", line));
             }
             else
             {
                 string name = tokens[0].Trim(); ;
                 string text = String.Join(":", tokens.Skip(1)); // in case there's more than one colon
-                ConversationWithNames.Add(Tuple.Create(name, text));
+                conversationWithNames.Add(Tuple.Create(name, text));
             }
-        }        
+        }     
     }
 
     private void OnEnable()
@@ -46,14 +63,6 @@ public class Conversation : ScriptableObject
 
     private void OnValidate()
     {   
-        if (conversation.Length > 0 && conversation[0] == "DEBUG")
-        {
-            foreach (var line in conversation)
-            {
-                Debug.Log(line);
-            }
-        }
-
         for (int i = 0; i < conversation.Length; i++)
         {
             // make sure line doesn't start or end with ":" as that breaks the asset file (YAML) because unity doesn't escape it
