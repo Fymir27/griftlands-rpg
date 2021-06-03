@@ -154,8 +154,7 @@ public class Player : Actor
         }
 
         PlayerPrefs.SetString(MainMenu.PlayerPrefCurrentScene, SceneManager.GetActiveScene().name);
-
-        InitActor();
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
         guns = GetComponentInChildren<Guns>();
         ammoBarImage = ammoBar.GetComponent<Image>();
@@ -166,7 +165,8 @@ public class Player : Actor
         if (PlayerPrefs.HasKey(MainMenu.PlayerPrefCharacterUnlockState))
         {
             int characterIndex = PlayerPrefs.GetInt(MainMenu.PlayerPrefCharacterUnlockState);
-            CharacterUnlockState = (PlayerCharacter)characterIndex;            
+            CharacterUnlockState = (PlayerCharacter)characterIndex;
+            InitActor();
         }
         else
         {
@@ -176,7 +176,12 @@ public class Player : Actor
             if (introSlides != null)
             {
                 State = PlayerState.Dying;
-                introSlides.OnSlideshowEnd += () => State = PlayerState.Idle;
+                introSlides.OnSlideshowEnd += () =>
+                {
+                    InitActor();
+                    State = PlayerState.Idle;
+                    MoveTo(GridPos); // trigger opening monologue
+                };
                 introSlides.BeginSlideshow();
             }
             else
