@@ -16,7 +16,14 @@ public class AudioController : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;       
+        if (Instance != null)
+        {
+            Destroy(gameObject); // There can only be one >:D
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
     private void Update()

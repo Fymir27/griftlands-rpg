@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler
         if (!PlayerPrefs.HasKey(PlayerPrefCurrentScene))
         {
             loadButton.interactable = false;
-        }
+        }              
     }
 
     public void NewGame()
@@ -71,7 +71,8 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler
             SceneManager.LoadScene(fallbackSceneIndex);
             return;
         }
-        
+
+        Destroy(AudioController.Instance.gameObject);  // might be in DontDestroyOnLoad still
         SceneManager.LoadScene(firstScene);
     }
 
@@ -79,12 +80,23 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler
     {
         if (PlayerPrefs.HasKey(PlayerPrefCurrentScene))
         {
+            Destroy(AudioController.Instance.gameObject);  // might be in DontDestroyOnLoad still
             SceneManager.LoadScene(PlayerPrefs.GetString(PlayerPrefCurrentScene));
         }        
         else
         {
             Debug.LogError("Saved game not found");
         }
+    }
+
+    public void LoadSceneKeepSound(string sceneName)
+    {
+        if (AudioController.Instance != null)
+        {
+            DontDestroyOnLoad(AudioController.Instance.gameObject);
+        }
+     
+        SceneManager.LoadScene(sceneName);
     }
 
     public void Exit()
