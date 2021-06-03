@@ -15,7 +15,7 @@ public class Conversation : ScriptableObject
 
     public List<Tuple<string, string>> ConversationWithNames = new List<Tuple<string, string>>();
 
-    private void OnEnable()
+    private void Awake()
     {
         foreach(var line in conversation)
         {
