@@ -266,7 +266,7 @@ public class Player : Actor
                     State = PlayerState.Aiming;                    
                 }
 
-                if (CurCharacter == PlayerCharacter.Sal && Input.GetKeyDown(KeyCode.LeftAlt))
+                if (CurCharacter == PlayerCharacter.Sal && Input.GetKeyDown(KeyCode.LeftShift))
                 {
                     if (curVaultCooldown == 0)
                     {

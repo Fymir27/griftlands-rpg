@@ -99,6 +99,8 @@ public class Slides : MonoBehaviour
             OnSlideshowEnd.Invoke();
             OnSlideshowEnd = null;
         }
+
+        slideshowStarted = false;
     }
 
     System.Collections.IEnumerator DelayedTextFadeIn(float delay, float duration)
