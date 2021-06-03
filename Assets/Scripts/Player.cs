@@ -229,6 +229,15 @@ public class Player : Actor
         switch (State)
         {
             case PlayerState.Idle:
+
+                if (Input.GetButtonDown("Cancel"))
+                {
+                    State = PlayerState.Dying; // prevent Input
+                    PauseMenu.Instance.OnClose += () => State = PlayerState.Idle;
+                    PauseMenu.Instance.Open();
+                    return;
+                }
+
                 #region Character Selection Controls
                 int characterIDSelected = 0;
 
