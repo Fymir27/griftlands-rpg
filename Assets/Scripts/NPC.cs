@@ -63,12 +63,15 @@ public class NPC : Actor
 
         if(convo == null)
         {
-            if (randomQuips == null || randomQuips.Length == 0)
-                return;
-
-            // pick random quip to disp
-            int quipIndex = Random.Range(0, randomQuips.Length);
-            Textbox.Instance.Display(this, randomQuips[quipIndex]);
+            string quip = "...";
+            if (randomQuips != null && randomQuips.Length > 0)
+            {
+                // pick random quip to display
+                int quipIndex = Random.Range(0, randomQuips.Length);
+                quip = randomQuips[quipIndex];
+            }  
+            
+            Textbox.Instance.Display(this, quip);
         }
         else
         {
