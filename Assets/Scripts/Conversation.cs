@@ -33,12 +33,31 @@ public class Conversation : ScriptableObject
         }        
     }
 
-    private void OnValidate()
+    private void OnEnable()
     {
+        if (conversation.Length > 0 && conversation[0] == "DEBUG")
+        {
+            foreach (var line in conversation)
+            {
+                Debug.Log(line);
+            }
+        }       
+    }
+
+    private void OnValidate()
+    {   
+        if (conversation.Length > 0 && conversation[0] == "DEBUG")
+        {
+            foreach (var line in conversation)
+            {
+                Debug.Log(line);
+            }
+        }
+
         for (int i = 0; i < conversation.Length; i++)
         {
             // make sure line doesn't start or end with ":" as that breaks the asset file (YAML) because unity doesn't escape it
-            conversation[i] = System.Text.RegularExpressions.Regex.Replace(conversation[i], @"(^\s*:)|(:\s*$)", "");
+            conversation[i] = System.Text.RegularExpressions.Regex.Replace(conversation[i], @"(^[\s:]*)|([:\s]*$)", "");
         }
     }
 
