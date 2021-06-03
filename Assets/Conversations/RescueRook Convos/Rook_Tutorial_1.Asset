@@ -15,6 +15,6 @@ MonoBehaviour:
   conversation:
   - "Sal:Shoot\u2026 I could get us across this gap here if they weren\u2019t in
     the way."
-  - Rook:'Shoot' indeed. I have a solution. Swap to me with [BUTTON].
-  - "Rook:With a press of [BUTTON], I\u2019ll blow them away with a lumin charge
-    between the eyes."
+  - Rook:'Shoot' indeed. I have a solution. Swap to me with [ 2 ]!
+  - "Rook:Press F to activate my pistols - and with a click of the mouse, I\u2019ll
+    blow them away with a lumin charge between the eyes."

@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &3392253552588843110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831449939884498414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9ea4a4ba0155246bbfc11fc92e1bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimationSet: {fileID: 11400000, guid: 6ea659c9a039e3f45b64e95d2ff28494, type: 2}
+  sampleRate: 4
+  animationState: 0
+  direction: 0
+  secondsUntilNextFrame: 0
+  frameIndex: 0
+--- !u!1001 &3881386550600267537
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4491377251900992248, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: Name
+      value: Erchin Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992248, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 3392253552588843110}
+    - target: {fileID: 4491377251900992249, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2814428703486735154, guid: a1a9279353455944cade87c18acfaf49,
+        type: 3}
+    - target: {fileID: 4491377251900992249, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992249, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992249, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992250, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992250, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992250, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992250, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992250, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992250, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992250, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992250, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992250, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992250, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992250, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491377251900992255, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+        type: 3}
+      propertyPath: m_Name
+      value: Erchin_Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5c9086fbe3ac3244ba23dd23eff1ffd, type: 3}
+--- !u!1 &831449939884498414 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4491377251900992255, guid: e5c9086fbe3ac3244ba23dd23eff1ffd,
+    type: 3}
+  m_PrefabInstance: {fileID: 3881386550600267537}
+  m_PrefabAsset: {fileID: 0}

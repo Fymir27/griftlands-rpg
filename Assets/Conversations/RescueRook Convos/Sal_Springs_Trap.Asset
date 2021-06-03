@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Sal_Springs_Trap
   m_EditorClassIdentifier: 
   conversation:
-  - :You think you notice something...off about the passage in front of you. But
-    then again, what in the Grout Bog isn't?
+  - You think you notice something...off about the passage in front of you. But then
+    again, what isn't in the Grout Bog?
   - "Sal:Now *that* doesn't seem suspicious\u2026"
-  - :You know squinting at every weird lump in your path would take all day, and
-    time is of the essence. Your concern for Rook propels you forward.
-  - ":...You hear a click as you pass. You\u2019d be kicking yourself if it weren\u2019t
+  - You know squinting at every weird lump in your path would take all day, and time
+    is of the essence. Your concern for Rook propels you forward.
+  - "...You hear a click as you pass. You\u2019d be kicking yourself if it weren\u2019t
     immediately followed by an explosion and the sound of rocks, trees, and bog peat
     collapsing behind you."
   - Sal:Ugh.
-  - :You dust yourself off, unscathed - though it appears the path back has become
+  - You dust yourself off, unscathed - though it appears the path back has become
     an impassable, swampy crater.
   - Sal:...Well. Nowhere to go but forward, I guess.
-  - :At least no one will know it was you.
+  - At least no one will know it was you.

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Device_1
   m_EditorClassIdentifier: 
   conversation:
-  - :You swipe up the device and inspect it with a careful eye.
-  - Sal:It's still in one piece. Thank goodness.
+  - ":You swipe up the device and inspect it with a careful eye."
+  - "Sal:It's still in one piece. Thank goodness."
   - ":Gingerly, you stow it away and swear you\u2019ll take better care of it."

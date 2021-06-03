@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Optional_SparkBaron_Convo
   m_EditorClassIdentifier: 
   conversation:
-  - :You see a particularly threadbare and exhausted Spark Baron huddled out of sight
-    of the bog creatures lurking about..
+  - You see a particularly threadbare and exhausted Spark Baron huddled out of sight
+    of the bog creatures lurking about.
   - Spark Baron:Ah, it's you.
   - Spark Baron:Listen, as long as you don't tell my boss I'm here, I won't hold
     anything against you. I just want to keep my terrible job.
@@ -22,7 +22,7 @@ MonoBehaviour:
   - Sal:Mind explaining what exactly happened back there?
   - "Spark Baron:Rook's wanted for his actions against the Spark Barons. Also, I
     think his mustache\u2019s ugly."
-  - :The look on Rook's face is either insulted or entirely too pleased with himself.
+  - Rook looks only vaguely insulted.
   - Spark Baron:Oh yeah, the regional manager wanted to speak to him. Something about
     'catching up with his old friend' or whatever.
   - Rook:I think I'll pass.

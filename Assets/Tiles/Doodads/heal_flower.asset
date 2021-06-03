@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
+  m_Script: {fileID: 11500000, guid: 471ae0d1cf9c93b41bf9941faad392e0, type: 3}
   m_Name: heal_flower
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 9a14989a43cf8f140a72931baa9eb6d7, type: 3}
@@ -34,3 +34,7 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
+  Solid: 0
+  Breakable: 0
+  Jumpable: 0
+  HpChangeStepOn: 5

@@ -17,19 +17,21 @@ MonoBehaviour:
   - Hebbel:A guy with a mustache and a kra'deshi about yea high?
   - Sal:...How did you-
   - "Hebbel:There was some commotion happening outside earlier. Those two grifters,
-    they got into trouble with the Spark Barons and The Rise\u2026"
-  - Hebbel:You know them?
+    they got into trouble with the Spark Barons and The Rise\u2026You know them?"
   - Sal:They're my friends, yes! Where were they taken?
-  - :The barkeep pulls a worn paper map from under the bar, makes some broad strokes
+  - The barkeep pulls a worn paper map from under the bar, makes some broad strokes
     on it with a pen, then hands the paper to you.
   - Hebbel:I only saw where they got taken. You're on your own for the rest.
-  - :He points to a messy, tangled section of bog east of you on the map.
+  - He points a finger to a spot of tangled bog on the map east of you.
   - Hebbel:Spark Barons had a worn-down shack of an outpost there at one point, so
-    I'm assuming they were the ones carting Rook off in such a hurry.
-  - Hebbel:Just keep an eye out for any...unsavory creatures out that way.
+    I'm assuming they were the ones carting Rook off in such a hurry. Just keep an
+    eye out for any...unsavory creatures out that way.
   - Sal:Wait, you're gonna help me? Just like that?
   - Hebbel:It's a small world, grifter. I happen to know your two friends, and that
     if anything were to happen to them I'd have Hesh and high water coming down on
     me.
+  - Hebbel:I have a business to run, and I'm not about to lose it.
+  - You don't know what to make of this development, but the small wave of relief
+    that hits you washes away any passing thoughts.
   - "Sal:Thank you, Mister\u2026?"
   - Hebbel:Call me Hebbel. Come back here if you need anything.
