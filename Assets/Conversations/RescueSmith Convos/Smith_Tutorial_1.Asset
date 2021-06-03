@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
+  m_Name: Smith_Tutorial_1
+  m_EditorClassIdentifier: 
+  conversation:
+  - Smith:Alright, everyone, back the Hesh up!
+  - "Smith:When I swing my hammer with [BUTTON], nothing\u2019s gonna stop it!"
+  - "Smith:Boulders, groups of bad guys, the hammer doesn\u2019t care!"

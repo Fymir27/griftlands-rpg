@@ -15,9 +15,13 @@ MonoBehaviour:
   conversation:
   - :You look around the empty room and sigh. There's no doubt - you've hit a dead
     end.
-  - ':'
-  - Smith:Oh, hey you guys! What are you doing in this ugly temple?
+  - Sal:Great. Now wha-
+  - ":You\u2019re interrupted as the wall in front of you gives way to a muscular
+    kra\u2019deshi bursting through, hammer flailing."
+  - :He stops and does a double-take when he notices the two humans toppled to the
+    floor amongst the rubble.
+  - Smith:Oh - hey you guys! What are you doing in this ugly temple?
   - Rook and Sal (in unison):...Rescuing the dumbest slug in Havaria.
   - Smith:Alright, well what are we sitting around here for?
-  - Smith:Hurry up and find them so we can get outta here! This place gives me the
-    creeps!
+  - "Smith:Let\u2019s hurry up and find them so we can get outta here. This place
+    gives me the creeps!"

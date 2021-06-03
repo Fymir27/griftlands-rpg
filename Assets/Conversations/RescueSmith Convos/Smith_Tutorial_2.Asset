@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
+  m_Name: Smith_Tutorial_2
+  m_EditorClassIdentifier: 
+  conversation:
+  - "Smith:Pretty strong, right? Smashing with [BUTTON]. It\u2019s the best."
+  - Rook:Good luck dealing with long-range foes.
+  - Sal:Or dashing over gaps.
+  - Smith:Hey, we all have our strengths. Mine is just actual physical strength.
+  - "Smith:But fine, I\u2019ll swap to you with [BUTTON] if there\u2019s something
+    a hammer CAN\u2019T solve."
+  - "Smith:Which I\u2019m sure will be rare."

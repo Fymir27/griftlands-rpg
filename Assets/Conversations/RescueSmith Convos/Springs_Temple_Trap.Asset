@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conversation:
   - :You think you're stepping carefully. You think you're being alert.
-  - :...You think you just felt something catch on your boot, before a tremendous
-    crash echoes in the passage behind you.
+  - :...You think you feel something catch on your boot, before a tremendous crash
+    echoes in the passage behind you.
   - :You grimace and slowly turn around. Rook is apparently more concerned with giving
     you a look than he is with the carnage happening behind him.
-  - :The shaking resides. A cloud of dust from the debris bursts from the passage,
+  - :The shaking subsides. A cloud of dust from the debris bursts from the passage,
     coating Rook head to toe.
-  - :Rook's smirk remains. Your irritation finally wins out and you snarl, jabbing
-    a finger at him.
-  - Sal:Not. A. Word.
+  - :Rook's smirk remains. Your irritation finally wins out and you jab a finger
+    at him.
+  - Sal:Not. A word.
   - Sal:Wipe that stupid grin off your face and let's go find Smith.
   - :Rook does no such thing and follows you down the corridor.
