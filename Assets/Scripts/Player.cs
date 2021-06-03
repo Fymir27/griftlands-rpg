@@ -225,7 +225,7 @@ public class Player : Actor
             Credits.Instance.Toggle();
             return;
         }
-
+        
         switch (State)
         {
             case PlayerState.Idle:
