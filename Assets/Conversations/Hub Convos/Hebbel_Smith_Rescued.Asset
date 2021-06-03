@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
+  m_Name: Hebbel_Smith_Rescued
+  m_EditorClassIdentifier: 
+  conversation:
+  - :Hebbel doesn't look surprised when you come back this time. In fact, he looks
+    cranky - even more so than usual.
+  - Hebbel:Smith, before you ask, I am not having a sale. In fact, drinks are triple
+    the price right now, and it only applies to you.
+  - Smith:Well that's not a nice way to greet a pal you haven't seen in a while!
+  - Hebbel:We are not 'pals'. Not after the thousands of shills in property damage
+    you caused my bar.
+  - :You can't find the words to say, but you can easily imagine the chaos that Hebbel
+    is speaking of.
+  - :It's gloriously terrifying.
+  - :Despite Hebbel's prickly demeanor, you swear you see a hint of a smile as he
+    turns to busy himself with another order of drinks.
+  - Hebbel:You three haven't even been in here for five minutes and I'm already sick
+    of your faces.
+  - Hebbel:Whatever you need, make it quick.

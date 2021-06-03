@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
+  m_Name: Device_2
+  m_EditorClassIdentifier: 
+  conversation:
+  - :Rook sweeps up the second device, gives it a once-over, and sticks it in a pocket
+    somewhere in his uniform.
+  - Sal:How many pockets do you have in there, exactly?
+  - "Rook:Enough to keep me stocked in the ammo department, but that\u2019s not important.
+    Didn\u2019t you just find yours laying in the middle of nowhere, too? "
+  - "Sal:That\u2019s right, I did\u2026 What do you think it means?"
+  - "Rook:I don\u2019t know. Whatever it is, I don\u2019t like it."
+  - Rook:Let's keep going. There's bound to be another path ahead that will take
+    us back to the bar.

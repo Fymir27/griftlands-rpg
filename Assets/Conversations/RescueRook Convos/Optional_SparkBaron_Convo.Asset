@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
+  m_Name: Optional_SparkBaron_Convo
+  m_EditorClassIdentifier: 
+  conversation:
+  - :You see a particularly threadbare and exhausted Spark Baron huddled out of sight
+    of the bog creatures lurking about..
+  - Spark Baron:Ah, it's you.
+  - Spark Baron:Listen, as long as you don't tell my boss I'm here, I won't hold
+    anything against you. I just want to keep my terrible job.
+  - "Spark Baron:I don't get paid enough for this oshnudung\u2026"
+  - Sal:Mind explaining what exactly happened back there?
+  - "Spark Baron:Rook's wanted for his actions against the Spark Barons. Also, I
+    think his mustache\u2019s ugly."
+  - :The look on Rook's face is either insulted or entirely too pleased with himself.
+  - Spark Baron:Oh yeah, the regional manager wanted to speak to him. Something about
+    'catching up with his old friend' or whatever.
+  - Rook:I think I'll pass.
+  - Spark Baron:And you will, but leave me alone now before I decide that you won't.

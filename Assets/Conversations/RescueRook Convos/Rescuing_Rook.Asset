@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
+  m_Name: Rescuing_Rook
+  m_EditorClassIdentifier: 
+  conversation:
+  - Sal:Rook! Not sure where the Barons are, but we gotta move.
+  - ":You approach Rook\u2019s cell and use a dagger to pop open the rusted door
+    with relative ease."
+  - Sal:Are you okay? They didn't hurt you, did they-
+  - :Rook flashes you a sly grin as he slips from the cell and retrieves his guns
+    from the corner.
+  - Rook:Nice going, kid. Did you singe your eyebrows off when you tripped that mine
+    back there?
+  - Sal:I - haha, what? I didn't trip any mines-
+  - Rook:Counted six of them as they dragged me in. I have no doubt in your keenness,
+    of course - but I knew that you would step on at least one.
+  - Sal:Your faith in me is astounding as always, I see.
+  - Rook:Also, I heard the cacophonous explosion from here.
+  - Sal:S i g h .

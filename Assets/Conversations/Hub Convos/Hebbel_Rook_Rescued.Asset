@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
+  m_Name: Hebbel_Rook_Rescued
+  m_EditorClassIdentifier: 
+  conversation:
+  - Hebbel:You actually got Rook back in one piece?
+  - Sal:You actually doubted my abilities?
+  - :Hebbel doesn't say anything, but you can see the astonishment on his face, clear
+    as day.
+  - Rook:It's a pleasure to see you again, Hebbel. Are the bog mites still keeping
+    you company?
+  - Hebbel:Just take whatever supplies you two need and go find your other friend.
+    I'm too tired for this crap.
+  - :Hebbel rolls his eyes and picks up another chipped glass to polish, leaving
+    you with a final piece of advice.
+  - Hebbel:Last I saw, a group of figures were taking Smith south of here - likely
+    towards some of the old ruins in the Bog.
+  - Hebbel:I'd bet a few shills they were members of the Rise, so keep your wits
+    about you.

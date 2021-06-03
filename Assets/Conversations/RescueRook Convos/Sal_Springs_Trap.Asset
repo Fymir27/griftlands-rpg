@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
+  m_Name: Sal_Springs_Trap
+  m_EditorClassIdentifier: 
+  conversation:
+  - :You think you notice something...off about the passage in front of you. But
+    then again, what in the Grout Bog isn't?
+  - "Sal:Now *that* doesn't seem suspicious\u2026"
+  - :You know squinting at every weird lump in your path would take all day, and
+    time is of the essence. Your concern for Rook propels you forward.
+  - ":...You hear a click as you pass. You\u2019d be kicking yourself if it weren\u2019t
+    immediately followed by an explosion and the sound of rocks, trees, and bog peat
+    collapsing behind you."
+  - Sal:Ugh.
+  - :You dust yourself off, unscathed - though it appears the path back has become
+    an impassable, swampy crater.
+  - Sal:...Well. Nowhere to go but forward, I guess.
+  - :At least no one will know it was you.

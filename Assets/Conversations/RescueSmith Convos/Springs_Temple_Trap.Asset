@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
+  m_Name: Springs_Temple_Trap
+  m_EditorClassIdentifier: 
+  conversation:
+  - :You think you're stepping carefully. You think you're being alert.
+  - :...You think you just felt something catch on your boot, before a tremendous
+    crash echoes in the passage behind you.
+  - :You grimace and slowly turn around. Rook is apparently more concerned with giving
+    you a look than he is with the carnage happening behind him.
+  - :The shaking resides. A cloud of dust from the debris bursts from the passage,
+    coating Rook head to toe.
+  - :Rook's smirk remains. Your irritation finally wins out and you snarl, jabbing
+    a finger at him.
+  - Sal:Not. A. Word.
+  - Sal:Wipe that stupid grin off your face and let's go find Smith.
+  - :Rook does no such thing and follows you down the corridor.

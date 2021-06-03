@@ -249,12 +249,14 @@ PrefabInstance:
         type: 3}
       propertyPath: convoWithRook
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 52413aa11724bba4aabb4e116ff6a976,
+        type: 2}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: convoWithSmith
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 650fd57bf19f62f4491a1ff169ba7cb0,
+        type: 2}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: CurHealth
