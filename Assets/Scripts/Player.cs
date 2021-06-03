@@ -223,6 +223,11 @@ public class Player : Actor
         }
     }
 
+    public override float GetWalkingSpeed()
+    {
+        return walkingSpeed;
+    }
+
     void HandlePlayerInput()
     {
         if(Input.GetKeyDown(KeyCode.F8))
@@ -320,10 +325,10 @@ public class Player : Actor
                     MoveTo(GridPos + lastStep);
                 }
                 else if (Input.GetButtonDown("Jump"))
-                {
+                {                   
                     World.Instance.TriggerStepOn(this, GridPos);
                     EndTurn();
-                }
+                }                
                 #endregion
 
                 break;
@@ -469,7 +474,7 @@ public class Player : Actor
 
     void EndTurn()
     {
-        DisableReticle(); // just in case
+        DisableReticle(); // just in case       
         State = PlayerState.Idle;
         MyTurn = false;
     }
@@ -555,8 +560,8 @@ public class Player : Actor
         // At this point nothing is in our way :D       
         State = PlayerState.Walking;
         world.MoveActorTo(this, gridPos);
-        walkingTo = world.GridToWorldPos(gridPos);
-        animator.TriggerAnimation(ActorAnimationState.Walk, gridPos - GridPos);
+        walkingTo = world.GridToWorldPos(gridPos);        
+        animator.TriggerAnimation(ActorAnimationState.Walk, gridPos - GridPos);        
         GridPos = gridPos;               
                         
     }

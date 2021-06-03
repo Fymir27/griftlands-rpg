@@ -21,12 +21,17 @@ public enum ActorAnimationState
     Death
 }
 
+[RequireComponent(typeof(Actor))]
 public class ActorAnimator : MonoBehaviour
-{    
+{
+    public Action OnAnimationComplete = null;
     public ActorAnimationSet AnimationSet;
 
-    [SerializeField, Range(1, 30)]
-    int sampleRate;    
+    [SerializeField]
+    bool AdaptAnimationSpeedToActorWalkingSpeed = true;
+
+    [SerializeField, Range(1f, 30f)]
+    float sampleRate = 4f;    
 
     [SerializeField]
     ActorAnimationState animationState;
@@ -41,13 +46,13 @@ public class ActorAnimator : MonoBehaviour
     int frameIndex;
 
     SpriteRenderer spriteRenderer;
-
-    public Action OnAnimationComplete = null;
+    Actor actor;
 
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();         
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        actor = GetComponent<Actor>();
     }
 
     // Update is called once per frame
@@ -55,7 +60,7 @@ public class ActorAnimator : MonoBehaviour
     {
         secondsUntilNextFrame -= Time.deltaTime;
         if(secondsUntilNextFrame <= 0)
-       {
+        {
             var anim = AnimationSet.Sprites[animationState][direction];
 
             // TODO: do we want this?
@@ -71,17 +76,25 @@ public class ActorAnimator : MonoBehaviour
                 {
                     // stay on last frame of death animation
                     frameIndex = anim.Length - 1;
-                }
-                else
+                }                
+                else 
                 {
                     animationState = ActorAnimationState.Idle;
                     frameIndex = 0;
-                }
-                anim = AnimationSet.Sprites[animationState][direction];
+                    anim = AnimationSet.Sprites[animationState][direction];
+                }                
             }
             
             spriteRenderer.sprite = anim[frameIndex++];
-            secondsUntilNextFrame = 1f / sampleRate;
+
+            if (AdaptAnimationSpeedToActorWalkingSpeed)
+            {
+                secondsUntilNextFrame = World.Instance.GetGridSize() / (actor.GetWalkingSpeed() * anim.Length) + Time.deltaTime * 2f;                
+            }
+            else
+            {
+                secondsUntilNextFrame = 1f / sampleRate;
+            }           
         }
     }
 
@@ -97,7 +110,7 @@ public class ActorAnimator : MonoBehaviour
         {
             Debug.LogWarning("No sprites found for animation: " + animation);
             return;
-        }
+        }        
 
         animationState = animation;
         direction = dir;

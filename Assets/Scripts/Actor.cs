@@ -105,6 +105,11 @@ public abstract class Actor : MonoBehaviour
         return nextStep;
     }
 
+    public virtual float GetWalkingSpeed()
+    {
+        return 0f;
+    }
+
     public virtual void Die()
     {
         animator.TriggerAnimation(ActorAnimationState.Death);

@@ -38,6 +38,12 @@ public class World : MonoBehaviour
         }       
     }
 
+    /// <returns>length of a grid cell (x)</returns>
+    public float GetGridSize()
+    {
+        return tilemap.cellSize.x;
+    }
+
     public Vector3Int WorldToGridPos(Vector3 worldPos)
     {
         return tilemap.WorldToCell(worldPos);

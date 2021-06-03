@@ -57,6 +57,11 @@ public class Enemy : Actor
         }
     }
 
+    public override float GetWalkingSpeed()
+    {
+        return walkingSpeed;
+    }
+
     public override void TakeTurn()
     {
         MyTurn = true;
