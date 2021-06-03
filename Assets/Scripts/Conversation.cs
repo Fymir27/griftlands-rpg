@@ -20,20 +20,22 @@ public class Conversation : ScriptableObject
     public List<Tuple<string, string>> ConversationWithNames { 
         get  
         {
-            if (conversation.Length == 0)
+            if (conversationWithNames.Count == 0)
             {
-                conversationWithNames.Add(Tuple.Create("", $"MISSING DIALOGUE {name}"));
+                Init();                
             } 
-            else
-            {
-                Init();
-            }
             return conversationWithNames;
         }         
     }
 
     private void Init()
     {
+        if (conversation.Length == 0)
+        {
+            conversationWithNames.Add(Tuple.Create("", $"MISSING DIALOGUE {name}"));
+            return;
+        }
+
         foreach (var line in conversation)
         {
             var tokens = line.Split(':');
