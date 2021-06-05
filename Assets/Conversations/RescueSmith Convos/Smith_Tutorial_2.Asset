@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Smith_Tutorial_2
   m_EditorClassIdentifier: 
   conversation:
-  - Smith:Pretty strong, right? Smashing through rocks is the best. Almost as good
+  - Smith:Pretty strong, right? Smashing through rocks is the best. ALMOST as good
     as drinking!
-  - Rook:Good luck dealing with long-range foes.
+  - Smith:Wait, maybe it counts cause I'm getting "smashed?"...huh. Whatever.
+  - Rook:Yes, well good luck dealing with long-range foes.
   - Sal:Or dashing over gaps.
   - Smith:Hey, we all have our strengths. Mine is just actual physical strength.
+    And maybe livers that won't give out.
   - "Smith:But fine, we can swap out with [ 1 ], [ 2 ], and [ 3 ] if there\u2019s
     something a hammer CAN\u2019T solve."
   - "Smith:Which I\u2019m sure will be rare."

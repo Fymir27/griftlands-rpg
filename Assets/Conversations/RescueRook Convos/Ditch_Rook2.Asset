@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Ditch_Rook2
   m_EditorClassIdentifier: 
   conversation:
-  - I - wait, did you seriously leave that guy in there?
-  - ...
-  - I can respect that, honestly.
+  - Spark Baron:I - wait, did you seriously leave that guy in there?
+  - Spark Baron:...
+  - Spark Baron:I can respect that, honestly.

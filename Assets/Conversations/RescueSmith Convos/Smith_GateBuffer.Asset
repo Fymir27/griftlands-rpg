@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
+  m_Name: Smith_GateBuffer
+  m_EditorClassIdentifier: 
+  conversation:
+  - Smith dances his way through the rubble as you and Rook clamber in behind him.
+    Seems like whatever path he'd taken in here has already collapsed on itself again.
+  - Your newly-reunited trio will have to smash your way out...but the idea only
+    delights the kra'deshi more, and you can't help but grin.
+  - 'Smith Unlocked!: You can now switch to Smith using [ 3 ]!'
