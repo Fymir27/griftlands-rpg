@@ -231,10 +231,18 @@ public class Player : Actor
     void HandlePlayerInput()
     {
         if(Input.GetKeyDown(KeyCode.F8))
+        {   
+            Credits.Instance.Toggle();
+            return;
+        }
+
+        // "Cancel" is only for closing
+        if (Credits.Instance.gameObject.activeInHierarchy && Input.GetButtonDown("Cancel"))
         {
             Credits.Instance.Toggle();
             return;
         }
+
         
         switch (State)
         {
