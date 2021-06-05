@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimationSet: {fileID: 11400000, guid: 6ea659c9a039e3f45b64e95d2ff28494, type: 2}
   AdaptAnimationSpeedToActorWalkingSpeed: 1
-  sampleRate: 4
+  sampleRate: 3
   animationState: 0
   direction: 0
   secondsUntilNextFrame: 0

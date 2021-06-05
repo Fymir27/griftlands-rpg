@@ -40,4 +40,6 @@ MonoBehaviour:
   - {fileID: -1217824092027490934, guid: a1a9279353455944cade87c18acfaf49, type: 3}
   - {fileID: -934371256994702531, guid: a1a9279353455944cade87c18acfaf49, type: 3}
   - {fileID: -6204547950421771815, guid: a1a9279353455944cade87c18acfaf49, type: 3}
-  animDeath: []
+  animDeath:
+  - {fileID: -4678116137569293667, guid: a1a9279353455944cade87c18acfaf49, type: 3}
+  - {fileID: 7088992654025400405, guid: a1a9279353455944cade87c18acfaf49, type: 3}

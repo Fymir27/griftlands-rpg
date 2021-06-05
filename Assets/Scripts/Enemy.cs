@@ -20,7 +20,9 @@ public class Enemy : Actor
     bool walking;
     [SerializeField]
     Vector3 walkingTo;
-
+    [SerializeField]
+    bool dying = false;
+     
     // Start is called before the first frame update
     void Start()
     {
@@ -31,16 +33,21 @@ public class Enemy : Actor
     // Update is called once per frame
     void Update()
     {
-        if (CurHealth <= 0)
-        {            
-            Destroy(gameObject);
-        }
-
         if (hpText != null)
             hpText.text = $"HP: {CurHealth}/{MaxHealth}";
 
         if (characterNameText != null)
             characterNameText.text = Name;
+
+        if (dying)
+            return;
+
+        if (CurHealth <= 0)
+        {
+            dying = true;
+            Die();
+            return;
+        }       
 
         if(walking)
         {
@@ -64,6 +71,12 @@ public class Enemy : Actor
 
     public override void TakeTurn()
     {
+        if (dying)
+        {
+            MyTurn = false;
+            return;
+        }
+
         MyTurn = true;
         //Debug.Log("Enemy TakeTurn(): " + Name);
 
@@ -91,9 +104,6 @@ public class Enemy : Actor
                 walking = true;
                 walkingTo = World.Instance.GridToWorldPos(nextStep);
                 GridPos = nextStep;
-
-                // TODO: anmiation
-                //transform.position = World.Instance.GridToWorldPos(nextStep);
             }           
         }
         else

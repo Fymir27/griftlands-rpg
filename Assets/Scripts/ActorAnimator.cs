@@ -87,7 +87,7 @@ public class ActorAnimator : MonoBehaviour
             
             spriteRenderer.sprite = anim[frameIndex++];
 
-            if (AdaptAnimationSpeedToActorWalkingSpeed)
+            if (AdaptAnimationSpeedToActorWalkingSpeed && animationState == ActorAnimationState.Walk)
             {
                 secondsUntilNextFrame = World.Instance.GetGridSize() / (actor.GetWalkingSpeed() * anim.Length) + Time.deltaTime * 2f;                
             }
