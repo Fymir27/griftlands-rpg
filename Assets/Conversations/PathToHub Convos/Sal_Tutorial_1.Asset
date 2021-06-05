@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Sal_Tutorial_1
   m_EditorClassIdentifier: 
   conversation:
-  - "Sal:Hmmm\u2026 That\u2019s a fairly large gap."
+  - "Sal:Hmmm...That\u2019s a fairly large gap."
   - Sal:But probably no worse than leaping over the lumin pools in the derricks.
-  - Sal:If I press [BUTTON], I should be able to dash over gaps like this just fine.
+  - Sal:If I press [ Shift ], I should be able to dash over gaps like this just fine.

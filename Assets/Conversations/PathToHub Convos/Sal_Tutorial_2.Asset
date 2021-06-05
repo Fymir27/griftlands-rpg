@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sal_Tutorial_2
   m_EditorClassIdentifier: 
   conversation:
-  - Sal:Whew, alright! [BUTTON] to dash, just got to remember that.
+  - Sal:Whew, alright! [ Shift ] to dash, just got to remember that.
   - Press ESC to pause the game and view the controls at any time!

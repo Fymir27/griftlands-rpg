@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Smith_Tutorial_2
   m_EditorClassIdentifier: 
   conversation:
-  - "Smith:Pretty strong, right? Smashing with [BUTTON]. It\u2019s the best."
+  - Smith:Pretty strong, right? Smashing through rocks is the best. Almost as good
+    as drinking!
   - Rook:Good luck dealing with long-range foes.
   - Sal:Or dashing over gaps.
   - Smith:Hey, we all have our strengths. Mine is just actual physical strength.
-  - "Smith:But fine, I\u2019ll swap to you with [BUTTON] if there\u2019s something
-    a hammer CAN\u2019T solve."
+  - "Smith:But fine, we can swap out with [ 1 ], [ 2 ], and [ 3 ] if there\u2019s
+    something a hammer CAN\u2019T solve."
   - "Smith:Which I\u2019m sure will be rare."

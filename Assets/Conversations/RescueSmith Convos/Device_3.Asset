@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Device_3
   m_EditorClassIdentifier: 
   conversation:
-  - :Smith gathers up the device with a toothy grin.
+  - Smith gathers up the device with a toothy grin.
   - Smith:Ey, I was wondering where you went, you silly thing!
   - Sal:Smith, would you please take something serious for once?
   - Smith:Depends, what is it?
-  - Sal:Uh, this.
+  - Sal:You know what, nevermind.
   - Rook:Once again, it was just laying there, in the middle of nowhere. We need
     to get to the bottom of this, quickly.

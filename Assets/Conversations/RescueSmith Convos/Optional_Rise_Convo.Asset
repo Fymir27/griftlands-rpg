@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: Optional_Rise_Convo
   m_EditorClassIdentifier: 
   conversation:
-  - :You round the corner and nearly bump into a large figure in tattered Rise clothing.
+  - You round the corner and nearly bump into a large figure in tattered Rise clothing.
     As imposing as he is, he seems to recoil at the sight of Smith looming behind
     you.
   - Rise Rebel:Oh no, it's you.
   - Rise Rebel:Just leave me alone. I'm still sore from cleaning up your mess.
   - Sal:What mess? I thought we left it pretty clean back there.
-  - Rook:You did collapse an entire-
-  - Smith:I think they're talking about something I did, Sal.
+  - Rook:Sal, you did collapse an entire-
+  - Smith:I think they're talking about something I did, guys.
   - Rise Rebel:Exactly. Your friend over there wasn't too happy that we tried to
     recruit him.
   - Smith:You promised me free booze! Who the Hesh would lie about having free booze?
   - Rook:The Rise, apparently.
   - Rise Rebel:Yep. I'm regretting it now though. Expensive assets destroyed, valuable
     members put out of commission...
-  - Sal:Seriously? That's why you took Smith?
+  - Sal:That's why you took Smith?
   - Rise Rebel:I personally didn't want to, but it was on our superiors' orders.
     I had no choice.
   - Rise Rebel:Listen, I don't get paid enough for this oshnudung, so leave me alone
