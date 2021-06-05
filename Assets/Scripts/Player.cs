@@ -340,7 +340,7 @@ public class Player : Actor
                     State = PlayerState.Idle;
                 }
 
-                if (Input.GetKeyDown(KeyCode.Escape))
+                if (Input.GetButtonDown("Cancel"))
                 {
                     Textbox.Instance.AbortDialogue();
                     EndTurn();
@@ -385,7 +385,7 @@ public class Player : Actor
                         World.Instance.SetTimeout(.2f, EndTurn);
                     }
                 } 
-                else if(Input.GetKeyDown(KeyCode.Escape))
+                else if(Input.GetButtonDown("Cancel") || Input.GetKeyDown(KeyCode.F))
                 {
                     rookRangeIndicator.enabled = false;
                     DisableReticle();
@@ -409,7 +409,7 @@ public class Player : Actor
 
             case PlayerState.PreparingToJump:
 
-                if (Input.GetKeyDown(KeyCode.Escape))
+                if (Input.GetButtonDown("Cancel") || Input.GetKeyDown(KeyCode.LeftShift))
                 {
                     DisableReticle();
                     salVaultIndicator.enabled = false;

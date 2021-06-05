@@ -33,12 +33,12 @@ public class Slides : MonoBehaviour
             return; 
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Jump"))
         {
             NextSlide();
         }   
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Cancel"))
         {
             End();
         }
