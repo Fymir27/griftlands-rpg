@@ -17,11 +17,11 @@ public enum PlayerState
 {
     Idle,
     Walking,
+    PreparingToVault,
     Vaulting,
     Attacking,
     InDialog,
-    Aiming,
-    PreparingToJump, // TODO: same as aiming maybe?
+    Aiming,    
     Dying
 }
 
@@ -193,7 +193,7 @@ public class Player : Actor
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         if (State == PlayerState.Dying)
             return;
 
@@ -240,7 +240,7 @@ public class Player : Actor
         {
             case PlayerState.Idle:
 
-                if (Input.GetButtonDown("Cancel"))
+                if (Input.GetButtonDown("Pause"))
                 {
                     State = PlayerState.Dying; // prevent Input
                     PauseMenu.Instance.OnClose += () => State = PlayerState.Idle;
@@ -257,6 +257,11 @@ public class Player : Actor
                     characterIDSelected = 2;
                 else if (Input.GetKeyDown(KeyCode.Alpha3))
                     characterIDSelected = 3;
+                else if (Input.GetButtonDown("Swap"))
+                {
+                   
+                    characterIDSelected = ((int)CurCharacter % Enum.GetValues(typeof(PlayerCharacter)).Length) + 1;
+                }
 
                 if (characterIDSelected > 0)
                 {
@@ -278,19 +283,19 @@ public class Player : Actor
                 }
                 #endregion
 
-                if (CurCharacter == PlayerCharacter.Rook && Input.GetKeyDown(KeyCode.F))
+                if (CurCharacter == PlayerCharacter.Rook && Input.GetButtonDown("Aim"))
                 {
                     ammoBar.SetActive(true);
                     //rookRangeIndicator.enabled = true;
                     State = PlayerState.Aiming;                    
                 }
 
-                if (CurCharacter == PlayerCharacter.Sal && Input.GetKeyDown(KeyCode.LeftShift))
+                if (CurCharacter == PlayerCharacter.Sal && Input.GetButtonDown("Vault"))
                 {
                     if (curVaultCooldown == 0)
                     {
                         salVaultIndicator.enabled = true;
-                        State = PlayerState.PreparingToJump;
+                        State = PlayerState.PreparingToVault;
                     }
                     else
                     {
@@ -324,8 +329,8 @@ public class Player : Actor
                     lastStep = Vector3Int.down;
                     MoveTo(GridPos + lastStep);
                 }
-                else if (Input.GetButtonDown("Jump"))
-                {                   
+                else if (Input.GetButtonDown("Submit"))
+                {
                     World.Instance.TriggerStepOn(this, GridPos);
                     EndTurn();
                 }                
@@ -335,7 +340,7 @@ public class Player : Actor
 
             case PlayerState.InDialog:
                 // Advance dialogue AND check if done
-                if (Input.GetButtonDown("Jump") && Textbox.Instance.AdvanceDialogue())
+                if (Input.GetButtonDown("Submit") && Textbox.Instance.AdvanceDialogue())
                 {
                     State = PlayerState.Idle;
                 }
@@ -348,6 +353,8 @@ public class Player : Actor
                 break;
 
             case PlayerState.Aiming:
+
+                // TODO: aiming with gamepad?
                 var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 var aimedGridPos = World.Instance.WorldToGridPos(mouseWorldPos);
                 var lineOfSight = World.Instance.LineOfSight(GridPos, aimedGridPos, ShootingRange, true, false);
@@ -385,7 +392,7 @@ public class Player : Actor
                         World.Instance.SetTimeout(.2f, EndTurn);
                     }
                 } 
-                else if(Input.GetButtonDown("Cancel") || Input.GetKeyDown(KeyCode.F))
+                else if(Input.GetButtonDown("Cancel") || Input.GetButtonDown("Aim"))
                 {
                     rookRangeIndicator.enabled = false;
                     DisableReticle();
@@ -395,6 +402,9 @@ public class Player : Actor
 
             case PlayerState.Walking:
             case PlayerState.Vaulting:
+
+                // TODO: aiming with gamepad?
+
                 float speed = State == PlayerState.Walking ? walkingSpeed : vaultingSpeed;
                 if (speed > 0)
                     transform.position = Vector3.MoveTowards(transform.position, walkingTo, speed * Time.deltaTime);
@@ -407,9 +417,9 @@ public class Player : Actor
                 }
                 break;
 
-            case PlayerState.PreparingToJump:
+            case PlayerState.PreparingToVault:
 
-                if (Input.GetButtonDown("Cancel") || Input.GetKeyDown(KeyCode.LeftShift))
+                if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Vault"))
                 {
                     DisableReticle();
                     salVaultIndicator.enabled = false;

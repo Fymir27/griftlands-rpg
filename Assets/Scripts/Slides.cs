@@ -33,7 +33,7 @@ public class Slides : MonoBehaviour
             return; 
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Submit"))
         {
             NextSlide();
         }   
