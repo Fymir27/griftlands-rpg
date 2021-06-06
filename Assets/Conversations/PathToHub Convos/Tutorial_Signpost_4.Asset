@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
+  m_Name: Tutorial_Signpost_4
+  m_EditorClassIdentifier: 
+  conversation:
+  - "Healing:These special Bog Flowers have healing qualities - stand on their tile
+    to heal a small amount (don\u2019t worry, they don\u2019t mind)."
+  - Healing:But even they can only do so much per round, so keep an eye on your health
+    meter.
+  - "Healing:If you\u2019re hurt badly, use [ Spacebar ] to Wait a Turn (or a few)
+    to ensure you\u2019re fully patched up!"

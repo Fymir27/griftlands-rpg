@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
+  m_Name: Tutorial_Signpost_3
+  m_EditorClassIdentifier: 
+  conversation:
+  - "Combat:To attack an enemy, simply step into their square or \u201Cbump\u201D
+    into them."
+  - Combat:You will melee attack enemies when they are in one of the four tiles immediately
+    next to you.
+  - "Combat:But they can do the same on their turn, so plan your movements carefully.
+    Don\u2019t get flanked!"
+  - Combat:Your Dash with [ Shift ] will come in handy to fall back and heal when
+    needed!

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Sal_Tutorial_2
   m_EditorClassIdentifier: 
   conversation:
-  - Sal:Whew, alright! [ Shift ] to dash, just got to remember that.
-  - Press ESC to pause the game and view the controls at any time!
+  - Sal:Whew, alright! [ Shift ] to Dash, not a problem. Bet I could even do that
+    diagonally!
+  - Sal:That does take a lot out of me though, so I probably can't Dash constantly.

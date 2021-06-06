@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af4fb335d2ee1cc4ab8d21eadc10e5f9, type: 3}
   m_Name: End_State_Convo
   m_EditorClassIdentifier: 
-  conversation: []
+  conversation:
+  - The Bog ambience sweeps in, wrapping your senses in the deep dark of nightfall
+    descending on Grout Bog...
