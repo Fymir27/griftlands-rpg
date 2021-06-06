@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc305250b4379b9419c6fa84a818f923, type: 3}
+  m_Name: animPhinoonDancing
+  m_EditorClassIdentifier: 
+  ordering: 00000000010000000200000003000000
+  animIdle:
+  - {fileID: 1942967249346997526, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: -8204767806957875519, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: -2897829187694125229, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: 8578507988870406240, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: 1942967249346997526, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: -8204767806957875519, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: -2897829187694125229, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: 8578507988870406240, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: 1942967249346997526, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: -8204767806957875519, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: -2897829187694125229, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: 8578507988870406240, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: 1942967249346997526, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: -8204767806957875519, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: -2897829187694125229, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  - {fileID: 8578507988870406240, guid: ba3179a1822af3448906d6015b1bbd4b, type: 3}
+  animWalk: []
+  animAttack: []
+  animDeath: []
