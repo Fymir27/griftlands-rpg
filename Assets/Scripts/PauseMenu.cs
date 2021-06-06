@@ -21,6 +21,10 @@ public class PauseMenu : MonoBehaviour
     MenuCursor cursor;
     [SerializeField]
     GameObject controls;
+    [SerializeField]
+    GameObject overlayMenu;
+
+    private bool openedThisFrame = false;
 
     private void Awake()
     {
@@ -44,14 +48,29 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
+        if (openedThisFrame)
+        {
+            openedThisFrame = false;
+            return;
+        }
+
         if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Pause"))
         {
-            Close();
+            if (controls.activeInHierarchy)
+            {
+                controls.SetActive(false);
+                overlayMenu.SetActive(true);
+            } 
+            else
+            {
+                Close();
+            }            
         }
     }
 
     public void OpenControlsOverlay()
     {
+        overlayMenu.SetActive(false);
         controls.SetActive(true);
     }
 
@@ -93,21 +112,15 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Open()
-    {   
-        gameObject.SetActiveRecursively(true);
-        controls.SetActive(false);
+    {
+        openedThisFrame = true;
+        overlayMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(resumeButton.gameObject);
     }
 
     public void Close()
     {
-        if (controls.activeInHierarchy)
-        {
-            controls.SetActive(false);
-            return;
-        }
-
-        gameObject.SetActiveRecursively(false);
+        overlayMenu.SetActive(false);
         if (OnClose != null)
         {
             OnClose.Invoke();
