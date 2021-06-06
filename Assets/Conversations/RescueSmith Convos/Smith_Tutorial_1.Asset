@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Smith_Tutorial_1
   m_EditorClassIdentifier: 
   conversation:
-  - Smith:Alright, everyone, back the Hesh up! I'm gonna bust through this wall!
-  - "Smith:Once you switch to me, I don't even need any of your fancy buttons for
-    dashing or gun pointies or whatever - when I swing my hammer, nothing\u2019s
-    gonna stop it!"
+  - Smith:Alright, switch to me with [ 3 ], and back the Hesh up! I'm gonna bust
+    through this wall!
+  - "Smith:I don't even need any of your fancy buttons for dashing or gun pointies
+    or whatever - when I swing my hammer, nothing\u2019s gonna stop it!"
   - "Smith:Boulders, groups of bad guys, the hammer doesn\u2019t care!"

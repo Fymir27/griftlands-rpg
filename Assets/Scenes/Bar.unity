@@ -467,6 +467,8 @@ Transform:
   - {fileID: 1564369547}
   - {fileID: 1838213979}
   - {fileID: 2010381378}
+  - {fileID: 1745250893}
+  - {fileID: 1632221229}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -779,6 +781,106 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &681128607
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 257719288}
+    m_Modifications:
+    - target: {fileID: 885046138243207619, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: randomQuips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 885046138243207619, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: randomQuips.Array.data[0]
+      value: Oh, hey! Jump on in, plenty of room on the dance floor if you can keep
+        up!
+      objectReference: {fileID: 0}
+    - target: {fileID: 885046138243207619, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: randomQuips.Array.data[1]
+      value: '[ Phinoon does an impressive series of whirling dance moves. ]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 885046138243207619, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: randomQuips.Array.data[2]
+      value: Hoo, hoo...Kinda tired actually.
+      objectReference: {fileID: 0}
+    - target: {fileID: 885046138243207619, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: randomQuips.Array.data[3]
+      value: Hey can you hand me my drink?
+      objectReference: {fileID: 0}
+    - target: {fileID: 885046138243207619, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: randomQuips.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539908013619073527, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: m_Name
+      value: PhinoonDancing
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539908013619073529, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539908013619073529, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539908013619073529, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539908013619073529, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539908013619073529, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539908013619073529, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539908013619073529, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539908013619073529, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539908013619073529, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539908013619073529, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539908013619073529, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 96a1d8caf3780ba4c855c9d5652cc176, type: 3}
 --- !u!1001 &763940389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -875,7 +977,7 @@ PrefabInstance:
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.size
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
@@ -895,42 +997,46 @@ PrefabInstance:
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.data[0]
-      value: Lol
+      value: "You need something? My break is almost over. ...And my foreman doesn\u2019t
+        know I\u2019m taking a break."
       objectReference: {fileID: 0}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.data[1]
-      value: '[licks goo]'
+      value: "Demerits this, demerits that\u2026 What\u2019s the point of threatening
+        us? We\u2019re already under a contract."
       objectReference: {fileID: 0}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.data[2]
-      value: I just want to be used.
+      value: "The Rise are looking more and more reasonable by the day\u2026 Er,
+        I didn\u2019t say anything!"
       objectReference: {fileID: 0}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.data[3]
-      value: '[slug noises]'
+      value: "How do you even become a Spark Baron? Invent something? Well I\u2019m
+        inventing a boot to the hindquarters!"
       objectReference: {fileID: 0}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.data[4]
-      value: '[slug noises]'
+      value: "Gah, need new boots again\u2026 Better save up for the Company Store\u2026"
       objectReference: {fileID: 0}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.data[5]
-      value: '[slug noises]'
+      value: You ever think all this spark stuff is under the mud for a reason?
       objectReference: {fileID: 0}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.data[6]
-      value: '[slug noises]'
+      value: Oh, hey there.
       objectReference: {fileID: 0}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.data[7]
-      value: '[slug noises]'
+      value: I wish there was some goo around here...
       objectReference: {fileID: 0}
     - target: {fileID: 7690857458624205764, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
@@ -1059,12 +1165,12 @@ PrefabInstance:
     - target: {fileID: 291569547109507410, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.31
+      value: -26.81
       objectReference: {fileID: 0}
     - target: {fileID: 291569547109507410, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.66
+      value: 8.07
       objectReference: {fileID: 0}
     - target: {fileID: 291569547109507410, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
@@ -1150,7 +1256,7 @@ PrefabInstance:
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.size
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
@@ -1160,7 +1266,44 @@ PrefabInstance:
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.data[0]
-      value: Shhhhhhhhhh
+      value: For the cause! For the Rise!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
+        type: 3}
+      propertyPath: randomQuips.Array.data[1]
+      value: Either we die in crushing servitude, or we die fighting for our rights.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
+        type: 3}
+      propertyPath: randomQuips.Array.data[2]
+      value: "We\u2019ve been fighting against indentured servitude for years now.
+        Will it ever end?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
+        type: 3}
+      propertyPath: randomQuips.Array.data[3]
+      value: "We\u2019re all in this together. We Rise together or we fall alone."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
+        type: 3}
+      propertyPath: randomQuips.Array.data[4]
+      value: We could really use some working Cobblebots right now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
+        type: 3}
+      propertyPath: randomQuips.Array.data[5]
+      value: Hey, can you spare a few shills?
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
+        type: 3}
+      propertyPath: randomQuips.Array.data[6]
+      value: One time, I saw this dude trying to get his Cobbledog to smoke a cigarette.
+        Weirdest thing.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
+        type: 3}
+      propertyPath: randomQuips.Array.data[7]
+      value: Yo, want to join the Rise? You get a free rocket launcher!
       objectReference: {fileID: 0}
     - target: {fileID: 7690857458624205764, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
@@ -1290,7 +1433,7 @@ PrefabInstance:
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.size
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
@@ -1330,7 +1473,8 @@ PrefabInstance:
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.data[0]
-      value: ...
+      value: "If you\u2019ve got shills, I\u2019ve got wares! ...Oh, you don\u2019t
+        have shills. Stop talking to me."
       objectReference: {fileID: 0}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
@@ -1340,12 +1484,39 @@ PrefabInstance:
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.data[2]
-      value: For the last time, I DON'T have spicy noodles here.
+      value: Can I interest you in some oshnu glue?
       objectReference: {fileID: 0}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: SnapToGrid
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
+        type: 3}
+      propertyPath: randomQuips.Array.data[3]
+      value: Healing salves, just 30 shills a dose! Helps stave off parasite bites!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
+        type: 3}
+      propertyPath: randomQuips.Array.data[4]
+      value: "I\u2019m such a good salesperson, I once sold a half-eaten sandwich
+        to a traveler."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
+        type: 3}
+      propertyPath: randomQuips.Array.data[5]
+      value: I love making money, I just hate advertising.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
+        type: 3}
+      propertyPath: randomQuips.Array.data[6]
+      value: I can loan you shills if you need them. Reasonable rates! Only 30 percent
+        interest per day!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
+        type: 3}
+      propertyPath: randomQuips.Array.data[7]
+      value: For the last time, I DON'T have spicy noodles here.
       objectReference: {fileID: 0}
     - target: {fileID: 7690857458624205764, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
@@ -1374,6 +1545,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 291569547109507410, guid: a8a6b81c3e98e7040a03ef515cffacee,
     type: 3}
   m_PrefabInstance: {fileID: 1564369546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632221229 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2232043139031742981, guid: 39eaa30fcb41fe548b19df920012b2fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2014161354}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1650640877
 PrefabInstance:
@@ -1449,6 +1626,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4a6f0a7913feb24f948d94f9538b815, type: 3}
+--- !u!4 &1745250893 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2539908013619073529, guid: 96a1d8caf3780ba4c855c9d5652cc176,
+    type: 3}
+  m_PrefabInstance: {fileID: 681128607}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1838213979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 291569547109507410, guid: a8a6b81c3e98e7040a03ef515cffacee,
@@ -1461,6 +1644,106 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1059927019}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2014161354
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 257719288}
+    m_Modifications:
+    - target: {fileID: 2232043139031742981, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232043139031742981, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232043139031742981, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232043139031742981, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232043139031742981, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232043139031742981, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232043139031742981, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232043139031742981, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232043139031742981, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232043139031742981, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232043139031742981, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232043139031742987, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: m_Name
+      value: Cwoki
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570808387055270463, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: randomQuips.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570808387055270463, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: randomQuips.Array.data[0]
+      value: "This bog sucks the life out of you, but it\u2019s a goldmine."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570808387055270463, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: randomQuips.Array.data[1]
+      value: Man, Phinoon is killing it over there.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570808387055270463, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: randomQuips.Array.data[2]
+      value: "You can never tell who those grifters will side with\u2026 Uh, nothing,
+        I said nothing!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570808387055270463, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: randomQuips.Array.data[3]
+      value: Ah, Hesh. Left my wallet home...
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570808387055270463, guid: 39eaa30fcb41fe548b19df920012b2fb,
+        type: 3}
+      propertyPath: randomQuips.Array.data[4]
+      value: I wonder if they serve Fsshcakes here...
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39eaa30fcb41fe548b19df920012b2fb, type: 3}
 --- !u!1 &2015984260
 GameObject:
   m_ObjectHideFlags: 0
@@ -30837,12 +31120,12 @@ PrefabInstance:
     - target: {fileID: 8288804682715702375, guid: 926aac1368367384ea9ff0caef41fa4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8458972548675805199, guid: 926aac1368367384ea9ff0caef41fa4c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 926aac1368367384ea9ff0caef41fa4c, type: 3}
