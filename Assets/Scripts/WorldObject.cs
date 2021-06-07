@@ -31,13 +31,13 @@ public class WorldObject : MonoBehaviour
 
     public void Interact()
     {
-        if(!Interactable || dialogue.Length == 0)
+        string message = "...";
+        if(Interactable || dialogue.Length > 0)
         {
-            Debug.LogWarning("WorldObject.Interact() called but not interactable OR no dialogue");
-            return;
+            int randomIndex = Random.Range(0, dialogue.Length);
+            message = dialogue[randomIndex];
         }
-
-        int randomIndex = Random.Range(0, dialogue.Length);
-        Textbox.Instance.Display(this, dialogue[randomIndex]);
+        
+        Textbox.Instance.Display(this, message);
     }
 }
