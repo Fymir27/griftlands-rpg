@@ -32,7 +32,7 @@ public class WorldObject : MonoBehaviour
     public void Interact()
     {
         string message = "...";
-        if(Interactable || dialogue.Length > 0)
+        if(Interactable && dialogue.Length > 0)
         {
             int randomIndex = Random.Range(0, dialogue.Length);
             message = dialogue[randomIndex];
