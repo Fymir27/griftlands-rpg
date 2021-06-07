@@ -1603,8 +1603,8 @@ PrefabInstance:
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
       propertyPath: randomQuips.Array.data[6]
-      value: One time, I saw this dude trying to get his Cobbledog to smoke a cigarette.
-        Weirdest thing.
+      value: One time, I saw this dude's Cobbledog trying to eat a cigarette...Weirdest
+        thing.
       objectReference: {fileID: 0}
     - target: {fileID: 3133411133121569128, guid: a8a6b81c3e98e7040a03ef515cffacee,
         type: 3}
